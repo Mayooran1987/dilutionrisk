@@ -1,5 +1,5 @@
 [![R](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml)
-[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml)<!-- <style> --> 
+[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml) [![pages-build-deployment](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment)<!-- <style> --> 
 
 <!-- body {text-align: justify} -->
 

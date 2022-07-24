@@ -1,0 +1,23 @@
+Package: dilutionrisk
+Type: Package
+Title: Modelling and assessment of risk based on aerobic plate count (APC) on diluted testing.
+Version: 0.0.1
+Authors@R: c(
+          person("Mayooran", "Thevaraja", email = "mayooran@eng.jfn.ac.lk", role = c("aut", "cre")),
+          person("Kondaswamy", "Govindaraju", email = "k.govindaraju@massey.ac.nz", role = "aut"),
+          person("Mark", "Bebbington", email = "m.bebbington@massey.ac.nz", role = "aut")
+          )
+Authors: Mayooran Thevaraja [aut, cre], Kondaswamy Govindaraju [aut], Mark Bebbington [aut]
+URL: https://github.com/Mayooran1987/dilutionrisk
+BugReports: https://github.com/Mayooran1987/dilutionrisk/issues
+Description: This package aims to develop for getting probability estimations and graphical displays in the study associated with Modelling and assessment of risk based on aerobic plate count (APC) on diluted testing.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Imports: extraDistr, ggplot2, ggthemes, reshape2, stats
+Suggests: spelling, testthat, covr
+RoxygenNote: 7.2.1
+Depends: R (>= 4.0)
+Maintainer: Mayooran Thevaraja <mayooran@eng.jfn.ac.lk>
+Language: en-US
+Config/testthat/edition: 3

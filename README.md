@@ -1,4 +1,4 @@
-
+[![R](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml)
 <!-- <style> -->
 
 <!-- body {text-align: justify} -->

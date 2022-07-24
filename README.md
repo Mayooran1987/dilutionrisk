@@ -1,6 +1,4 @@
-<!-- [![Build Status](https://travis-ci.com/Mayooran1987/uneqmix.svg?branch=main)](https://travis-ci.com/Mayooran1987/uneqmixr)-->
 
-[![R build status](https://github.com/Mayooran1987/dilutionrisk/workflows/R-CMD-check/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions) <!-- <style> --> [![pages-build-deployment](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment) [![R](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml)
 <!-- <style> -->
 
 <!-- body {text-align: justify} -->

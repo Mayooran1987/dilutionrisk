@@ -4,7 +4,7 @@
 ##' @param lambda the expected cell count (\eqn{\lambda}).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
-##' @param pf plating factor (pf = 1/final dilution factor).
+##' @param FDF final dilution factor.
 ##' @param USL upper specification limit.
 ##' @param n number of samples which are used for inspection.
 ##' @param n_sim number of simulations (large simulations provide more precise estimation).
@@ -15,15 +15,15 @@
 ##' lambda <- 10
 ##' a <- 0
 ##' b <- 300
-##' pf <- 1000
+##' FDF <- 0.001
 ##' USL <- 1000
 ##' n <- 5
 ##' n_sim <- 10000
-##' prob_acceptance_homogeneous(c, lambda, a, b, pf, USL, n, n_sim)
-##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, pf, USL, n, n_sim)
+##' prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
+##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
 ##' @export
-prob_acceptance_homogeneous <- function(c, lambda, a, b, pf, USL, n, n_sim){
-  pd <- prob_detection_homogeneous(lambda, a, b, pf, USL, n_sim)
+prob_acceptance_homogeneous <- function(c, lambda, a, b, FDF, USL, n, n_sim){
+  pd <- prob_detection_homogeneous(lambda, a, b, FDF, USL, n_sim)
   pa <- stats::pbinom(c, n, pd)
   return(pa)
 }

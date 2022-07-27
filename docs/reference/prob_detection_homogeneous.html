@@ -53,7 +53,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_detection_homogeneous</span><span class="op">(</span><span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">pf</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_detection_homogeneous</span><span class="op">(</span><span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">FDF</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -70,8 +70,8 @@
 <dd><p>upper domain of the number of cell counts.</p></dd>
 
 
-<dt>pf</dt>
-<dd><p>plating factor (pf = 1/final dilution factor).</p></dd>
+<dt>FDF</dt>
+<dd><p>final dilution factor.</p></dd>
 
 
 <dt>USL</dt>
@@ -97,19 +97,19 @@ div {
 }
 </style>
     <p><code>prob_detection_homogeneous</code> provides a probability of detection when the diluted sample has homogeneous contaminants. We define the random variable \(X_{i}\) is the number of colonies on the \(i^{th}\) plate.
-In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. Homogeneous case, we employed truncated Poisson distribution to model (this section will be updated later on).</p>
+In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. homogeneous case, we employed truncated Poisson lognormal distribution to model (this section will be updated later on).</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">20</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
-<span class="r-in"><span><span class="va">pf</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span><span class="va">FDF</span> <span class="op">&lt;-</span> <span class="fl">0.001</span></span></span>
 <span class="r-in"><span><span class="va">USL</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
 <span class="r-in"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span></span>
-<span class="r-in"><span><span class="fu">prob_detection_homogeneous</span><span class="op">(</span><span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">pf</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9999999</span>
+<span class="r-in"><span><span class="fu">prob_detection_homogeneous</span><span class="op">(</span><span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">FDF</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6869406</span>
 </code></pre></div>
     </div>
   </div>

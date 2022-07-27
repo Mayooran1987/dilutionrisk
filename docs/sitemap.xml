@@ -13,18 +13,33 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/dilution_OC_curve_homogeneous.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dilution_pd_curve_homogeneous.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/OC_curves_heterogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/OC_curves_homogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pd_curves_heterogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pd_curves_homogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/prob_acceptance_heterogeneous.html</loc>
   </url>
   <url>
     <loc>/reference/prob_acceptance_homogeneous.html</loc>
   </url>
   <url>
+    <loc>/reference/prob_detection_heterogeneous.html</loc>
+  </url>
+  <url>
     <loc>/reference/prob_detection_homogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rtrunpoilog.html</loc>
   </url>
 </urlset>

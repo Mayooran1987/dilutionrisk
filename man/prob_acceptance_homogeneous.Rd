@@ -4,7 +4,7 @@
 \alias{prob_acceptance_homogeneous}
 \title{Probability of acceptance estimation when diluted sample has homogeneous contaminations.}
 \usage{
-prob_acceptance_homogeneous(c, lambda, a, b, pf, USL, n, n_sim)
+prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -15,7 +15,7 @@ prob_acceptance_homogeneous(c, lambda, a, b, pf, USL, n, n_sim)
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{pf}{plating factor (pf = 1/final dilution factor).}
+\item{FDF}{final dilution factor.}
 
 \item{USL}{upper specification limit.}
 
@@ -37,9 +37,9 @@ c <- 0
 lambda <- 10
 a <- 0
 b <- 300
-pf <- 1000
+FDF <- 0.001
 USL <- 1000
 n <- 5
 n_sim <- 10000
-prob_acceptance_homogeneous(c, lambda, a, b, pf, USL, n, n_sim)
+prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
 }

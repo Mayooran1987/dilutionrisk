@@ -53,7 +53,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_acceptance_homogeneous</span><span class="op">(</span><span class="va">c</span>, <span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">pf</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_acceptance_homogeneous</span><span class="op">(</span><span class="va">c</span>, <span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">FDF</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -74,8 +74,8 @@
 <dd><p>upper domain of the number of cell counts.</p></dd>
 
 
-<dt>pf</dt>
-<dd><p>plating factor (pf = 1/final dilution factor).</p></dd>
+<dt>FDF</dt>
+<dd><p>final dilution factor.</p></dd>
 
 
 <dt>USL</dt>
@@ -98,6 +98,12 @@
     </div>
     <div id="details">
     <h2>Details</h2>
+	<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
     <p><code><a href="prob_detection_homogeneous.html">prob_detection_homogeneous</a></code> provides a probability of acceptance when the diluted sample has homogeneous contaminants (this section will be updated later on).</p>
     </div>
 
@@ -107,12 +113,12 @@
 <span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
-<span class="r-in"><span><span class="va">pf</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span><span class="va">FDF</span> <span class="op">&lt;-</span> <span class="fl">0.001</span></span></span>
 <span class="r-in"><span><span class="va">USL</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span></span>
-<span class="r-in"><span><span class="fu">prob_acceptance_homogeneous</span><span class="op">(</span><span class="va">c</span>, <span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">pf</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.853497e-17</span>
+<span class="r-in"><span><span class="fu">prob_acceptance_homogeneous</span><span class="op">(</span><span class="va">c</span>, <span class="va">lambda</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">FDF</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.019647e-17</span>
 </code></pre></div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 Package: dilutionrisk
 Type: Package
-Title: Modelling and assessment of risk based on aerobic plate count (APC) on diluted testing.
+Title: Modelling and assessment of risk based on aerobic plate count (APC) on diluted testing
 Version: 0.0.1
 Authors@R: c(
           person("Mayooran", "Thevaraja", email = "mayooran@eng.jfn.ac.lk", role = c("aut", "cre")),

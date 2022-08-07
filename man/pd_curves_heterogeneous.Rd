@@ -4,7 +4,7 @@
 \alias{pd_curves_heterogeneous}
 \title{comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
+pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
 }
 \arguments{
 \item{meanlog_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
@@ -17,7 +17,7 @@ pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_s
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
 
 \item{u}{amount put on the plate.}
 
@@ -40,9 +40,9 @@ meanlog_high <- 10
 sdlog <- 0.2
 a <- 0
 b <- 300
-FDF <- c(0.01,0.1)
+f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
+pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
 }

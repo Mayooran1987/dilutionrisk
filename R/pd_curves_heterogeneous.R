@@ -5,7 +5,7 @@
 ##' @param sdlog the standard deviation of the normal distribution (on the log scale).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
-##' @param FDF final dilution factor.
+##' @param f final dilution factor.
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
 ##' @param n_sim number of simulations (large simulations provide more precise estimations).
@@ -17,26 +17,27 @@
 ##' sdlog <- 0.2
 ##' a <- 0
 ##' b <- 300
-##' FDF <- c(0.01,0.1)
+##' f <- c(0.01,0.1)
 ##' u <- c(0.1,0.1)
 ##' USL <- 1000
 ##' n_sim <- 50000
-##' pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
-##' @usage  pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
-pd_curves_heterogeneous <- function(meanlog_low, meanlog_high, sdlog = 0.8, a, b, FDF, u, USL, n_sim){
+##' pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
+##' @usage  pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
+##' @export
+pd_curves_heterogeneous <- function(meanlog_low, meanlog_high, sdlog = 0.8, a, b, f, u, USL, n_sim){
   p_d <- NULL
   Dilution_scheme <- NULL
-  f_spr <- function(FDF, u) {
-    sprintf("Scheme (FDF=%.3f, u=%.1f)", FDF, u)
+  f_spr <- function(f, u) {
+    sprintf("Scheme (f=%.3f, u=%.1f)", f, u)
   }
   meanlog <- seq(meanlog_low, meanlog_high, 0.1)
   # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
-  Pd <- matrix(NA, nrow = length(meanlog), ncol = length(FDF))
+  Pd <- matrix(NA, nrow = length(meanlog), ncol = length(f))
   for (i in 1:length(meanlog)) {
-    Pd[i,] <-  cbind(prob_detection_heterogeneous_multiple(meanlog[i], sdlog, a, b, FDF, u, USL, n_sim))
+    Pd[i,] <-  cbind(prob_detection_heterogeneous_multiple(meanlog[i], sdlog, a, b, f, u, USL, n_sim))
   }
   Prob <- data.frame(meanlog, Pd)
-  colnames(Prob ) <- c("meanlog", f_spr(FDF,u))
+  colnames(Prob ) <- c("meanlog", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "meanlog", variable.name = "Dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = meanlog, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +

@@ -4,7 +4,7 @@
 \alias{OC_curves_heterogeneous}
 \title{Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n, n_sim)
+OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -19,7 +19,7 @@ OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, 
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
 
 \item{u}{amount put on the plate.}
 
@@ -45,10 +45,10 @@ meanlog_high <- 9
 sdlog <- 0.2
 a <- 0
 b <- 300
-FDF <- c(0.01,0.1)
+f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
 n <- 5
 n_sim <- 50000
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, u, n, n_sim)
+OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, USL, u, n, n_sim)
 }

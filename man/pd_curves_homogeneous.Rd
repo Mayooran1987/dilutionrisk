@@ -2,9 +2,9 @@
 % Please edit documentation in R/pd_curves_homogeneous.R
 \name{pd_curves_homogeneous}
 \alias{pd_curves_homogeneous}
-\title{comparison based on probability of detection curves for different dilution schemes when the diluted sample has homogeneous contaminants.}
+\title{comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
 \usage{
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, FDF, USL, n_sim)
+pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 }
 \arguments{
 \item{lambda_low}{the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.}
@@ -15,28 +15,31 @@ pd_curves_homogeneous(lambda_low, lambda_high, a, b, FDF, USL, n_sim)
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
+
+\item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
 \value{
-Probability of detection curves when the diluted sample has homogeneous contaminants.
+Probability of detection curves when diluted samples collected from a homogeneous batch.
 }
 \description{
-\code{\link{pd_curves_homogeneous}} provides the probability of detection curves when the diluted sample has homogeneous contaminants.
+\code{\link{pd_curves_homogeneous}} provides the probability of detection curves when samples collected from a homogeneous batch.
 }
 \details{
-\code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when the diluted sample has homogeneous contaminants (this section will be updated later on).
+\code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
 }
 \examples{
 lambda_low <- 0
-lambda_high <- 10
+lambda_high <- 3000
 a <- 0
 b <- 300
-FDF <- 0.001
-USL <- c(1000, 2000)
-n_sim <- 1000
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, FDF, USL, n_sim)
+f <- c(0.01,0.1)
+u <- c(0.1,0.1)
+USL <- 1000
+n_sim <- 50000
+pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 }

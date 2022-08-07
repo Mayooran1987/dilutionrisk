@@ -1,43 +1,49 @@
-##' \code{\link{pd_curves_homogeneous}} provides the probability of detection curves when the diluted sample has homogeneous contaminants.
-##' @title comparison based on probability of detection curves for different dilution schemes when the diluted sample has homogeneous contaminants.
+##' \code{\link{pd_curves_homogeneous}} provides the probability of detection curves when samples collected from a homogeneous batch.
+##' @title comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.
 ##' @param lambda_low the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param lambda_high the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
-##' @param FDF final dilution factor.
+##' @param f final dilution factor.
+##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
-##' @param n_sim number of simulations (large simulations provide more precise estimation).
-##' @details \code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when the diluted sample has homogeneous contaminants (this section will be updated later on).
-##' @return Probability of detection curves when the diluted sample has homogeneous contaminants.
+##' @param n_sim number of simulations (large simulations provide more precise estimations).
+##' @details \code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
+##' @return Probability of detection curves when diluted samples collected from a homogeneous batch.
 ##' @examples
 ##' lambda_low <- 0
-##' lambda_high <- 10
+##' lambda_high <- 3000
 ##' a <- 0
 ##' b <- 300
-##' FDF <- 0.001
-##' USL <- c(1000, 2000)
-##' n_sim <- 1000
-##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, FDF, USL, n_sim)
-##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, FDF, USL, n_sim)
-pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, FDF, USL, n_sim){
+##' f <- c(0.01,0.1)
+##' u <- c(0.1,0.1)
+##' USL <- 1000
+##' n_sim <- 50000
+##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim){
   p_d <- NULL
-  Sampling_scheme <- NULL
-  f_spr <- function(USL) {
-    sprintf("Scheme (USL=%.0f)", USL)
+  Dilution_scheme <- NULL
+  f_spr <- function(f, u) {
+    sprintf("Scheme (f=%.3f, u=%.1f)", f, u)
   }
   lambda <- seq(lambda_low, lambda_high, 0.1)
   # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
-  Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
+  Pd <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    Pd[i,1] <-  prob_detection_homogeneous(lambda[i], a, b, FDF, USL[1], n_sim)
-    Pd[i,2] <-  prob_detection_homogeneous(lambda[i], a, b, FDF, USL[2], n_sim)
+    Pd[i,] <-  cbind(prob_detection_homogeneous_multiple(lambda[i], a, b, f, u, USL, n_sim))
   }
+  # Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
+  # for (i in 1:length(lambda)) {
+  #   Pd[i,1] <-  prob_detection_homogeneous(lambda[i], a, b, f[1], u[1], USL, n_sim)
+  #   Pd[i,2] <-  prob_detection_homogeneous(lambda[i], a, b, f[2], u[2], USL, n_sim)
+  # }
   Prob <- data.frame(lambda, Pd)
-  colnames(Prob ) <- c("lambda", f_spr(USL))
-  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Sampling_scheme", value.name = "p_d")
-  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Sampling_scheme, colour = Sampling_scheme)) +
-    # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
+  colnames(Prob ) <- c("lambda", f_spr(f,u))
+  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "p_d")
+  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
     ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression(p[d])) + ggthemes::scale_colour_colorblind() +
+    ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   # +

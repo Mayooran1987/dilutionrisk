@@ -2,9 +2,9 @@
 % Please edit documentation in R/OC_curves_homogeneous.R
 \name{OC_curves_homogeneous}
 \alias{OC_curves_homogeneous}
-\title{Comparison based on OC curves for different dilution schemes when the diluted sample has homogeneous contaminants.}
+\title{Comparison based on OC curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
 \usage{
-OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim)
+OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -17,32 +17,35 @@ OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim)
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
+
+\item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
 
 \item{n}{number of samples which are used for inspection.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
 \value{
-OC curves when the diluted sample has homogeneous contaminants.
+OC curves when diluted samples collected from a homogeneous batch.
 }
 \description{
 \code{\link{OC_curves_homogeneous}} provides the operating characteristic(OC) curves when diluted sample has homogeneous contaminants.
 }
 \details{
-\code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when the diluted sample has homogeneous contaminants (this section will be updated later on).
+\code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
 }
 \examples{
 c <- 0
 lambda_low <- 0
-lambda_high <- 5
+lambda_high <- 3000
 a <- 0
 b <- 300
-FDF <- 0.001
-USL <- c(1000, 2000)
+f <- c(0.01,0.1)
+u <- c(0.1,0.1)
+USL <- 1000
 n <- 5
-n_sim <- 1000
-OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim)
+n_sim <- 50000
+OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
 }

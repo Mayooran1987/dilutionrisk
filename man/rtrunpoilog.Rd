@@ -2,7 +2,7 @@
 % Please edit documentation in R/rtrunpoilog.R
 \name{rtrunpoilog}
 \alias{rtrunpoilog}
-\title{Generates random deviates from truncated poisson lognormal distribution.}
+\title{Generates random deviates from truncated Poisson lognormal distribution.}
 \usage{
 rtrunpoilog(n, meanlog, sdlog, a, b)
 }
@@ -13,18 +13,18 @@ rtrunpoilog(n, meanlog, sdlog, a, b)
 
 \item{sdlog}{the standard deviation of the normal distribution (on the log scale).}
 
-\item{a}{lower truncation points.}
+\item{a}{lower truncation points (lower domain of the number of cell counts).}
 
-\item{b}{upper truncation points (a < x <= b).}
+\item{b}{upper truncation points (upper domain of the number of cell counts).}
 }
 \value{
-rtrunpoilog generates random numbers from truncated poisson lognormal distribution.
+\code{\link{rtrunpoilog}} generates random numbers from truncated Poisson lognormal distribution.
 }
 \description{
-\code{\link{rtrunpoilog}} provides generated random numbers from truncated poisson lognormal distribution with given parameters.
+\code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters.
 }
 \details{
-\code{\link{rtrunpoilog}} provides generated random numbers from truncated poisson lognormal distribution with given parameters. (this section will be updated later on).
+\code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters. (this section will be updated later on).
 }
 \examples{
 n <- 100

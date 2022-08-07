@@ -1,29 +1,31 @@
-##' \code{\link{prob_acceptance_homogeneous}} provides a probability of acceptance in the original sample when homogeneous contamination.
-##' @title Probability of acceptance estimation when diluted sample has homogeneous contaminations.
+##' \code{\link{prob_acceptance_homogeneous}} provides a probability of acceptance in the original sample when samples collected from a homogeneous batch.
+##' @title Probability of acceptance estimation when diluted sample collected from a homogeneous batch.
 ##' @param c acceptance number
 ##' @param lambda the expected cell count (\eqn{\lambda}).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
-##' @param FDF final dilution factor.
+##' @param f final dilution factor.
+##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
 ##' @param n number of samples which are used for inspection.
-##' @param n_sim number of simulations (large simulations provide more precise estimation).
-##' @details \code{\link{prob_detection_homogeneous}} provides a probability of acceptance when the diluted sample has homogeneous contaminants (this section will be updated later on).
-##' @return Probability of acceptance when the diluted sample has homogeneous contaminants.
+##' @param n_sim number of simulations (large simulations provide a more precise estimation).
+##' @details \code{\link{prob_detection_homogeneous}} provides a probability of acceptance when samples collected from a homogeneous batch (this section will be updated later on).
+##' @return Probability of acceptance when the diluted sample collected from a homogeneous batch.
 ##' @examples
-##' c <- 0
-##' lambda <- 10
+##' c <- 2
+##' lambda <- 2000
 ##' a <- 0
 ##' b <- 300
-##' FDF <- 0.001
+##' f <- 0.001
+##' u <- 0.1
 ##' USL <- 1000
 ##' n <- 5
-##' n_sim <- 10000
-##' prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
-##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
+##' n_sim <- 50000
+##' prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, n_sim)
+##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, n_sim)
 ##' @export
-prob_acceptance_homogeneous <- function(c, lambda, a, b, FDF, USL, n, n_sim){
-  pd <- prob_detection_homogeneous(lambda, a, b, FDF, USL, n_sim)
+prob_acceptance_homogeneous <- function(c, lambda, a, b, f, u, USL, n, n_sim){
+  pd <- prob_detection_homogeneous(lambda, a, b, f, u, USL, n_sim)
   pa <- stats::pbinom(c, n, pd)
   return(pa)
 }

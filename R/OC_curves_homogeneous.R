@@ -1,48 +1,48 @@
 ##' \code{\link{OC_curves_homogeneous}} provides the operating characteristic(OC) curves when diluted sample has homogeneous contaminants.
-##' @title Comparison based on OC curves for different dilution schemes when the diluted sample has homogeneous contaminants.
+##' @title Comparison based on OC curves for different dilution schemes when diluted samples collected from a homogeneous batch.
 ##' @param c acceptance number
 ##' @param lambda_low the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param lambda_high the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
-##' @param FDF final dilution factor.
+##' @param f final dilution factor.
+##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
 ##' @param n number of samples which are used for inspection.
-##' @param n_sim number of simulations (large simulations provide more precise estimation).
-##' @details \code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when the diluted sample has homogeneous contaminants (this section will be updated later on).
-##' @return OC curves when the diluted sample has homogeneous contaminants.
+##' @param n_sim number of simulations (large simulations provide more precise estimations).
+##' @details \code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
+##' @return OC curves when diluted samples collected from a homogeneous batch.
 ##' @examples
 ##' c <- 0
 ##' lambda_low <- 0
-##' lambda_high <- 5
+##' lambda_high <- 3000
 ##' a <- 0
 ##' b <- 300
-##' FDF <- 0.001
-##' USL <- c(1000, 2000)
+##' f <- c(0.01,0.1)
+##' u <- c(0.1,0.1)
+##' USL <- 1000
 ##' n <- 5
-##' n_sim <- 1000
-##' OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim)
-##' @usage  OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim)
-OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, FDF, USL, n, n_sim){
+##' n_sim <- 50000
+##' OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
+##' @usage  OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
+OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim){
   P_a <- NULL
   Dilution_scheme <- NULL
   lambda <- seq(lambda_low, lambda_high, 0.1)
-  f_spr <- function(USL) {
-      sprintf("Scheme (USL=%.0f)", USL)
+  f_spr <- function(f, u) {
+    sprintf("Scheme (f=%.3f, u=%.1f)", f, u)
   }
-  pa <- matrix(NA, nrow = length(lambda), ncol = 2)
+  pa <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    # for (j in 1:2) {
-    pa[i,1] <-  prob_acceptance_homogeneous(c, lambda[i], a, b, FDF, USL[1], n, n_sim)
-    pa[i,2] <-  prob_acceptance_homogeneous(c, lambda[i], a, b, FDF, USL[2], n, n_sim)
-    # }
+    pa[i,] <-  cbind(prob_acceptance_homogeneous_multiple(c, lambda[i], a, b, f, u, USL, n, n_sim))
   }
   Prob <- data.frame(lambda, pa)
-  colnames(Prob ) <- c("lambda", f_spr(USL))
+  colnames(Prob ) <- c("lambda", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "P_a")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
     ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression(P[a])) + ggthemes::scale_colour_colorblind() +
+    ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   # +

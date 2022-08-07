@@ -1,0 +1,22 @@
+#' Probability estimations and graphical displays in modelling and assessment of risk based on aerobic plate count (APC) on diluted testing
+#'
+#'
+#' @description This package aims to develop for getting probability estimations and graphical displays in the study associated with Modelling and assessment of risk based on aerobic plate count (APC) on diluted testing.
+#'
+#' @details
+#'
+#'This package aims to develop probability estimations and graphical displays in the modelling and assessing
+#'risk based on aerobic plate count (APC) on diluted testing. Mainly focuses on the risk assessment based on
+#'bounded distributions such as truncated Poisson and truncated Poisson lognormal distributions to model
+#'homogeneous and heterogeneous scenarios, respectively. Also, this package attempts to develop truncated
+#'Poisson lognormal distributions theory with validation by simulation-based results (this part will be updated later on).
+#'
+#'
+#'
+#' @name dilutionrisk
+#'
+#' @useDynLib dilutionrisk, .registration = TRUE
+#' @importFrom Rcpp sourceCpp
+#'
+#' @importFrom stats rlnorm
+NULL

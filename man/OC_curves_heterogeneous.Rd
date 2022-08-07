@@ -2,9 +2,9 @@
 % Please edit documentation in R/OC_curves_heterogeneous.R
 \name{OC_curves_heterogeneous}
 \alias{OC_curves_heterogeneous}
-\title{Comparison based on OC curves for different dilution schemes when the diluted sample has heterogeneous contaminants.}
+\title{Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n, n_sim)
+OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -21,31 +21,34 @@ OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n, 
 
 \item{FDF}{final dilution factor.}
 
+\item{u}{amount put on the plate.}
+
 \item{USL}{upper specification limit.}
 
 \item{n}{number of samples which are used for inspection.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
 \value{
-OC curves when the diluted sample has heterogeneous contaminants.
+OC curves when samples collected from a heterogeneous batch.
 }
 \description{
-\code{\link{OC_curves_heterogeneous}} provides the operating characteristic(OC) curves when diluted sample has heterogeneous contaminants.
+\code{\link{OC_curves_heterogeneous}} provides the operating characteristic(OC) curves when samples collected from a heterogeneous batch.
 }
 \details{
-\code{\link{OC_curves_heterogeneous}} provides OC curves for different dilution schemes when the diluted sample has heterogeneous contaminants (this section will be updated later on).
+\code{\link{OC_curves_heterogeneous}} provides OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
 }
 \examples{
-c <- 0
-meanlog_low <- -6
-meanlog_high <- 3
-sdlog <- 0.8
+c <- 2
+meanlog_low <- 4
+meanlog_high <- 9
+sdlog <- 0.2
 a <- 0
 b <- 300
-FDF <- 0.001
-USL <- c(1000, 2000)
+FDF <- c(0.01,0.1)
+u <- c(0.1,0.1)
+USL <- 1000
 n <- 5
-n_sim <- 1000
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n, n_sim)
+n_sim <- 50000
+OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, u, n, n_sim)
 }

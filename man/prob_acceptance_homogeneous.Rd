@@ -2,9 +2,9 @@
 % Please edit documentation in R/prob_acceptance_homogeneous.R
 \name{prob_acceptance_homogeneous}
 \alias{prob_acceptance_homogeneous}
-\title{Probability of acceptance estimation when diluted sample has homogeneous contaminations.}
+\title{Probability of acceptance estimation when diluted sample collected from a homogeneous batch.}
 \usage{
-prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
+prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -15,31 +15,34 @@ prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
 
 \item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
+
+\item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
 
 \item{n}{number of samples which are used for inspection.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
 }
 \value{
-Probability of acceptance when the diluted sample has homogeneous contaminants.
+Probability of acceptance when the diluted sample collected from a homogeneous batch.
 }
 \description{
-\code{\link{prob_acceptance_homogeneous}} provides a probability of acceptance in the original sample when homogeneous contamination.
+\code{\link{prob_acceptance_homogeneous}} provides a probability of acceptance in the original sample when samples collected from a homogeneous batch.
 }
 \details{
-\code{\link{prob_detection_homogeneous}} provides a probability of acceptance when the diluted sample has homogeneous contaminants (this section will be updated later on).
+\code{\link{prob_detection_homogeneous}} provides a probability of acceptance when samples collected from a homogeneous batch (this section will be updated later on).
 }
 \examples{
-c <- 0
-lambda <- 10
+c <- 2
+lambda <- 2000
 a <- 0
 b <- 300
-FDF <- 0.001
+f <- 0.001
+u <- 0.1
 USL <- 1000
 n <- 5
-n_sim <- 10000
-prob_acceptance_homogeneous(c, lambda, a, b, FDF, USL, n, n_sim)
+n_sim <- 50000
+prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, n_sim)
 }

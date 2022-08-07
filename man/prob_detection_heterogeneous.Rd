@@ -2,9 +2,9 @@
 % Please edit documentation in R/prob_detection_heterogeneous.R
 \name{prob_detection_heterogeneous}
 \alias{prob_detection_heterogeneous}
-\title{Probability of detection estimation when diluted sample has heterogeneous contaminations.}
+\title{Probability of detection estimation when diluted sample collected from a heterogeneous batch.}
 \usage{
-prob_detection_heterogeneous(meanlog, sdlog, a, b, FDF, USL, n_sim)
+prob_detection_heterogeneous(meanlog, sdlog, a, b, f, u, USL, n_sim)
 }
 \arguments{
 \item{meanlog}{the mean concentration (on the log scale).}
@@ -13,31 +13,34 @@ prob_detection_heterogeneous(meanlog, sdlog, a, b, FDF, USL, n_sim)
 
 \item{a}{lower domain of the number of cell counts.}
 
-\item{b}{upper domain of the number of cell counts. lower and upper truncation points (a < x <= b).}
+\item{b}{upper domain of the number of cell counts.}
 
-\item{FDF}{final dilution factor.}
+\item{f}{final dilution factor.}
+
+\item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
 }
 \value{
-Probability of detection when the diluted sample has heterogeneous contaminants.
+Probability of detection when sample collected from a heterogeneous batch.
 }
 \description{
-\code{\link{prob_detection_heterogeneous}} provides a probability of detection in the original sample when heterogeneous contamination.
+\code{\link{prob_detection_heterogeneous}} provides a probability of detection in the original sample when samples collected from a heterogeneous batch.
 }
 \details{
 \code{\link{prob_detection_heterogeneous}} provides a probability of detection when the diluted sample has heterogeneous contaminants. We define the random variable \eqn{X_{i}} is the number of colonies on the \eqn{i^{th}} plate.
-In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. heterogeneous case, we employed truncated Poisson lognormal distribution to model (this section will be updated later on).
+In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. In the heterogeneous case, we employed truncated Poisson lognormal distribution to model (this section will be updated later on).
 }
 \examples{
 meanlog <- 2
-sdlog <- 0.8
+sdlog <- 0.2
 a <- 0
 b <- 300
-FDF <- 0.001
+f <- 0.01
+u <- 0.1
 USL <- 1000
-n_sim <- 10000
-prob_detection_heterogeneous(meanlog, sdlog, a, b, FDF, USL, n_sim)
+n_sim <- 50000
+prob_detection_heterogeneous(meanlog, sdlog, a, b, f, u, USL, n_sim)
 }

@@ -2,9 +2,9 @@
 % Please edit documentation in R/pd_curves_heterogeneous.R
 \name{pd_curves_heterogeneous}
 \alias{pd_curves_heterogeneous}
-\title{comparison based on probability of detection curves for different dilution schemes when the diluted sample has heterogeneous contaminants.}
+\title{comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n_sim)
+pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
 }
 \arguments{
 \item{meanlog_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
@@ -19,27 +19,30 @@ pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n_sim)
 
 \item{FDF}{final dilution factor.}
 
+\item{u}{amount put on the plate.}
+
 \item{USL}{upper specification limit.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimation).}
+\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
 \value{
-Probability of detection curves when the diluted sample has heterogeneous contaminants.
+Probability of detection curves when samples collected from a heterogeneous batch.
 }
 \description{
-\code{\link{pd_curves_heterogeneous}} provides the probability of detection curves when the diluted sample has heterogeneous contaminants.
+\code{\link{pd_curves_heterogeneous}} provides the probability of detection curves when samples collected from a heterogeneous batch.
 }
 \details{
-\code{\link{pd_curves_heterogeneous}} provides probability of detection curves for different dilution schemes when the diluted sample has heterogeneous contaminants (this section will be updated later on).
+\code{\link{pd_curves_heterogeneous}} provides probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
 }
 \examples{
-meanlog_low <- -5
-meanlog_high <- 5
-sdlog <- 0.8
+meanlog_low <- 0
+meanlog_high <- 10
+sdlog <- 0.2
 a <- 0
 b <- 300
-FDF <- 0.001
-USL <- c(1000, 2000)
-n_sim <- 1000
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, USL, n_sim)
+FDF <- c(0.01,0.1)
+u <- c(0.1,0.1)
+USL <- 1000
+n_sim <- 50000
+pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, FDF, u, USL, n_sim)
 }

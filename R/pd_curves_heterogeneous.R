@@ -23,7 +23,6 @@
 ##' n_sim <- 50000
 ##' pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
 ##' @usage  pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
-##' @export
 pd_curves_heterogeneous <- function(meanlog_low, meanlog_high, sdlog = 0.8, a, b, f, u, USL, n_sim){
   p_d <- NULL
   Dilution_scheme <- NULL

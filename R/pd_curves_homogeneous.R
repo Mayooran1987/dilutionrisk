@@ -21,7 +21,6 @@
 ##' n_sim <- 50000
 ##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 ##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
-##' @export
 pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim){
   p_d <- NULL
   Dilution_scheme <- NULL

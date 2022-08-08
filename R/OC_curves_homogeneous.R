@@ -25,7 +25,6 @@
 ##' n_sim <- 50000
 ##' OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
 ##' @usage  OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
-##' @export
 OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim){
   P_a <- NULL
   Dilution_scheme <- NULL

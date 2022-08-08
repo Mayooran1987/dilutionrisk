@@ -50,5 +50,5 @@ u <- c(0.1,0.1)
 USL <- 1000
 n <- 5
 n_sim <- 50000
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, USL, u, n, n_sim)
+OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
 }

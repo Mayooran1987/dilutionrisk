@@ -25,7 +25,7 @@
 ##' USL <- 1000
 ##' n <- 5
 ##' n_sim <- 50000
-##' OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, USL, u, n, n_sim)
+##' OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
 ##' @usage  OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
 ##' @export
 OC_curves_heterogeneous <- function(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim){
@@ -59,3 +59,4 @@ OC_curves_heterogeneous <- function(c, meanlog_low, meanlog_high, sdlog, a, b, f
   # plot_sam
   return(plot_sam)
 }
+

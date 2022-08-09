@@ -33,3 +33,4 @@ rtrunpoilog <- function(n, meanlog, sdlog, a, b){
   # result <- as.numeric(sim1)
   return(result)
 }
+

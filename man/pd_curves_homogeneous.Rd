@@ -2,7 +2,7 @@
 % Please edit documentation in R/pd_curves_homogeneous.R
 \name{pd_curves_homogeneous}
 \alias{pd_curves_homogeneous}
-\title{comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
+\title{Comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
 \usage{
 pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 }
@@ -34,7 +34,7 @@ Probability of detection curves when diluted samples collected from a homogeneou
 }
 \examples{
 lambda_low <- 0
-lambda_high <- 3000
+lambda_high <- 5000
 a <- 0
 b <- 300
 f <- c(0.01,0.1)

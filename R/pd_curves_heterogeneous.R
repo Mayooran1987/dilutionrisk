@@ -1,5 +1,5 @@
 ##' \code{\link{pd_curves_heterogeneous}} provides the probability of detection curves when samples collected from a heterogeneous batch.
-##' @title comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.
+##' @title Comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.
 ##' @param meanlog_low the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).
 ##' @param meanlog_high the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).
 ##' @param sdlog the standard deviation of the normal distribution (on the log scale).
@@ -23,6 +23,7 @@
 ##' n_sim <- 50000
 ##' pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
 ##' @usage  pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
+##' @export
 pd_curves_heterogeneous <- function(meanlog_low, meanlog_high, sdlog = 0.8, a, b, f, u, USL, n_sim){
   p_d <- NULL
   Dilution_scheme <- NULL
@@ -40,14 +41,18 @@ pd_curves_heterogeneous <- function(meanlog_low, meanlog_high, sdlog = 0.8, a, b
   melten.Prob <- reshape2::melt(Prob, id = "meanlog", variable.name = "Dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = meanlog, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression(" log mean concentrations  (" ~ mu*~")")) + ggplot2::ylab(expression(p[d])) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression(" log mean concentrations  (" ~ mu*~")")) + ggplot2::ylab(expression("Probability of detection"~(P[d]))) + ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = log(USL,exp(1)), linetype = "dashed") +
     ggplot2::annotate("text", x = log(USL,exp(1)),
                       y = 0, label = sprintf("log(USL) = %0.4f", log(USL,exp(1))), size = 3) +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +
-    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "expected cell counts", breaks = seq(min(meanlog), max(meanlog),1),
-                                                             labels = c(sprintf("%.4f", 10^(seq(min(meanlog),max(meanlog),1) + (sdlog^2/2) * log(10, exp(1)))))))
+    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "mean concentrations", breaks = seq(min(meanlog),max(meanlog),1),
+                                                             labels = c(sprintf("%0.2f", exp(seq(min(meanlog),max(meanlog),1))))))
+    # ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
+    #                axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +
+    # ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "expected cell counts", breaks = seq(min(meanlog), max(meanlog),1),
+    #                                                          labels = c(sprintf("%.4f", 10^(seq(min(meanlog),max(meanlog),1) + (sdlog^2/2) * log(10, exp(1)))))))
   # plot_sam
   return(plot_sam)
 }

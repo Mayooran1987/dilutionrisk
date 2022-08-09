@@ -1,5 +1,5 @@
 ##' \code{\link{pd_curves_homogeneous}} provides the probability of detection curves when samples collected from a homogeneous batch.
-##' @title comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.
+##' @title Comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.
 ##' @param lambda_low the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param lambda_high the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param a lower domain of the number of cell counts.
@@ -12,7 +12,7 @@
 ##' @return Probability of detection curves when diluted samples collected from a homogeneous batch.
 ##' @examples
 ##' lambda_low <- 0
-##' lambda_high <- 3000
+##' lambda_high <- 5000
 ##' a <- 0
 ##' b <- 300
 ##' f <- c(0.01,0.1)
@@ -21,6 +21,7 @@
 ##' n_sim <- 50000
 ##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 ##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+##' @export
 pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim){
   p_d <- NULL
   Dilution_scheme <- NULL
@@ -42,9 +43,11 @@ pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_si
   colnames(Prob ) <- c("lambda", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression(p[d])) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of detection"~(P[d]))) + ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
+    ggplot2::annotate("text", x = USL,
+                      y = 0, label = sprintf("USL = %0.0f", USL), size = 3) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   # +
   #   ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "expected cell counts (cfu/g)", breaks = seq(min(mu),max(mu),1),

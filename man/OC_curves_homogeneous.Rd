@@ -37,9 +37,9 @@ OC curves when diluted samples collected from a homogeneous batch.
 \code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
 }
 \examples{
-c <- 0
+c <- 2
 lambda_low <- 0
-lambda_high <- 3000
+lambda_high <- 5000
 a <- 0
 b <- 300
 f <- c(0.01,0.1)

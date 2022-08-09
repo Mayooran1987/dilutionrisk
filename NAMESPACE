@@ -13,4 +13,5 @@ export(pd_curves_homogeneous)
 export(pd_curves_heterogeneous)
 export(OC_curves_homogeneous)
 export(OC_curves_heterogeneous)
+export(rtrunpoilog)
 

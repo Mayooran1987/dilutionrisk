@@ -35,5 +35,3 @@ prob_detection_homogeneous <- function(lambda, a, b, f, u, USL, n_sim){
   pd <- length(which(sim1[,1] > USL))/n_sim
   return(pd)
 }
-
-

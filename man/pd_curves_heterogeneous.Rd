@@ -2,7 +2,7 @@
 % Please edit documentation in R/pd_curves_heterogeneous.R
 \name{pd_curves_heterogeneous}
 \alias{pd_curves_heterogeneous}
-\title{comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
+\title{Comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
 pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
 }

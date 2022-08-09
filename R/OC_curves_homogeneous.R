@@ -13,9 +13,9 @@
 ##' @details \code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
 ##' @return OC curves when diluted samples collected from a homogeneous batch.
 ##' @examples
-##' c <- 0
+##' c <- 2
 ##' lambda_low <- 0
-##' lambda_high <- 3000
+##' lambda_high <- 5000
 ##' a <- 0
 ##' b <- 300
 ##' f <- c(0.01,0.1)
@@ -25,6 +25,7 @@
 ##' n_sim <- 50000
 ##' OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
 ##' @usage  OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
+##' @export
 OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim){
   P_a <- NULL
   Dilution_scheme <- NULL
@@ -41,8 +42,10 @@ OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "P_a")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression(P[a])) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
+    ggplot2::annotate("text", x = USL,
+                      y = 0, label = sprintf("USL = %0.0f", USL), size = 3) +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   # +

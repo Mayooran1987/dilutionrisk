@@ -13,6 +13,9 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/dilutionrisk.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -31,13 +34,25 @@
     <loc>/reference/prob_acceptance_heterogeneous.html</loc>
   </url>
   <url>
+    <loc>/reference/prob_acceptance_heterogeneous_multiple.html</loc>
+  </url>
+  <url>
     <loc>/reference/prob_acceptance_homogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/prob_acceptance_homogeneous_multiple.html</loc>
   </url>
   <url>
     <loc>/reference/prob_detection_heterogeneous.html</loc>
   </url>
   <url>
+    <loc>/reference/prob_detection_heterogeneous_multiple.html</loc>
+  </url>
+  <url>
     <loc>/reference/prob_detection_homogeneous.html</loc>
+  </url>
+  <url>
+    <loc>/reference/prob_detection_homogeneous_multiple.html</loc>
   </url>
   <url>
     <loc>/reference/rtrunpoilog.html</loc>

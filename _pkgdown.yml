@@ -5,3 +5,5 @@ figures:
   dev: grDevices::svg
   fig.ext: svg
   fig.retina: 2
+development:
+  mode: auto

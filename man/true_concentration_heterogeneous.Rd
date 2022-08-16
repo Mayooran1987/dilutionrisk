@@ -10,17 +10,7 @@ true_concentration_heterogeneous(mu, sd, a, b, f, u, USL, n_sim)
 
 true_concentration_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 
-true_concentration_curves_heterogeneous(
-  mu_low,
-  mu_high,
-  sd,
-  a,
-  b,
-  f,
-  u,
-  USL,
-  n_sim
-)
+true_concentration_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
 }
 \arguments{
 \item{mu}{the mean concentration (on the log scale).}

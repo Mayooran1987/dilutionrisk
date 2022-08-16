@@ -10,16 +10,7 @@ true_concentration_homogeneous(lambda, a, b, f, u, USL, n_sim)
 
 true_concentration_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
 
-true_concentration_curves_homogeneous(
-  lambda_low,
-  lambda_high,
-  a,
-  b,
-  f,
-  u,
-  USL,
-  n_sim
-)
+true_concentration_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 }
 \arguments{
 \item{lambda}{the expected cell count (\eqn{\lambda}).}

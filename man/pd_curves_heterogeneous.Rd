@@ -4,14 +4,14 @@
 \alias{pd_curves_heterogeneous}
 \title{Comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
+pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{meanlog_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
 
-\item{meanlog_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
 
-\item{sdlog}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
 \item{a}{lower domain of the number of cell counts.}
 
@@ -35,14 +35,14 @@ Probability of detection curves when samples collected from a heterogeneous batc
 \code{\link{pd_curves_heterogeneous}} provides probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
 }
 \examples{
-meanlog_low <- 0
-meanlog_high <- 10
-sdlog <- 0.2
+mu_low <- 0
+mu_high <- 10
+sd <- 0.2
 a <- 0
 b <- 300
 f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-pd_curves_heterogeneous(meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n_sim)
+pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
 }

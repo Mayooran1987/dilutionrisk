@@ -4,12 +4,12 @@
 \alias{prob_detection_heterogeneous_multiple}
 \title{Probability of detection estimation for multiple dilution schemes when diluted samples are collected from a heterogeneous batch.}
 \usage{
-prob_detection_heterogeneous_multiple(meanlog, sdlog, a, b, f, u, USL, n_sim)
+prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{meanlog}{the mean concentration (on the log scale).}
+\item{mu}{the mean concentration (on the log scale).}
 
-\item{sdlog}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
 \item{a}{lower domain of the number of cell counts.}
 
@@ -34,13 +34,13 @@ Probability of detection when samples collected from a heterogeneous batch.
 In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. In the heterogeneous case, we employed truncated Poisson lognormal distribution to the model. (this section will be updated later on).
 }
 \examples{
-meanlog <- 7
-sdlog <- 0.2
+mu <- 7
+sd <- 0.2
 a <- 0
 b <- 300
 f <- c(0.01,0.1,1)
 u <- c(0.1,0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-prob_detection_heterogeneous_multiple(meanlog, sdlog, a, b, f, u, USL, n_sim)
+prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 }

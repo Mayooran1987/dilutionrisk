@@ -4,14 +4,14 @@
 \alias{rtrunpoilog}
 \title{Generates random deviates from truncated Poisson lognormal distribution.}
 \usage{
-rtrunpoilog(n, meanlog, sdlog, a, b)
+rtrunpoilog(n, mu, sd, a, b)
 }
 \arguments{
 \item{n}{number of observations. If length(n) > 1 then the length is taken to be the number required.}
 
-\item{meanlog}{the mean concentration (on the log scale).}
+\item{mu}{the mean concentration (on the log scale).}
 
-\item{sdlog}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
 \item{a}{lower truncation points (lower domain of the number of cell counts).}
 
@@ -28,9 +28,9 @@ rtrunpoilog(n, meanlog, sdlog, a, b)
 }
 \examples{
 n <- 100
-meanlog <-  0
-sdlog <-  1
+mu <-  0
+sd <-  1
 a <- 0
 b <- 300
-rtrunpoilog(n, meanlog, sdlog, a, b)
+rtrunpoilog(n, mu, sd, a, b)
 }

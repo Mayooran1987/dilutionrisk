@@ -4,16 +4,16 @@
 \alias{OC_curves_heterogeneous}
 \title{Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
+OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
 
-\item{meanlog_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
 
-\item{meanlog_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
 
-\item{sdlog}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
 \item{a}{lower domain of the number of cell counts.}
 
@@ -40,9 +40,9 @@ OC curves when samples collected from a heterogeneous batch.
 }
 \examples{
 c <- 2
-meanlog_low <- 4
-meanlog_high <- 9
-sdlog <- 0.2
+mu_low <- 4
+mu_high <- 9
+sd <- 0.2
 a <- 0
 b <- 300
 f <- c(0.01,0.1)
@@ -50,5 +50,5 @@ u <- c(0.1,0.1)
 USL <- 1000
 n <- 5
 n_sim <- 50000
-OC_curves_heterogeneous(c, meanlog_low, meanlog_high, sdlog, a, b, f, u, USL, n, n_sim)
+OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
 }

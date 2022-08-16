@@ -1,8 +1,8 @@
 ##' \code{\link{prob_acceptance_heterogeneous}} provides a probability of acceptance in the original sample when samples collected from a heterogeneous batch.
 ##' @title Probability of acceptance estimation when diluted sample collected from a heterogeneous batch.
 ##' @param c acceptance number
-##' @param meanlog the mean concentration (on the log scale).
-##' @param sdlog the standard deviation of the normal distribution (on the log scale).
+##' @param mu the mean concentration (on the log scale).
+##' @param sd the standard deviation of the normal distribution (on the log scale).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
 ##' @param f final dilution factor.
@@ -14,8 +14,8 @@
 ##' @return Probability of acceptance when sample collected from a heterogeneous batch.
 ##' @examples
 ##' c <- 2
-##' meanlog <- 7
-##' sdlog <- 0.2
+##' mu <- 7
+##' sd <- 0.2
 ##' a <- 0
 ##' b <- 300
 ##' f <- 0.01
@@ -23,11 +23,11 @@
 ##' USL <- 1000
 ##' n <- 5
 ##' n_sim <- 50000
-##' prob_acceptance_heterogeneous(c, meanlog, sdlog, a, b, f, u, USL, n, n_sim)
-##' @usage  prob_acceptance_heterogeneous(c, meanlog, sdlog, a, b, f, u, USL, n, n_sim)
+##' prob_acceptance_heterogeneous(c, mu, sd, a, b, f, u, USL, n, n_sim)
+##' @usage  prob_acceptance_heterogeneous(c, mu, sd, a, b, f, u, USL, n, n_sim)
 ##' @export
-prob_acceptance_heterogeneous <- function(c, meanlog, sdlog = 0.8, a, b, f, u, USL, n, n_sim){
-  pd <- prob_detection_heterogeneous(meanlog, sdlog, a, b, f, u, USL, n_sim)
+prob_acceptance_heterogeneous <- function(c, mu, sd = 0.8, a, b, f, u, USL, n, n_sim){
+  pd <- prob_detection_heterogeneous(mu, sd, a, b, f, u, USL, n_sim)
   pa <- stats::pbinom(c, n, pd)
   return(pa)
 }

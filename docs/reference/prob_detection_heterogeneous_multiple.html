@@ -37,7 +37,12 @@
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-
+<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
       
 
       </header><div class="row">
@@ -53,16 +58,16 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_detection_heterogeneous_multiple</span><span class="op">(</span><span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_detection_heterogeneous_multiple</span><span class="op">(</span><span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>meanlog</dt>
+    <dl><dt>mu</dt>
 <dd><p>the mean concentration (on the log scale).</p></dd>
 
 
-<dt>sdlog</dt>
+<dt>sd</dt>
 <dd><p>the standard deviation of the normal distribution (on the log scale).</p></dd>
 
 
@@ -97,12 +102,6 @@
 <p>Probability of detection when samples collected from a heterogeneous batch.</p>
     </div>
     <div id="details">
-	<style>
-div {
-  text-align: justify;
-  text-justify: inter-word;
-}
-</style>
     <h2>Details</h2>
     <p><code>prob_detection_heterogeneous_multiple</code> provides a probability of detection when diluted samples are collected from a heterogeneous batch. We define the random variable \(X_{i}\) is the number of colonies on the \(i^{th}\) plate.
 In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. In the heterogeneous case, we employed truncated Poisson lognormal distribution to the model. (this section will be updated later on).</p>
@@ -110,17 +109,17 @@ In practice, the acceptance for countable numbers of colonies on a plate must be
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">meanlog</span> <span class="op">&lt;-</span> <span class="fl">7</span></span></span>
-<span class="r-in"><span><span class="va">sdlog</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">7</span></span></span>
+<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.1</span>,<span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">USL</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
-<span class="r-in"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">50000</span></span></span>
-<span class="r-in"><span><span class="fu">prob_detection_heterogeneous_multiple</span><span class="op">(</span><span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         [,1]    [,2]    [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.45574 0.53556 0.65254</span>
+<span class="r-in"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">50</span></span></span>
+<span class="r-in"><span><span class="fu">prob_detection_heterogeneous_multiple</span><span class="op">(</span><span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]    [,2]    [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  0.45574 0.53556 0.65254</span>
 </code></pre></div>
     </div>
   </div>

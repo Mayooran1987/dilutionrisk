@@ -37,7 +37,12 @@
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-
+<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
       
 
       </header><div class="row">
@@ -53,7 +58,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_acceptance_heterogeneous_multiple</span> <span class="op">(</span><span class="va">c</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prob_acceptance_heterogeneous_multiple</span> <span class="op">(</span><span class="va">c</span>, <span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -62,11 +67,11 @@
 <dd><p>acceptance number</p></dd>
 
 
-<dt>meanlog</dt>
+<dt>mu</dt>
 <dd><p>the mean concentration (on the log scale).</p></dd>
 
 
-<dt>sdlog</dt>
+<dt>sd</dt>
 <dd><p>the standard deviation of the normal distribution (on the log scale).</p></dd>
 
 
@@ -105,12 +110,6 @@
 <p>Probability of acceptance when samples collected from a heterogeneous batch.</p>
     </div>
     <div id="details">
-	<style>
-div {
-  text-align: justify;
-  text-justify: inter-word;
-}
-</style>
     <h2>Details</h2>
     <p><code>prob_acceptance_heterogeneous_multiple</code> provides a probability of acceptance when diluted samples are collected from a heterogeneous batch (this section will be updated later on).</p>
     </div>
@@ -118,8 +117,8 @@ div {
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
-<span class="r-in"><span><span class="va">meanlog</span> <span class="op">&lt;-</span> <span class="fl">7</span></span></span>
-<span class="r-in"><span><span class="va">sdlog</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span></span>
+<span class="r-in"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">7</span></span></span>
+<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.1</span>,<span class="fl">1</span><span class="op">)</span></span></span>
@@ -127,8 +126,8 @@ div {
 <span class="r-in"><span><span class="va">USL</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">50000</span></span></span>
-<span class="r-in"><span><span class="fu">prob_acceptance_heterogeneous_multiple</span> <span class="op">(</span><span class="va">c</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]     [,3]</span>
+<span class="r-in"><span><span class="fu">prob_acceptance_heterogeneous_multiple</span> <span class="op">(</span><span class="va">c</span>, <span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">f</span>, <span class="va">u</span>, <span class="va">USL</span>, <span class="va">n</span>, <span class="va">n_sim</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5794893 0.4465291 0.228838</span>
 </code></pre></div>
     </div>

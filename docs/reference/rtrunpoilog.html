@@ -37,7 +37,12 @@
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-
+<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
       
 
       </header><div class="row">
@@ -53,7 +58,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rtrunpoilog</span><span class="op">(</span><span class="va">n</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rtrunpoilog</span><span class="op">(</span><span class="va">n</span>, <span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -62,11 +67,11 @@
 <dd><p>number of observations. If length(n) &gt; 1 then the length is taken to be the number required.</p></dd>
 
 
-<dt>meanlog</dt>
+<dt>mu</dt>
 <dd><p>the mean concentration (on the log scale).</p></dd>
 
 
-<dt>sdlog</dt>
+<dt>sd</dt>
 <dd><p>the standard deviation of the normal distribution (on the log scale).</p></dd>
 
 
@@ -85,12 +90,6 @@
 <p><code>rtrunpoilog</code> generates random numbers from truncated Poisson lognormal distribution.</p>
     </div>
     <div id="details">
-	<style>
-div {
-  text-align: justify;
-  text-justify: inter-word;
-}
-</style>
     <h2>Details</h2>
     <p><code>rtrunpoilog</code> provides generated random numbers from truncated Poisson lognormal distribution with given parameters. (this section will be updated later on).</p>
     </div>
@@ -98,15 +97,15 @@ div {
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></span>
-<span class="r-in"><span><span class="va">meanlog</span> <span class="op">&lt;-</span>  <span class="fl">0</span></span></span>
-<span class="r-in"><span><span class="va">sdlog</span> <span class="op">&lt;-</span>  <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="va">mu</span> <span class="op">&lt;-</span>  <span class="fl">0</span></span></span>
+<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span>  <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
-<span class="r-in"><span><span class="fu">rtrunpoilog</span><span class="op">(</span><span class="va">n</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  1  1  6  1  2  1  1  3  1  2 11  3  1  1  1  1  1  3  2  9  4  2  4  1  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [26]  3  3  3  2  2  7  2  2  1  1  3  3  1  3  1  1  3  1  1  1  2  5  2  2  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51]  1  2  3  1  3  1  2  1  2  1  1  1  1  3  3  4  1  1  2  5  1  2  1  3  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  2  3  3  1  1  1  2  1  1  2  1  4  2  1  2  2  4  1  1  2  4  5  1 10  2</span>
+<span class="r-in"><span><span class="fu">rtrunpoilog</span><span class="op">(</span><span class="va">n</span>, <span class="va">mu</span>, <span class="va">sd</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  1  1  3  2  1  5  1  1  3 12  1  4  2  7 10  1  1  2  2  1  1  3  2  1  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26]  4  2 14  4  2  1  2  2  1  1  1  1  1  3  2  2  3  2  2  4  6  3  1  5  4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51]  1  1  2  1  2  3  1  1  6  2  1  1  1  1  1  1  1  3  1  1  1  3  4  2  4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  2  1  2  1  1  7  2  1  4  1  1  1  3  2  1  1  1  1  1  2  2  7  2  2  3</span>
 </code></pre></div>
     </div>
   </div>

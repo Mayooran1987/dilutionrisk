@@ -37,7 +37,12 @@
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-
+<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
       
 
       </header><div class="row">
@@ -93,12 +98,6 @@
 <p>Probability of detection when diluted samples are collected from a homogeneous batch.</p>
     </div>
     <div id="details">
-	<style>
-div {
-  text-align: justify;
-  text-justify: inter-word;
-}
-</style>
     <h2>Details</h2>
     <p><code>prob_detection_homogeneous_multiple</code> provides a probability of detection when the diluted sample has homogeneous contaminants. We define the random variable \(X_{i}\) is the number of colonies on the \(i^{th}\) plate.
 In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. In the homogeneous case, we employed truncated Poisson distribution to model (this section will be updated later on).</p>

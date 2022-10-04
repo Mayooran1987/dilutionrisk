@@ -1,9 +1,9 @@
 ##' \code{\link{prob_acceptance_homogeneous_multiple}} provides a probability of acceptance for multiple dilution schemes in the original sample when samples collected from a homogeneous batch
 ##' @title Probability of acceptance estimation for multiple dilution schemes when diluted samples are collected from a homogeneous batch.
 ##' @param c acceptance number
-##' @param lambda the expected cell count (\eqn{\lambda}).
-##' @param a lower domain of the number of cell counts.
-##' @param b upper domain of the number of cell counts.
+##' @param lambda the expected microbial count (\eqn{\lambda}).
+##' @param a lower domain of the number of microbial count.
+##' @param b upper domain of the number of microbial count.
 ##' @param f final dilution factor.
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.

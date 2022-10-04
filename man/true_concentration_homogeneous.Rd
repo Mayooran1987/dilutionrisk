@@ -10,14 +10,23 @@ true_concentration_homogeneous(lambda, a, b, f, u, USL, n_sim)
 
 true_concentration_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
 
-true_concentration_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+true_concentration_curves_homogeneous(
+  lambda_low,
+  lambda_high,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  n_sim
+)
 }
 \arguments{
-\item{lambda}{the expected cell count (\eqn{\lambda}).}
+\item{lambda}{the expected microbial count (\eqn{\lambda}).}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{lower domain of the number of microbial count.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{upper domain of the number of microbial count.}
 
 \item{f}{final dilution factor.}
 
@@ -27,9 +36,9 @@ true_concentration_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, 
 
 \item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
 
-\item{lambda_low}{the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
 
-\item{lambda_high}{the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{the upper value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
 }
 \value{
 true concentration level when the diluted sample collected from a homogeneous batch.

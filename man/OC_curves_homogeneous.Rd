@@ -9,9 +9,9 @@ OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, n_sim)
 \arguments{
 \item{c}{acceptance number}
 
-\item{lambda_low}{the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{the lower value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.}
 
-\item{lambda_high}{the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{the upper value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.}
 
 \item{a}{lower domain of the number of cell counts.}
 

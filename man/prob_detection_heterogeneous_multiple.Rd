@@ -7,7 +7,7 @@
 prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{mu}{the mean concentration (on the log scale).}
+\item{mu}{the mean microbial count (on the log scale).}
 
 \item{sd}{the standard deviation of the normal distribution (on the log scale).}
 

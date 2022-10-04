@@ -7,11 +7,11 @@
 prob_detection_homogeneous(lambda, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{lambda}{the expected cell count (\eqn{\lambda}).}
+\item{lambda}{the expected microbial count (\eqn{\lambda}).}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{lower domain of the number of microbial count.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{upper domain of the number of microbial count.}
 
 \item{f}{final dilution factor.}
 

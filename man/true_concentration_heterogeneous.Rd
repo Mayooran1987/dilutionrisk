@@ -10,10 +10,20 @@ true_concentration_heterogeneous(mu, sd, a, b, f, u, USL, n_sim)
 
 true_concentration_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 
-true_concentration_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
+true_concentration_curves_heterogeneous(
+  mu_low,
+  mu_high,
+  sd,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  n_sim
+)
 }
 \arguments{
-\item{mu}{the mean concentration (on the log scale).}
+\item{mu}{the mean microbial count (on the log scale).}
 
 \item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
@@ -29,9 +39,9 @@ true_concentration_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_
 
 \item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
 
-\item{mu_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_low}{the lower value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
 
-\item{mu_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_high}{the upper value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
 }
 \value{
 true concentration level  when sample collected from a heterogeneous batch.

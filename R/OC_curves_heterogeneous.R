@@ -1,8 +1,8 @@
 ##' \code{\link{OC_curves_heterogeneous}} provides the operating characteristic(OC) curves when samples collected from a heterogeneous batch.
 ##' @title Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.
 ##' @param c acceptance number
-##' @param mu_low the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.
-##' @param mu_high the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.
+##' @param mu_low the lower value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.
+##' @param mu_high the upper value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.
 ##' @param sd the standard deviation of the normal distribution (on the log scale).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
@@ -32,25 +32,26 @@ OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, 
   P_a <- NULL
   Dilution_scheme <- NULL
   mu <- seq(mu_low, mu_high, 0.1)
-  f_spr <- function(f, u) {
-    sprintf("Scheme (f=%.3f, u=%.1f)", f, u)
+  f_spr_1 <- function(f, u) {
+    sprintf("Scheme (f=%.4f, u=%.1f)", f, u)
   }
+
   pa <- matrix(NA, nrow = length(mu), ncol = length(f))
   for (i in 1:length(mu)) {
     pa[i,] <-  cbind(prob_acceptance_heterogeneous_multiple(c, mu[i], sd, a, b, f, u, USL, n, n_sim))
   }
   Prob <- data.frame(mu, pa)
-  colnames(Prob ) <- c("mu", f_spr(f,u))
+  colnames(Prob ) <- c("mu", f_spr_1(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "mu", variable.name = "Dilution_scheme", value.name = "P_a")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = mu, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Poisson Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("log mean concentrations  (" ~ mu*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("log mean microbial count  (" ~ mu*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = log(USL,exp(1)), linetype = "dashed") +
     ggplot2::annotate("text", x = log(USL,exp(1)),
                       y = 0, label = sprintf("log(USL) = %0.4f", log(USL,exp(1))), size = 3) +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +
-    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "mean concentrations", breaks = seq(min(mu),max(mu),1),
+    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "mean microbial count ", breaks = seq(min(mu),max(mu),1),
                                                              labels = c(sprintf("%0.2f", exp(seq(min(mu),max(mu),1))))))
   # ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
   #                axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +

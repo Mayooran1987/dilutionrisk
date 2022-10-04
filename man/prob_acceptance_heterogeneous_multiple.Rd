@@ -9,7 +9,7 @@ prob_acceptance_heterogeneous_multiple (c, mu, sd, a, b, f, u, USL, n, n_sim)
 \arguments{
 \item{c}{acceptance number}
 
-\item{mu}{the mean concentration (on the log scale).}
+\item{mu}{the mean microbial count (on the log scale).}
 
 \item{sd}{the standard deviation of the normal distribution (on the log scale).}
 

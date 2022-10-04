@@ -1,10 +1,10 @@
 ##' \code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters.
 ##' @title Generates random deviates from truncated Poisson lognormal distribution.
 ##' @param n number of observations. If length(n) > 1 then the length is taken to be the number required.
-##' @param mu the mean concentration (on the log scale).
+##' @param mu the mean microbial count (on the log scale).
 ##' @param sd the standard deviation of the normal distribution (on the log scale).
-##' @param a lower truncation points (lower domain of the number of cell counts).
-##' @param b upper truncation points (upper domain of the number of cell counts).
+##' @param a lower truncation points (lower domain of the number of microbial count).
+##' @param b upper truncation points (upper domain of the number of microbial count).
 ##' @details \code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters. (this section will be updated later on).
 ##' @return  \code{\link{rtrunpoilog}} generates random numbers from truncated Poisson lognormal distribution.
 ##' @examples

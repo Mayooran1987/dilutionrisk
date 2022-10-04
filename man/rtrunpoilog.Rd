@@ -9,13 +9,13 @@ rtrunpoilog(n, mu, sd, a, b)
 \arguments{
 \item{n}{number of observations. If length(n) > 1 then the length is taken to be the number required.}
 
-\item{mu}{the mean concentration (on the log scale).}
+\item{mu}{the mean microbial count (on the log scale).}
 
 \item{sd}{the standard deviation of the normal distribution (on the log scale).}
 
-\item{a}{lower truncation points (lower domain of the number of cell counts).}
+\item{a}{lower truncation points (lower domain of the number of microbial count).}
 
-\item{b}{upper truncation points (upper domain of the number of cell counts).}
+\item{b}{upper truncation points (upper domain of the number of microbial count).}
 }
 \value{
 \code{\link{rtrunpoilog}} generates random numbers from truncated Poisson lognormal distribution.

@@ -9,9 +9,9 @@ OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
 \arguments{
 \item{c}{acceptance number}
 
-\item{mu_low}{the lower value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_low}{the lower value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.}
 
-\item{mu_high}{the upper value of the mean concentration (\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_high}{the upper value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.}
 
 \item{sd}{the standard deviation of the normal distribution (on the log scale).}
 

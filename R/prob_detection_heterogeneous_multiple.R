@@ -1,6 +1,6 @@
 ##' \code{\link{prob_detection_heterogeneous_multiple}} provides a probability of detection for multiple dilution schemes in the original sample when samples collected from a heterogeneous batch.
 ##' @title Probability of detection estimation for multiple dilution schemes when diluted samples are collected from a heterogeneous batch.
-##' @param mu the mean concentration (on the log scale).
+##' @param mu the mean microbial count (on the log scale).
 ##' @param sd the standard deviation of the normal distribution (on the log scale).
 ##' @param n_sim number of simulations (large simulations provide more precise estimations).
 ##' @param a lower domain of the number of cell counts.

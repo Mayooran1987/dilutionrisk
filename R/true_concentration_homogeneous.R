@@ -1,10 +1,10 @@
 ##' These functions provides true concentration level in the original sample  when diluted samples collected from a homogeneous batch.
 ##' @title True concentration level estimation when diluted sample collected from a homogeneous batch.
-##' @param lambda the expected cell count (\eqn{\lambda}).
-##' @param lambda_low the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
-##' @param lambda_high the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
-##' @param a lower domain of the number of cell counts.
-##' @param b upper domain of the number of cell counts.
+##' @param lambda the expected microbial count (\eqn{\lambda}).
+##' @param lambda_low the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.
+##' @param lambda_high the upper value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.
+##' @param a lower domain of the number of microbial count.
+##' @param b upper domain of the number of microbial count.
 ##' @param f final dilution factor.
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
@@ -74,7 +74,7 @@ true_concentration_curves_homogeneous <- function(lambda_low, lambda_high, a, b,
   colnames(Prob ) <- c("lambda", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "C")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = C, group = Dilution_scheme, colour = Dilution_scheme)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression("True concentration (number of CFU/ ml)")) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count (" ~ lambda*~")")) + ggplot2::ylab(expression("true concentration (number of CFU/ ml)")) + ggthemes::scale_colour_colorblind() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   return(plot_sam)

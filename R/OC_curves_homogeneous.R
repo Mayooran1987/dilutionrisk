@@ -1,8 +1,8 @@
 ##' \code{\link{OC_curves_homogeneous}} provides the operating characteristic(OC) curves when diluted sample has homogeneous contaminants.
 ##' @title Comparison based on OC curves for different dilution schemes when diluted samples collected from a homogeneous batch.
 ##' @param c acceptance number
-##' @param lambda_low the lower value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
-##' @param lambda_high the upper value of the expected cell count (\eqn{\lambda}) for use in the graphical display's x-axis.
+##' @param lambda_low the lower value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.
+##' @param lambda_high the upper value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.
 ##' @param f final dilution factor.
@@ -42,7 +42,7 @@ OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "P_a")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected cell counts  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
     ggplot2::annotate("text", x = USL,
                       y = 0, label = sprintf("USL = %0.0f", USL), size = 3) +

@@ -1,6 +1,6 @@
 ##' \code{\link{prob_detection_heterogeneous}} provides a probability of detection in the original sample when samples collected from a heterogeneous batch.
 ##' @title Probability of detection estimation when diluted sample collected from a heterogeneous batch.
-##' @param mu the mean concentration (on the log scale).
+##' @param mu the mean microbial count (on the log scale).
 ##' @param sd the standard deviation of the normal distribution (on the log scale).
 ##' @param a lower domain of the number of cell counts.
 ##' @param b upper domain of the number of cell counts.

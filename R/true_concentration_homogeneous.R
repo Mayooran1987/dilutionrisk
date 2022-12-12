@@ -74,7 +74,7 @@ true_concentration_curves_homogeneous <- function(lambda_low, lambda_high, a, b,
   colnames(Prob ) <- c("lambda", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "C")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = C, group = Dilution_scheme, colour = Dilution_scheme)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count (" ~ lambda*~")")) + ggplot2::ylab(expression("true concentration (number of CFU/ ml)")) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count (" ~ lambda*~")")) + ggplot2::ylab(expression("Estimated true concentration("~widehat(C)~")")) + ggthemes::scale_colour_colorblind() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
   return(plot_sam)

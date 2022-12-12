@@ -7,6 +7,7 @@
 ##' @param f final dilution factor.
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
+##' @param type what type of the results you would like to consider such as "theory" or "simulation" (default "theory").
 ##' @param n_sim number of simulations (large simulations provide more precise estimations).
 ##' @details \code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
 ##' @return Probability of detection curves when diluted samples collected from a homogeneous batch.
@@ -19,10 +20,10 @@
 ##' u <- c(0.1,0.1)
 ##' USL <- 1000
 ##' n_sim <- 50000
-##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
-##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL)
+##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, type, n_sim)
 ##' @export
-pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim){
+pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, type = "theory", n_sim = NA){
   p_d <- NULL
   Dilution_scheme <- NULL
   f_spr <- function(f, u) {
@@ -32,7 +33,7 @@ pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_si
   # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
   Pd <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    Pd[i,] <-  cbind(prob_detection_homogeneous_multiple(lambda[i], a, b, f, u, USL, n_sim))
+    Pd[i,] <-  cbind(prob_detection_homogeneous_multiple(lambda[i], a, b, f, u, USL, type, n_sim))
   }
   # Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
   # for (i in 1:length(lambda)) {

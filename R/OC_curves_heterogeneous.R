@@ -10,6 +10,7 @@
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
 ##' @param n number of samples which are used for inspection.
+##' @param type what type of the results you would like to consider such as "theory" or "simulation" (default "theory").
 ##' @param n_sim number of simulations (large simulations provide more precise estimations).
 ##' @details \code{\link{OC_curves_heterogeneous}} provides OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
 ##' @return OC curves when samples collected from a heterogeneous batch.
@@ -25,10 +26,10 @@
 ##' USL <- 1000
 ##' n <- 5
 ##' n_sim <- 50000
-##' OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
-##' @usage  OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
+##' OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n)
+##' @usage  OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim){
+OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA){
   P_a <- NULL
   Dilution_scheme <- NULL
   mu <- seq(mu_low, mu_high, 0.1)
@@ -38,7 +39,7 @@ OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, 
 
   pa <- matrix(NA, nrow = length(mu), ncol = length(f))
   for (i in 1:length(mu)) {
-    pa[i,] <-  cbind(prob_acceptance_heterogeneous_multiple(c, mu[i], sd, a, b, f, u, USL, n, n_sim))
+    pa[i,] <-  cbind(prob_acceptance_heterogeneous_multiple(c, mu[i], sd, a, b, f, u, USL, n, type, n_sim))
   }
   Prob <- data.frame(mu, pa)
   colnames(Prob ) <- c("mu", f_spr_1(f,u))
@@ -60,4 +61,3 @@ OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, 
   # plot_sam
   return(plot_sam)
 }
-

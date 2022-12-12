@@ -79,7 +79,7 @@ true_concentration_curves_heterogeneous <- function(mu_low, mu_high, sd, a, b, f
   colnames(Prob ) <- c("mu", f_spr(f,u))
   melten.Prob <- reshape2::melt(Prob, id = "mu", variable.name = "Dilution_scheme", value.name = "C")
   plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = mu, y = C, group = Dilution_scheme, colour = Dilution_scheme)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression(" log mean microbial count  (" ~ mu*~")")) + ggplot2::ylab(expression("true concentration (number of CFU/ ml)")) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() + ggplot2::xlab(expression(" log mean microbial count  (" ~ mu*~")")) + ggplot2::ylab(expression("Estimated true concentration("~widehat(C)~")")) + ggthemes::scale_colour_colorblind() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
                    axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +
     ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "mean microbial count", breaks = seq(min(mu),max(mu),1),

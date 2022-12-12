@@ -8,6 +8,7 @@
 ##' @param u amount put on the plate.
 ##' @param USL upper specification limit.
 ##' @param n number of samples which are used for inspection.
+##' @param type what type of the results you would like to consider such as "theory" or "simulation" (default "theory").
 ##' @param n_sim number of simulations (large simulations provide more precise estimations).
 ##' @details \code{\link{prob_detection_homogeneous_multiple}} provides a probability of acceptance for multiple dilution schemes in the original sample when samples collected from a homogeneous batch (this section will be updated later on).
 ##' @return Probability of acceptance  when diluted samples are collected from a homogeneous batch.
@@ -21,15 +22,15 @@
 ##' USL <- 1000
 ##' n <- 5
 ##' n_sim <- 50000
-##' prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n, n_sim)
-##' @usage  prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n, n_sim)
+##' prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n)
+##' @usage  prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-prob_acceptance_homogeneous_multiple <- function(c, lambda, a, b, f, u, USL, n, n_sim){
+prob_acceptance_homogeneous_multiple <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA){
 pd <- NULL
 if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
 pa <- matrix(NA, nrow =  1, ncol = length(f))
 for (i in 1:length(f)) {
-  pd[i] <-  prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, n_sim)
+  pd[i] <-  prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, type, n_sim)
   pa[,i] <-  stats::pbinom(c, n, pd[i])
 }
 results <- as.matrix.data.frame(pa)

@@ -4,7 +4,7 @@
 \alias{prob_detection_heterogeneous_multiple}
 \title{Probability of detection estimation for multiple dilution schemes when diluted samples are collected from a heterogeneous batch.}
 \usage{
-prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
+prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, type , n_sim)
 }
 \arguments{
 \item{mu}{the mean microbial count (on the log scale).}
@@ -21,7 +21,9 @@ prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 
 \item{USL}{upper specification limit.}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
+\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+
+\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
 }
 \value{
 Probability of detection when samples collected from a heterogeneous batch.

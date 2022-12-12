@@ -4,7 +4,7 @@
 \alias{pd_curves_heterogeneous}
 \title{Comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
+pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, type, n_sim)
 }
 \arguments{
 \item{mu_low}{the lower value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
@@ -22,6 +22,8 @@ pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
 \item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
+
+\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
 
 \item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
@@ -44,5 +46,5 @@ f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
+pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL)
 }

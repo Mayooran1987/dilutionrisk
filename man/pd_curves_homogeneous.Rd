@@ -4,7 +4,7 @@
 \alias{pd_curves_homogeneous}
 \title{Comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
 \usage{
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, type, n_sim)
 }
 \arguments{
 \item{lambda_low}{the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
@@ -20,6 +20,8 @@ pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 \item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
+
+\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
 
 \item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
@@ -41,5 +43,5 @@ f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL)
 }

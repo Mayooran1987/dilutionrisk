@@ -4,7 +4,7 @@
 \alias{prob_detection_homogeneous_multiple}
 \title{Probability of detection estimation for multiple dilution schemes when diluted samples are collected from a homogeneous batch.}
 \usage{
-prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
+prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, type, n_sim)
 }
 \arguments{
 \item{lambda}{the expected microbial count (\eqn{\lambda}).}
@@ -18,6 +18,8 @@ prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
 \item{u}{amount put on the plate.}
 
 \item{USL}{upper specification limit.}
+
+\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
 
 \item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
@@ -39,5 +41,5 @@ f <- c(0.01,0.1,1)
 u <- c(0.1,0.1,0.1)
 USL <- 1000
 n_sim <- 50000
-prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
+prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL)
 }

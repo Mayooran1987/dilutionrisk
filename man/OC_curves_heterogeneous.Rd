@@ -4,7 +4,7 @@
 \alias{OC_curves_heterogeneous}
 \title{Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
 \usage{
-OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
+OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type, n_sim)
 }
 \arguments{
 \item{c}{acceptance number}
@@ -26,6 +26,8 @@ OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
 \item{USL}{upper specification limit.}
 
 \item{n}{number of samples which are used for inspection.}
+
+\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
 
 \item{n_sim}{number of simulations (large simulations provide more precise estimations).}
 }
@@ -50,5 +52,5 @@ u <- c(0.1,0.1)
 USL <- 1000
 n <- 5
 n_sim <- 50000
-OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, n_sim)
+OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n)
 }

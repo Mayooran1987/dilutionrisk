@@ -27,20 +27,20 @@ pd_validation_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, 
   p_d <- NULL
   Methods <- NULL
   lambda <- seq(lambda_low, lambda_high, 1)
-  pd_theory <- function(lambda, f, u, USL){
-    USL1 <- USL*f*u
-    pd <- matrix(NA, nrow = USL1, ncol = 1)
-    for (i in 1:USL1) {
-      pd[i,1] <-  (u*f*lambda)^i/(factorial(i)*(exp(u*f*lambda) - 1))
-    }
-    pd <- 1 - sum(pd)
-    return(pd)
-  }
+  # pd_theory <- function(lambda, f, u, USL){
+  #   USL1 <- USL*f*u
+  #   pd <- matrix(NA, nrow = USL1, ncol = 1)
+  #   for (i in 1:USL1) {
+  #     pd[i,1] <-  (u*f*lambda)^i/(factorial(i)*(exp(u*f*lambda) - 1))
+  #   }
+  #   pd <- 1 - sum(pd)
+  #   return(pd)
+  # }
   # pd_theory(lambda = 1, f, u, USL)
   Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
   for (i in 1:length(lambda)) {
-    Pd[i,1] <-  prob_detection_homogeneous(lambda[i], a, b, f, u, USL, n_sim)
-    Pd[i,2] <-  pd_theory(lambda[i], f, u, USL)
+    Pd[i,1] <-  prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "simulation", n_sim)
+    Pd[i,2] <-  prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "theory")
   }
   Prob <- data.frame(lambda, Pd)
   # colnames(Prob ) <- c("lambda", f_spr(f,u))

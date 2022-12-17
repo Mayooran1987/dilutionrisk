@@ -41,10 +41,9 @@ c <- 2
 lambda <- 1000
 a <- 0
 b <- 300
-f <- c(0.01,0.1,1)
-u <- c(0.1,0.1,0.1)
+f <- c(0.01,0.1)
+u <- c(0.1,0.1)
 USL <- 1000
 n <- 5
-n_sim <- 50000
 prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n)
 }

@@ -18,11 +18,10 @@
 ##' sd <- 0.2
 ##' a <- 0
 ##' b <- 300
-##' f <- c(0.01,0.1,1)
-##' u <- c(0.1,0.1,0.1)
+##' f <- c(0.01,0.1)
+##' u <- c(0.1,0.1)
 ##' USL <- 1000
-##' n_sim <- 50000
-##' prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
+##' prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL)
 ##' @usage  prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, type , n_sim)
 ##' @export
 prob_detection_heterogeneous_multiple <- function(mu, sd, a, b, f, u, USL, type = "theory", n_sim = NA){

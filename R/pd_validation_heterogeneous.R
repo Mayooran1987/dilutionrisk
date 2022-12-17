@@ -28,23 +28,23 @@ pd_validation_heterogeneous <- function(mu_low,  mu_high, sd, a, b, f, u, USL, n
   p_d <- NULL
   Methods <- NULL
   mu <- seq(mu_low, mu_high, 0.1)
-  pd_theory_heterogeneous <- function(mu, sd, f, u, USL){
-    USL1 <- USL*f*u
-    pd <- matrix(NA, nrow = USL1, ncol = 1)
-    for (i in 1:USL1) {
-      mu_d <- mu + log(f*u, exp(1))
-      # pd[i,1] <- integrate(function(t) exp(t*i - 0.5 * ((t - mu_d)/sd)^2)/(exp(exp(t))-1), lower = 0, upper = 500)$value/(factorial(i)*sqrt(2 * pi) * sd)
-      pd[i,1] <- (integrate(function(t) t^(i - 1)*exp( -0.5 * ((log(t,exp(1)) - mu_d)/sd)^2)/(exp(t) - 1), lower = 0, upper = Inf )$value)/(exp(lgamma(i + 1))*sqrt(2 * pi) * sd)
-
-    }
-    result <- 1 - sum(pd)
-    return(result)
-  }
+  # pd_theory_heterogeneous <- function(mu, sd, f, u, USL){
+  #   USL1 <- USL*f*u
+  #   pd <- matrix(NA, nrow = USL1, ncol = 1)
+  #   for (i in 1:USL1) {
+  #     mu_d <- mu + log(f*u, exp(1))
+  #     # pd[i,1] <- integrate(function(t) exp(t*i - 0.5 * ((t - mu_d)/sd)^2)/(exp(exp(t))-1), lower = 0, upper = 500)$value/(factorial(i)*sqrt(2 * pi) * sd)
+  #     pd[i,1] <- (integrate(function(t) t^(i - 1)*exp( -0.5 * ((log(t,exp(1)) - mu_d)/sd)^2)/(exp(t) - 1), lower = 0, upper = Inf )$value)/(exp(lgamma(i + 1))*sqrt(2 * pi) * sd)
+  #
+  #   }
+  #   result <- 1 - sum(pd)
+  #   return(result)
+  # }
   # pd_theory(lambda = 1, f, u, USL)
   Pd <- matrix(NA, nrow = length(mu), ncol = 2)
   for (i in 1:length(mu)) {
-    Pd[i,1] <-  prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, n_sim)
-    Pd[i,2] <-  pd_theory_heterogeneous(mu[i], sd, f, u, USL)
+    Pd[i,1] <-  prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "simulation", n_sim)
+    Pd[i,2] <-  prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "theory")
   }
   Prob <- data.frame(mu, Pd)
   # colnames(Prob ) <- c("lambda", f_spr(f,u))

@@ -45,6 +45,5 @@ b <- 300
 f <- c(0.01,0.1)
 u <- c(0.1,0.1)
 USL <- 1000
-n_sim <- 50000
 pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL)
 }

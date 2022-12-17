@@ -57,7 +57,7 @@ And the true concentration level  is given  by
 \deqn{C = \frac{X}{f*u}}
 }
 \examples{
-lambda_low <- 0
+lambda_low <- 1
 lambda_high <- 5000
 a <- 0
 b <- 300

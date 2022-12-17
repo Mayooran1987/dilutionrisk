@@ -19,11 +19,10 @@
 ##' sd <- 0.2
 ##' a <- 0
 ##' b <- 300
-##' f <- c(0.01,0.1,1)
-##' u <- c(0.1,0.1,0.1)
+##' f <- c(0.01,0.1)
+##' u <- c(0.1,0.1)
 ##' USL <- 1000
 ##' n <- 5
-##' n_sim <- 50000
 ##' prob_acceptance_heterogeneous_multiple (c, mu, sd, a, b, f, u, USL, n)
 ##' @usage  prob_acceptance_heterogeneous_multiple (c, mu, sd, a, b, f, u, USL, n, type, n_sim)
 ##' @export

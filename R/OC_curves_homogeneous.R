@@ -15,7 +15,7 @@
 ##' @return OC curves when diluted samples collected from a homogeneous batch.
 ##' @examples
 ##' c <- 2
-##' lambda_low <- 0
+##' lambda_low <- 1
 ##' lambda_high <- 5000
 ##' a <- 0
 ##' b <- 300

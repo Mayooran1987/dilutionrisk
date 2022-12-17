@@ -20,7 +20,6 @@
 ##' f <- 0.01
 ##' u <- 0.1
 ##' USL <- 1000
-##' n_sim <- 50000
 ##' prob_detection_heterogeneous(mu, sd, a, b, f, u, USL)
 ##' @usage  prob_detection_heterogeneous(mu, sd, a, b, f, u, USL, type, n_sim)
 ##' @export

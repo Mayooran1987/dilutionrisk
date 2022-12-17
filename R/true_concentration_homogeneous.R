@@ -19,7 +19,7 @@
 ##' \deqn{C = \frac{X}{f*u}}
 ##' @return true concentration level when the diluted sample collected from a homogeneous batch.
 ##' @examples
-##' lambda_low <- 0
+##' lambda_low <- 1
 ##' lambda_high <- 5000
 ##' a <- 0
 ##' b <- 300

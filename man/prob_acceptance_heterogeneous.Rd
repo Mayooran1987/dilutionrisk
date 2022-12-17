@@ -48,6 +48,5 @@ f <- 0.01
 u <- 0.1
 USL <- 1000
 n <- 5
-n_sim <- 50000
 prob_acceptance_heterogeneous(c, mu, sd, a, b, f, u, USL, n)
 }

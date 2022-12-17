@@ -25,7 +25,6 @@
 ##' u <- c(0.1,0.1)
 ##' USL <- 1000
 ##' n <- 5
-##' n_sim <- 50000
 ##' OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n)
 ##' @usage  OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type, n_sim)
 ##' @export

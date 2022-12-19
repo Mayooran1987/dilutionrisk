@@ -31,7 +31,7 @@
 OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA){
   P_a <- NULL
   Dilution_scheme <- NULL
-  mu <- seq(mu_low, mu_high, 0.1)
+  mu <- seq(mu_low, mu_high, 0.001)
   f_spr_1 <- function(f, u) {
     sprintf("Scheme (f=%.4f, u=%.1f)", f, u)
   }

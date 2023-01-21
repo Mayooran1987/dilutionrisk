@@ -16,8 +16,11 @@ Encoding: UTF-8
 LazyData: true
 Imports: ggplot2, ggthemes, reshape2, Rcpp, stats
 LinkingTo: Rcpp
-Suggests: spelling, testthat, covr
-RoxygenNote: 7.2.1
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0),
+    covr
+RoxygenNote: 7.2.3
 Depends: R (>= 4.0)
 Maintainer: Mayooran Thevaraja <mayooran@eng.jfn.ac.lk>
 Language: en-US

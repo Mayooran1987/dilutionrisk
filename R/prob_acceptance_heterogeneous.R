@@ -26,9 +26,8 @@
 ##' prob_acceptance_heterogeneous(c, mu, sd, a, b, f, u, USL, n)
 ##' @usage  prob_acceptance_heterogeneous(c, mu, sd, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-prob_acceptance_heterogeneous <- function(c, mu, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA){
+prob_acceptance_heterogeneous <- function(c, mu, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
   pd <- prob_detection_heterogeneous(mu, sd, a, b, f, u, USL, type, n_sim)
   pa <- stats::pbinom(c, n, pd)
   return(pa)
 }
-

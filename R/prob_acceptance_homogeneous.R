@@ -24,12 +24,8 @@
 ##' prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n)
 ##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-prob_acceptance_homogeneous <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA){
+prob_acceptance_homogeneous <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
   pd <- prob_detection_homogeneous(lambda, a, b, f, u, USL, type, n_sim)
   pa <- stats::pbinom(c, n, pd)
   return(pa)
 }
-
-
-
-

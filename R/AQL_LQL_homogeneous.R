@@ -37,48 +37,51 @@
 ##'                     alpha, beta, OC = "TRUE")
 ##' @usage  AQL_LQL_homogeneous(c,lambda_low,lambda_high,a,b,f,u,USL,n,type,alpha,beta,OC,n_sim)
 ##' @export
-AQL_LQL_homogeneous <- function(c, lambda_low,lambda_high, a, b, f, u, USL, n,  type = "theory", alpha, beta, OC, n_sim = NA){
+AQL_LQL_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, type = "theory", alpha, beta, OC, n_sim = NA) {
   lambda <- seq(lambda_low, lambda_high, 0.1)
   Pa <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    Pa[i,] <-  round(cbind(prob_acceptance_homogeneous_multiple(c, lambda[i], a, b, f, u, USL, n,  type, n_sim)),5)
+    Pa[i, ] <- round(cbind(prob_acceptance_homogeneous_multiple(c, lambda[i], a, b, f, u, USL, n, type, n_sim)), 5)
   }
   Prob_df <- data.frame(lambda, Pa)
 
   # Prob_df <- data.frame(p, Pa)
-  if ( OC == TRUE) {
-    plot_AQL_LQL <- ggplot2::ggplot(Prob_df) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = Pa)) +
-      ggplot2::xlab(expression("expected microbial count  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) +
+  if (OC == TRUE) {
+    plot_AQL_LQL <- ggplot2::ggplot(Prob_df) +
+      ggplot2::geom_line(ggplot2::aes(x = lambda, y = Pa)) +
+      ggplot2::xlab(expression("expected microbial count  (" ~ lambda * ~")")) +
+      ggplot2::ylab(expression("Probability of acceptance" ~ (P[a]))) +
       ggplot2::theme_classic() +
-      ggplot2::geom_hline(yintercept = c(Pa[which(lambda == lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))])]),linetype = "dashed") +
-      ggplot2::geom_vline(xintercept = c(lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))]),linetype = "dashed") +
-      ggplot2::geom_hline(yintercept = c(Pa[which(lambda == lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))])]),linetype = "dashed") +
-      ggplot2::geom_vline(xintercept = c(lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))]),linetype = "dashed") +
+      ggplot2::geom_hline(yintercept = c(Pa[which(lambda == lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))])]), linetype = "dashed") +
+      ggplot2::geom_vline(xintercept = c(lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))]), linetype = "dashed") +
+      ggplot2::geom_hline(yintercept = c(Pa[which(lambda == lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))])]), linetype = "dashed") +
+      ggplot2::geom_vline(xintercept = c(lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))]), linetype = "dashed") +
       # ggplot2::geom_segment(ggplot2::aes(x=0,xend=400,y=1-alpha,yend=1-alpha),linetype = "dashed") +
       # ggplot2::geom_segment(ggplot2::aes(x=400,xend=400,y=0,yend=1-alpha),linetype = "dashed") +
       # ggplot2::geom_segment(ggplot2::aes(x=0,xend=2356,y=beta,yend=beta),linetype = "dashed") +
       # ggplot2::geom_segment(ggplot2::aes(x=2356,xend=2356,y=0,yend=beta),linetype = "dashed") +
-      ggplot2::annotate("text", x = c(lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))],lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))]),
-                        y = c(0,0),
-                        label = sprintf(c("\n AQL = %0.4f","\n LQL = %0.4f"),
-                                        c(lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))],lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))])), size = 3) +
-      ggplot2::annotate("text", x = c(lambda_low+0.5,lambda_low+0.5),
-                        y = c(Pa[which(lambda == lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))])],Pa[which(lambda == lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))])]),
-                        label = sprintf(c("\n 1-\u03B1 = %0.2f","\n \u03B2 = %0.2f"), c(Pa[which(lambda == lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))])],Pa[which(lambda == lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))])])), size = 4)
+      ggplot2::annotate("text",
+        x = c(lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))], lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))]),
+        y = c(0, 0),
+        label = sprintf(
+          c("\n AQL = %0.4f", "\n LQL = %0.4f"),
+          c(lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))], lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))])
+        ), size = 3
+      ) +
+      ggplot2::annotate("text",
+        x = c(lambda_low + 0.5, lambda_low + 0.5),
+        y = c(Pa[which(lambda == lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))])], Pa[which(lambda == lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))])]),
+        label = sprintf(c("\n 1-\u03B1 = %0.2f", "\n \u03B2 = %0.2f"), c(Pa[which(lambda == lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))])], Pa[which(lambda == lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))])])), size = 4
+      )
 
     results <- plot_AQL_LQL
   } else {
     # AQL <- lambda[which(Pa == 1 - alpha)]
     # LQL <- lambda[which(Pa == beta)]
-    AQL <- lambda[which(abs(Pa -(1-alpha)) == min(abs(Pa -(1-alpha))))]
-    LQL <- lambda[which(abs(Pa -beta) == min(abs(Pa -beta)))]
+    AQL <- lambda[which(abs(Pa - (1 - alpha)) == min(abs(Pa - (1 - alpha))))]
+    LQL <- lambda[which(abs(Pa - beta) == min(abs(Pa - beta)))]
 
-    results <- paste("AQL = ", AQL ,", LQL = ", LQL)
+    results <- paste("AQL = ", AQL, ", LQL = ", LQL)
   }
- return(results)
+  return(results)
 }
-
-
-
-
-

@@ -22,7 +22,7 @@
 ##' pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL)
 ##' @usage  pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, type, n_sim)
 ##' @export
-pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, type = "theory", n_sim = NA){
+pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, type = "theory", n_sim = NA) {
   p_d <- NULL
   Dilution_scheme <- NULL
   f_spr <- function(f, u) {
@@ -32,7 +32,7 @@ pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, type
   # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
   Pd <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    Pd[i,] <-  cbind(prob_detection_homogeneous_multiple(lambda[i], a, b, f, u, USL, type, n_sim))
+    Pd[i, ] <- cbind(prob_detection_homogeneous_multiple(lambda[i], a, b, f, u, USL, type, n_sim))
   }
   # Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
   # for (i in 1:length(lambda)) {
@@ -40,18 +40,25 @@ pd_curves_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, type
   #   Pd[i,2] <-  prob_detection_homogeneous(lambda[i], a, b, f[2], u[2], USL, n_sim)
   # }
   Prob <- data.frame(lambda, Pd)
-  colnames(Prob ) <- c("lambda", f_spr(f,u))
+  colnames(Prob) <- c("lambda", f_spr(f, u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "p_d")
-  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of detection"~(P[d]))) + ggthemes::scale_colour_colorblind() +
+  plot_sam <- ggplot2::ggplot(melten.Prob) +
+    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Dilution_scheme, colour = Dilution_scheme)) +
+    ggplot2::theme_classic() +
+    ggplot2::xlab(expression("expected microbial count  (" ~ lambda * ~")")) +
+    ggplot2::ylab(expression("Probability of detection" ~ (P[d]))) +
+    ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
-    ggplot2::annotate("text", x = USL,
-                      y = 0, label = sprintf("USL = %0.0f", USL), size = 3) +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
-                   axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
+    ggplot2::annotate("text",
+      x = USL,
+      y = 0, label = sprintf("USL = %0.0f", USL), size = 3
+    ) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
+      axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")
+    )
   # +
   #   ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "expected microbial count (cfu/g)", breaks = seq(min(mu),max(mu),1),
   #                                                            labels = c(sprintf("%f", 10^(seq(min(mu),max(mu),1) + (sd^2/2) * log(10, exp(1)))))))
   return(plot_sam)
 }
-

@@ -22,11 +22,11 @@
 ##' prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL)
 ##' @usage  prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, type, n_sim)
 ##' @export
-prob_detection_homogeneous_multiple <- function(lambda, a, b, f, u, USL, type = "theory", n_sim = NA){
+prob_detection_homogeneous_multiple <- function(lambda, a, b, f, u, USL, type = "theory", n_sim = NA) {
   if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
-  pd <- matrix(NA, nrow =  1, ncol = length(f))
+  pd <- matrix(NA, nrow = 1, ncol = length(f))
   for (i in 1:length(f)) {
-    pd[,i] <-   prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, type, n_sim)
+    pd[, i] <- prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, type, n_sim)
   }
   results <- as.matrix.data.frame(pd)
   return(results)

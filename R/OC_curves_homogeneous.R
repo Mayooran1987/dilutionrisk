@@ -26,7 +26,7 @@
 ##' OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n)
 ##' @usage  OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, type = "theory", n_sim = NA){
+OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
   P_a <- NULL
   Dilution_scheme <- NULL
   lambda <- seq(lambda_low, lambda_high, 0.1)
@@ -35,19 +35,27 @@ OC_curves_homogeneous <- function(c, lambda_low, lambda_high, a, b, f, u, USL, n
   }
   pa <- matrix(NA, nrow = length(lambda), ncol = length(f))
   for (i in 1:length(lambda)) {
-    pa[i,] <-  cbind(prob_acceptance_homogeneous_multiple(c, lambda[i], a, b, f, u, USL, n, type, n_sim))
+    pa[i, ] <- cbind(prob_acceptance_homogeneous_multiple(c, lambda[i], a, b, f, u, USL, n, type, n_sim))
   }
   Prob <- data.frame(lambda, pa)
-  colnames(Prob ) <- c("lambda", f_spr(f,u))
+  colnames(Prob) <- c("lambda", f_spr(f, u))
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Dilution_scheme", value.name = "P_a")
-  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
+  plot_sam <- ggplot2::ggplot(melten.Prob) +
+    ggplot2::geom_line(ggplot2::aes(x = lambda, y = P_a, group = Dilution_scheme, colour = Dilution_scheme)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count  (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of acceptance"~(P[a]))) + ggthemes::scale_colour_colorblind() +
+    ggplot2::theme_classic() +
+    ggplot2::xlab(expression("expected microbial count  (" ~ lambda * ~")")) +
+    ggplot2::ylab(expression("Probability of acceptance" ~ (P[a]))) +
+    ggthemes::scale_colour_colorblind() +
     ggplot2::geom_vline(xintercept = USL, linetype = "dashed") +
-    ggplot2::annotate("text", x = USL,
-                      y = 0, label = sprintf("USL = %0.0f", USL), size = 3) +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
-                   axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
+    ggplot2::annotate("text",
+      x = USL,
+      y = 0, label = sprintf("USL = %0.0f", USL), size = 3
+    ) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.75), axis.line.x.top = ggplot2::element_line(color = "red"),
+      axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")
+    )
   # +
   #   ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "expected cell counts (cfu/g)", breaks = seq(min(mu),max(mu),1),
   #                                                            labels = c(sprintf("%f", 10^(seq(min(mu),max(mu),1) + (sd^2/2) * log(10, exp(1)))))))

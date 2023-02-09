@@ -24,7 +24,7 @@
 ##' pd_validation_heterogeneous(mu_low,  mu_high, sd, a, b, f, u, USL, n_sim)
 ##' @usage  pd_validation_heterogeneous(mu_low,  mu_high, sd, a, b, f, u, USL, n_sim)
 ##' @export
-pd_validation_heterogeneous <- function(mu_low,  mu_high, sd, a, b, f, u, USL, n_sim){
+pd_validation_heterogeneous <- function(mu_low, mu_high, sd, a, b, f, u, USL, n_sim) {
   p_d <- NULL
   Methods <- NULL
   mu <- seq(mu_low, mu_high, 0.1)
@@ -43,25 +43,27 @@ pd_validation_heterogeneous <- function(mu_low,  mu_high, sd, a, b, f, u, USL, n
   # pd_theory(lambda = 1, f, u, USL)
   Pd <- matrix(NA, nrow = length(mu), ncol = 2)
   for (i in 1:length(mu)) {
-    Pd[i,1] <-  prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "simulation", n_sim)
-    Pd[i,2] <-  prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "theory")
+    Pd[i, 1] <- prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "simulation", n_sim)
+    Pd[i, 2] <- prob_detection_heterogeneous(mu[i], sd, a, b, f, u, USL, type = "theory")
   }
   Prob <- data.frame(mu, Pd)
   # colnames(Prob ) <- c("lambda", f_spr(f,u))
-  colnames(Prob ) <- c("mu", "simulation", "theory")
+  colnames(Prob) <- c("mu", "simulation", "theory")
   melten.Prob <- reshape2::melt(Prob, id = "mu", variable.name = "Methods", value.name = "p_d")
-  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = mu, y = p_d, group = Methods, colour = Methods)) +
+  plot_sam <- ggplot2::ggplot(melten.Prob) +
+    ggplot2::geom_line(ggplot2::aes(x = mu, y = p_d, group = Methods, colour = Methods)) +
     # ggplot2::ggtitle("OC curve based on Lognormal distribution") +
-    ggplot2::theme_classic() + ggplot2::xlab(expression(" log mean microbial count  (" ~ mu*~")")) + ggplot2::ylab(expression("Probability of detection"~(P[d]))) + ggthemes::scale_colour_colorblind() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
-                   axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")) +
-    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~., name = "mean microbial count", breaks = seq(min(mu),max(mu),1),
-                                                             labels = c(sprintf("%0.2f", exp(seq(min(mu),max(mu),1))))))
+    ggplot2::theme_classic() +
+    ggplot2::xlab(expression(" log mean microbial count  (" ~ mu * ~")")) +
+    ggplot2::ylab(expression("Probability of detection" ~ (P[d]))) +
+    ggthemes::scale_colour_colorblind() +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.25, 0.85), axis.line.x.top = ggplot2::element_line(color = "red"),
+      axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")
+    ) +
+    ggplot2::scale_x_continuous(sec.axis = ggplot2::sec_axis(~.,
+      name = "mean microbial count", breaks = seq(min(mu), max(mu), 1),
+      labels = c(sprintf("%0.2f", exp(seq(min(mu), max(mu), 1))))
+    ))
   return(plot_sam)
 }
-
-
-
-
-
-

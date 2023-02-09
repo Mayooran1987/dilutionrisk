@@ -24,15 +24,14 @@
 ##' prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n)
 ##' @usage  prob_acceptance_homogeneous_multiple(c, lambda, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-prob_acceptance_homogeneous_multiple <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA){
-pd <- NULL
-if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
-pa <- matrix(NA, nrow =  1, ncol = length(f))
-for (i in 1:length(f)) {
-  pd[i] <-  prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, type, n_sim)
-  pa[,i] <-  stats::pbinom(c, n, pd[i])
+prob_acceptance_homogeneous_multiple <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
+  pd <- NULL
+  if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
+  pa <- matrix(NA, nrow = 1, ncol = length(f))
+  for (i in 1:length(f)) {
+    pd[i] <- prob_detection_homogeneous(lambda, a, b, f[i], u[i], USL, type, n_sim)
+    pa[, i] <- stats::pbinom(c, n, pd[i])
+  }
+  results <- as.matrix.data.frame(pa)
+  return(results)
 }
-results <- as.matrix.data.frame(pa)
-return(results)
-}
-

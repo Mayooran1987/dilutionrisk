@@ -23,19 +23,19 @@
 ##' prob_detection_heterogeneous(mu, sd, a, b, f, u, USL)
 ##' @usage  prob_detection_heterogeneous(mu, sd, a, b, f, u, USL, type, n_sim)
 ##' @export
-prob_detection_heterogeneous <- function(mu, sd, a, b, f, u, USL, type = "theory", n_sim = NA){
-  if (mu > (log(b,exp(1)) - log((f*u),exp(1))) | mu < log(a,exp(1)) - log(f*u,exp(1)))
+prob_detection_heterogeneous <- function(mu, sd, a, b, f, u, USL, type = "theory", n_sim = NA) {
+  if (mu > (log(b, exp(1)) - log((f * u), exp(1))) | mu < log(a, exp(1)) - log(f * u, exp(1))) {
     stop("The truncated poisson lognormal (TPLN) random variable must be bounded by a and b,
          which means that the mu must be less than or equal to log(b)-log(fu) and mu must be greater than or equal to log(a)-log(fu).")
+  }
   if (type == "theory") {
-    pd_theory_heterogeneous <- function(mu, sd, f, u, USL){
-      USL1 <- USL*f*u
+    pd_theory_heterogeneous <- function(mu, sd, f, u, USL) {
+      USL1 <- USL * f * u
       pd <- matrix(NA, nrow = USL1, ncol = 1)
       for (i in 1:USL1) {
-        mu_d <- mu + log(f*u, exp(1))
+        mu_d <- mu + log(f * u, exp(1))
         # pd[i,1] <- integrate(function(t) exp(t*i - 0.5 * ((t - mu_d)/sd)^2)/(exp(exp(t))-1), lower = 0, upper = 500)$value/(factorial(i)*sqrt(2 * pi) * sd)
-        pd[i,1] <- (integrate(function(t) t^(i - 1)*exp( -0.5 * ((log(t,exp(1)) - mu_d)/sd)^2)/(exp(t) - 1), lower = 0, upper = Inf )$value)/(exp(lgamma(i + 1))*sqrt(2 * pi) * sd)
-
+        pd[i, 1] <- (integrate(function(t) t^(i - 1) * exp(-0.5 * ((log(t, exp(1)) - mu_d) / sd)^2) / (exp(t) - 1), lower = 0, upper = Inf)$value) / (exp(lgamma(i + 1)) * sqrt(2 * pi) * sd)
       }
       P_d <- 1 - sum(pd)
       return(P_d)
@@ -46,16 +46,16 @@ prob_detection_heterogeneous <- function(mu, sd, a, b, f, u, USL, type = "theory
     if (is.na(n_sim) == TRUE) {
       stop("please set the number of simualtions")
     } else {
-      sim1 <- matrix(NA, nrow =  n_sim, ncol = 1)
+      sim1 <- matrix(NA, nrow = n_sim, ncol = 1)
       # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
       for (j in 1:n_sim) {
-        sim1[j,] <-   (rtrunpoilog(1, (mu + log(f*u,exp(1))), sd, a, b))*(1/(f*u))
+        sim1[j, ] <- (rtrunpoilog(1, (mu + log(f * u, exp(1))), sd, a, b)) * (1 / (f * u))
         # sim1[j,] <-   (rtrunpoilog(1, (mean_con * f*u), sd, a, b))*(1/(f*u))
       }
-      result <- length(which(sim1[,1] > USL))/n_sim
+      result <- length(which(sim1[, 1] > USL)) / n_sim
       return(result)
     }
-  }else {
+  } else {
     print("please include what type (theory/ simulation) you would like to consider")
   }
 }

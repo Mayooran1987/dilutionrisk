@@ -14,7 +14,7 @@ Description: This package aims to develop for getting probability estimations an
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2, ggthemes, reshape2, Rcpp, stats
+Imports: extraDistr, ggplot2, ggthemes, reshape2, Rcpp, stats
 LinkingTo: Rcpp
 Suggests: 
     spelling,

@@ -16,9 +16,10 @@
 ##' rtrunpoilog(n, mu, sd, a, b)
 ##' @usage  rtrunpoilog(n, mu, sd, a, b)
 ##' @export
-rtrunpoilog <- function(n, mu, sd, a, b){
-  if (mu > log(b,exp(1)) | mu < log(a,exp(1)))
+rtrunpoilog <- function(n, mu, sd, a, b) {
+  if (mu > log(b, exp(1)) | mu < log(a, exp(1))) {
     stop("The truncated Poisson lognormal (TPLN) random variable must be bounded by a and b, which means that the mu must be less than or equal to log(b) and mu must be greater than or equal to log(a)")
+  }
   lambda <- stats::rlnorm(n = n, meanlog = mu, sdlog = sd)
   rtpois <- function(n, lambda, a = -Inf, b = Inf) {
     if (length(n) > 1) n <- length(n)
@@ -33,4 +34,3 @@ rtrunpoilog <- function(n, mu, sd, a, b){
   # result <- as.numeric(sim1)
   return(result)
 }
-

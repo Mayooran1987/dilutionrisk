@@ -5,11 +5,11 @@
 #'
 #' @details
 #'
-#'This package aims to develop probability estimations and graphical displays in the modelling and assessing
-#'risk based on aerobic plate count (APC) on diluted testing. Mainly focuses on the risk assessment based on
-#'bounded distributions such as truncated Poisson and truncated Poisson lognormal distributions to model
-#'homogeneous and heterogeneous scenarios, respectively. Also, this package attempts to develop truncated
-#'Poisson lognormal distributions theory with validation by simulation-based results (this part will be updated later on).
+#' This package aims to develop probability estimations and graphical displays in the modelling and assessing
+#' risk based on aerobic plate count (APC) on diluted testing. Mainly focuses on the risk assessment based on
+#' bounded distributions such as truncated Poisson and truncated Poisson lognormal distributions to model
+#' homogeneous and heterogeneous scenarios, respectively. Also, this package attempts to develop truncated
+#' Poisson lognormal distributions theory with validation by simulation-based results (this part will be updated later on).
 #'
 #'
 #'

@@ -26,16 +26,14 @@
 ##' prob_acceptance_heterogeneous_multiple (c, mu, sd, a, b, f, u, USL, n)
 ##' @usage  prob_acceptance_heterogeneous_multiple (c, mu, sd, a, b, f, u, USL, n, type, n_sim)
 ##' @export
-prob_acceptance_heterogeneous_multiple <- function(c, mu, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA){
+prob_acceptance_heterogeneous_multiple <- function(c, mu, sd, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
   sim2 <- NULL
   if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
-  sim1 <- matrix(NA, nrow =  1, ncol = length(f))
+  sim1 <- matrix(NA, nrow = 1, ncol = length(f))
   for (i in 1:length(f)) {
-    sim2[i] <-  prob_detection_heterogeneous_multiple(mu, sd, a, b, f[i], u[i], USL, type, n_sim)
-    sim1[,i] <-  stats::pbinom(c, n, sim2[i])
+    sim2[i] <- prob_detection_heterogeneous_multiple(mu, sd, a, b, f[i], u[i], USL, type, n_sim)
+    sim1[, i] <- stats::pbinom(c, n, sim2[i])
   }
   results <- as.matrix.data.frame(sim1)
   return(results)
 }
-
-

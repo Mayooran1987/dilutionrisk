@@ -23,7 +23,7 @@
 ##' pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 50000)
 ##' @usage  pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 ##' @export
-pd_validation_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim){
+pd_validation_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, n_sim) {
   p_d <- NULL
   Methods <- NULL
   lambda <- seq(lambda_low, lambda_high, 1)
@@ -39,17 +39,23 @@ pd_validation_homogeneous <- function(lambda_low, lambda_high, a, b, f, u, USL, 
   # pd_theory(lambda = 1, f, u, USL)
   Pd <- matrix(NA, nrow = length(lambda), ncol = 2)
   for (i in 1:length(lambda)) {
-    Pd[i,1] <-  prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "simulation", n_sim)
-    Pd[i,2] <-  prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "theory")
+    Pd[i, 1] <- prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "simulation", n_sim)
+    Pd[i, 2] <- prob_detection_homogeneous(lambda[i], a, b, f, u, USL, type = "theory")
   }
   Prob <- data.frame(lambda, Pd)
   # colnames(Prob ) <- c("lambda", f_spr(f,u))
-  colnames(Prob ) <- c("lambda", "simulation", "theory")
+  colnames(Prob) <- c("lambda", "simulation", "theory")
 
   melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Methods", value.name = "p_d")
-  plot_sam <- ggplot2::ggplot(melten.Prob) + ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Methods, colour = Methods)) +
-    ggplot2::theme_classic() + ggplot2::xlab(expression("expected microbial count (" ~ lambda*~")")) + ggplot2::ylab(expression("Probability of detection"~(P[d]))) + ggthemes::scale_colour_colorblind() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
-                   axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red"))
+  plot_sam <- ggplot2::ggplot(melten.Prob) +
+    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Methods, colour = Methods)) +
+    ggplot2::theme_classic() +
+    ggplot2::xlab(expression("expected microbial count (" ~ lambda * ~")")) +
+    ggplot2::ylab(expression("Probability of detection" ~ (P[d]))) +
+    ggthemes::scale_colour_colorblind() +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = 0.5), legend.position = c(0.85, 0.25), axis.line.x.top = ggplot2::element_line(color = "red"),
+      axis.ticks.x.top = ggplot2::element_line(color = "red"), axis.text.x.top = ggplot2::element_text(color = "red"), axis.title.x.top = ggplot2::element_text(color = "red")
+    )
   return(plot_sam)
 }

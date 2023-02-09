@@ -23,40 +23,37 @@
 ##' prob_detection_homogeneous(lambda, a, b, f, u, USL, type = "simulation", n_sim)
 ##' @usage  prob_detection_homogeneous(lambda, a, b, f, u, USL, type, n_sim)
 ##' @export
-prob_detection_homogeneous <- function(lambda, a, b, f, u, USL, type = "theory", n_sim = NA){
+prob_detection_homogeneous <- function(lambda, a, b, f, u, USL, type = "theory", n_sim = NA) {
   if (type == "theory") {
-    pd_theory <- function(lambda, f, u, USL){
-      USL1 <- USL*f*u
+    pd_theory <- function(lambda, f, u, USL) {
+      USL1 <- USL * f * u
       pd <- matrix(NA, nrow = USL1, ncol = 1)
       for (i in 1:USL1) {
-        pd[i,1] <-  (u*f*lambda)^i/(factorial(i)*(exp(u*f*lambda) - 1))
+        pd[i, 1] <- (u * f * lambda)^i / (factorial(i) * (exp(u * f * lambda) - 1))
       }
       Pd <- 1 - sum(pd)
       return(Pd)
     }
     result <- pd_theory(lambda, f, u, USL)
     return(result)
-
   } else if (type == "simulation") {
     if (is.na(n_sim) == TRUE) {
       stop("please set the number of simualtions, include n_sim =")
     } else {
-
       rtpois <- function(n, lambda, a = -Inf, b = Inf) {
         if (length(n) > 1) n <- length(n)
         cpp_rtpois(n, lambda, lower = a, upper = b)
         # .Call('_dilutionrisk_cpp_rtpois', PACKAGE = 'dilutionrisk', n, lambda, lower = a, upper = b)
       }
-      sim1 <- matrix(NA, nrow =  n_sim, ncol = 1)
+      sim1 <- matrix(NA, nrow = n_sim, ncol = 1)
       # lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
       for (j in 1:n_sim) {
-        sim1[j,] <-   (rtpois(1, lambda*f*u, a, b))*(1/(f*u))
+        sim1[j, ] <- (rtpois(1, lambda * f * u, a, b)) * (1 / (f * u))
       }
-      pd <- length(which(sim1[,1] > USL))/n_sim
+      pd <- length(which(sim1[, 1] > USL)) / n_sim
       return(pd)
     }
-  }else {
+  } else {
     print("please include what type (theory/ simulation) you would like to consider")
   }
 }
-

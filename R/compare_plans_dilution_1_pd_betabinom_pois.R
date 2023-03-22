@@ -10,7 +10,7 @@
 ##' @details \code{\link{compare_plans_dilution_1_pd_betabinom_pois}} provides graphical displays of the probability of the detection curves for dilution schemes in the first dilution stage based on the beta binomial distribution, while the count of microorganisms is modelled by Poisson distribution.(This section will be updated later on.)
 ##' @return Comparison based on probability of detection curves for different dilution schemes in the first dilution stage.
 ##' @examples
-##' S <- c(1,10,20)
+##' S <- c(25,125,250)
 ##' V0 <- 100
 ##' V1 <- 1
 ##' lambda_lower <- 0
@@ -21,7 +21,7 @@
 ##' @usage  compare_plans_dilution_1_pd_betabinom_pois(S, V0, V1, lambda_lower, lambda_upper, alpha, beta)
 ##' @export
 compare_plans_dilution_1_pd_betabinom_pois <- function(S, V0, V1, lambda_lower, lambda_upper, alpha, beta) {
-  Sampling_scheme <- NULL # Initalizing
+  dilution_scheme <- NULL # Initalizing
   p_d <- NULL
   C <- NULL
   lambda <- seq(lambda_lower, lambda_upper, by = 0.1)
@@ -34,10 +34,10 @@ compare_plans_dilution_1_pd_betabinom_pois <- function(S, V0, V1, lambda_lower, 
   }
   Prob <- data.frame(lambda, pd)
   colnames(Prob) <- c("lambda", f_spr(S))
-  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Sampling_scheme", value.name = "p_d")
+  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) +
-    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Sampling_scheme, colour = Sampling_scheme)) +
-    # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = Sampling_scheme, colour = Sampling_scheme),se = FALSE, na.rm = TRUE)+
+    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
+    # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = dilution_scheme, colour = dilution_scheme),se = FALSE, na.rm = TRUE)+
     ggplot2::ylab(expression(P[D])) +
     ggplot2::xlab(expression(lambda ("cell count per gram"))) +
     ggplot2::theme_classic() +

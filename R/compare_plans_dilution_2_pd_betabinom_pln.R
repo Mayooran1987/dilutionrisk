@@ -14,7 +14,7 @@
 ##' @details \code{\link{compare_plans_dilution_2_pd_betabinom_pln}} provides graphical displays of the probability of the detection curves for dilution schemes in the second dilution stage based on the binomial distribution, while the count of microorganisms is modelled by Poisson lognormal distribution.(This section will be updated later on.)
 ##' @return Comparison based on probability of detection curves for different dilution schemes in the second  dilution stage.
 ##' @examples
-##' S <- c(1,10,20)
+##' S <- c(25,125,250)
 ##' V0 <- 100
 ##' V1 <- 1
 ##' V2 <- 10

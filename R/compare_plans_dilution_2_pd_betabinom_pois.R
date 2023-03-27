@@ -28,7 +28,7 @@
 ##' @export
 compare_plans_dilution_2_pd_betabinom_pois <- function(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper, alpha, beta) {
   message("\033[1;31m","This function takes a few hours to produce the output! Thanks for your patience.")
-  Sampling_scheme <- NULL # Initalizing
+  dilution_scheme <- NULL # Initalizing
   p_d <- NULL
   C <- NULL
   lambda <- seq(lambda_lower, lambda_upper, by = 0.01)
@@ -49,10 +49,10 @@ compare_plans_dilution_2_pd_betabinom_pois <- function(S, V0, V1, V2, V3, n_sim,
   }
   Prob <- data.frame(lambda, Pd)
   colnames(Prob) <- c("lambda", f_spr(S))
-  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "Sampling_scheme", value.name = "p_d")
+  melten.Prob <- reshape2::melt(Prob, id = "lambda", variable.name = "dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) +
-    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Sampling_scheme, colour = Sampling_scheme)) +
-    # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = Sampling_scheme, colour = Sampling_scheme),se = FALSE, na.rm = TRUE)+
+    ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
+    # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = dilution_scheme, colour = dilution_scheme),se = FALSE, na.rm = TRUE)+
     ggplot2::ylab(expression(P[D])) +
     ggplot2::xlab(expression(lambda ("cell count per gram"))) +
     ggplot2::theme_classic() +

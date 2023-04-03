@@ -35,17 +35,30 @@ compare_plans_dilution_2_pd_betabinom_pln <- function(S,sd, V0, V1, V2, V3, n_si
   f_spr <- function(S) {
     sprintf("sample weight (%.0f gram)", S)
   }
-  prob_detect_dilution_2_multi_betabinom_pln <- function(S,mu,sd, V0, V1, V2, V3, n_sim, alpha, beta) {
-    pd <- matrix(NA, nrow = length(mu), ncol =1)
-    for (i in 1:length(mu)) {
-      pd[i,] <- prob_detect_dilution_2_betabinom_pln(S,mu[i],sd, V0, V1, V2, V3, n_sim, alpha, beta)
-    }
-    # result <- as.numeric(pd)
-    result <- pd
-    return(result)
-  }
-  # prob_detect_dilution_2_multi_betabinom_pln (S[1],mu,sd, V0, V1, V2, V3, n_sim, alpha, beta)
-  # prob_detect_dilution_2_betabinom_pln(S[1],mu[1],sd, V0, V1, V2, V3, n_sim, alpha, beta)
+
+   # prob_detect_dilution_2_multi_betabinom_pln <- function(S,mu,sd, V0, V1, V2, V3, n_sim, alpha, beta) {
+   #  pd <- matrix(NA, nrow = length(mu), ncol =1)
+   #  for (i in 1:length(mu)) {
+   #    pd[i,] <- prob_detect_dilution_2_betabinom_pln(S,mu[i],sd, V0, V1, V2, V3, n_sim, alpha, beta)
+   #  }
+   #  # result <- as.numeric(pd)
+   #  result <- pd
+   #  return(result)
+   # }
+
+   prob_detect_dilution_2_multi_betabinom_pln  <- function(S,mu,sd,  V0, V1, V2, V3, n_sim, alpha, beta) {
+     pd <- matrix(NA, nrow = 1, ncol = length(mu))
+     for (j in 1:length(mu)) {
+       pd[1, j] <- prob_detect_dilution_2_betabinom_pln(S,mu[j],sd, V0, V1, V2, V3, n_sim, alpha, beta)
+     }
+     result <- as.numeric(pd)
+     # result <- pd
+
+     return(result)
+   }
+
+  # prob_detect_dilution_2_multi_betabinom_pln (S[2],mu,sd, V0, V1, V2, V3, n_sim, alpha, beta)
+  # prob_detect_dilution_2_betabinom_pln(S[3],mu[1],sd, V0, V1, V2, V3, n_sim, alpha, beta)
 
   Pd <- matrix(NA, nrow = length(mu), ncol = length(S))
   for (j in 1:length(S)) {

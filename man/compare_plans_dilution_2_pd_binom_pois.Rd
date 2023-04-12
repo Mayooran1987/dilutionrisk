@@ -40,6 +40,6 @@ V2 <- 10
 V3 <- 1
 n_sim <- 20000
 lambda_lower <- 1
-lambda_upper <- 100
+lambda_upper <- 30
 compare_plans_dilution_2_pd_binom_pois(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper)
 }

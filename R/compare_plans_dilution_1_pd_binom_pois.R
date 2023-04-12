@@ -12,7 +12,7 @@
 ##' V0 <- 100
 ##' V1 <- 1
 ##' lambda_lower <- 0
-##' lambda_upper <- 75
+##' lambda_upper <- 30
 ##' compare_plans_dilution_1_pd_binom_pois (S, V0, V1, lambda_lower, lambda_upper)
 ##' @usage  compare_plans_dilution_1_pd_binom_pois (S, V0, V1, lambda_lower, lambda_upper)
 ##' @export
@@ -20,13 +20,13 @@ compare_plans_dilution_1_pd_binom_pois <- function(S, V0, V1, lambda_lower, lamb
   dilution_scheme <- NULL # Initalizing
   p_d <- NULL
   C <- NULL
-  lambda <- seq(lambda_lower, lambda_upper, by = 1)
+  lambda <- seq(lambda_lower, lambda_upper, by = 0.1)
   f_spr <- function(S) {
     sprintf("sample weight (%.0f gram)", S)
   }
   pd <- matrix(NA, nrow = length(lambda), ncol = length(S))
   for (i in 1:length(lambda)) {
-    pd[i,] <- prob_detect_dilution_1_binom_pois(S,lambda[i], V0, V1)
+    pd[i, ] <- prob_detect_dilution_1_binom_pois(S, lambda[i], V0, V1)
   }
   Prob <- data.frame(lambda, pd)
   colnames(Prob) <- c("lambda", f_spr(S))
@@ -34,9 +34,9 @@ compare_plans_dilution_1_pd_binom_pois <- function(S, V0, V1, lambda_lower, lamb
   plot_sam <- ggplot2::ggplot(melten.Prob) +
     ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(lambda ("cell count per gram"))) +
+    ggplot2::xlab(expression(lambda ~ ("cell count per gram"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
 }

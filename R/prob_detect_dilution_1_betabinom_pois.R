@@ -22,7 +22,7 @@ prob_detect_dilution_1_betabinom_pois <- function(S, lambda, V0, V1, alpha, beta
   pd <- matrix(NA, nrow = 1, ncol = length(S))
   for (j in 1:length(S)) {
     # pd[, j] <- prob_detect_dilution_1_binom(S[j], lambda, V0, V1)
-    N[j] <- round(mean(rpois(50000,S[j]*lambda) ))
+    N[j] <- round(mean(rpois(50000, S[j] * lambda)))
     pd[, j] <- 1 - (beta(alpha, beta + N[j])) / (beta(alpha, beta))
   }
   return(pd)

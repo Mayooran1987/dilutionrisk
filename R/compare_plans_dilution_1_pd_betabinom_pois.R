@@ -14,7 +14,7 @@
 ##' V0 <- 100
 ##' V1 <- 1
 ##' lambda_lower <- 0
-##' lambda_upper <- 50
+##' lambda_upper <- 40
 ##' alpha <- 1
 ##' beta <- 5
 ##' compare_plans_dilution_1_pd_betabinom_pois(S, V0, V1, lambda_lower, lambda_upper, alpha, beta)
@@ -30,7 +30,7 @@ compare_plans_dilution_1_pd_betabinom_pois <- function(S, V0, V1, lambda_lower, 
   }
   pd <- matrix(NA, nrow = length(lambda), ncol = length(S))
   for (i in 1:length(lambda)) {
-    pd[i,] <- prob_detect_dilution_1_betabinom_pois(S, lambda[i], V0, V1, alpha, beta)
+    pd[i, ] <- prob_detect_dilution_1_betabinom_pois(S, lambda[i], V0, V1, alpha, beta)
   }
   Prob <- data.frame(lambda, pd)
   colnames(Prob) <- c("lambda", f_spr(S))
@@ -39,9 +39,9 @@ compare_plans_dilution_1_pd_betabinom_pois <- function(S, V0, V1, lambda_lower, 
     ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
     # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = dilution_scheme, colour = dilution_scheme),se = FALSE, na.rm = TRUE)+
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(lambda ("cell count per gram"))) +
+    ggplot2::xlab(expression(lambda ~ ("cell count per gram"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
 }

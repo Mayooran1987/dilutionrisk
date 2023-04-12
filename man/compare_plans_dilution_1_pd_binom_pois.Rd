@@ -31,6 +31,6 @@ S <- c(25,125,250)
 V0 <- 100
 V1 <- 1
 lambda_lower <- 0
-lambda_upper <- 75
+lambda_upper <- 30
 compare_plans_dilution_1_pd_binom_pois (S, V0, V1, lambda_lower, lambda_upper)
 }

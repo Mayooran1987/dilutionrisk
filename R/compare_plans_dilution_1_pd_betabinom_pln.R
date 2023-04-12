@@ -12,10 +12,11 @@
 ##' @return Comparison based on probability of detection curves for different dilution schemes in the first dilution stage.
 ##' @examples
 ##' S <- c(25,125,250)
+##' sd <- 0.8
 ##' V0 <- 100
 ##' V1 <- 1
-##' mu_lower <- -4
-##' mu_upper <- -1
+##' mu_lower <- -8
+##' mu_upper <- 8
 ##' alpha <- 1
 ##' beta <- 5
 ##' compare_plans_dilution_1_pd_betabinom_pln(S, sd, V0, V1, mu_lower, mu_upper, alpha, beta)
@@ -30,17 +31,19 @@ compare_plans_dilution_1_pd_betabinom_pln <- function(S, sd, V0, V1, mu_lower, m
   }
   pd <- matrix(NA, nrow = length(mu), ncol = length(S))
   for (i in 1:length(mu)) {
-    pd[i,] <-  prob_detect_dilution_1_betabinom_pln(S, mu[i], sd, V0, V1, alpha, beta)
+    pd[i, ] <- prob_detect_dilution_1_betabinom_pln(S, mu[i], sd, V0, V1, alpha, beta)
   }
   Prob <- data.frame(mu, pd)
   colnames(Prob) <- c("mu", f_spr(S))
   melten.Prob <- reshape2::melt(Prob, id = "mu", variable.name = "dilution_scheme", value.name = "p_d")
   plot_sam <- ggplot2::ggplot(melten.Prob) +
-    ggplot2::geom_line(ggplot2::aes(x = mu, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
+    # ggplot2::geom_line(ggplot2::aes(x = mu, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
+    ggplot2::stat_smooth(geom = "smooth", method = "gam", mapping = ggplot2::aes(x = mu, y = p_d, group = dilution_scheme, colour = dilution_scheme), se = FALSE, n = 1000) +
+    # ggplot2::ylim(0,1)+
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(mu ("log mean concentration"))) +
+    ggplot2::xlab(expression(mu ~ ("log mean concentration"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
 }

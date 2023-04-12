@@ -14,11 +14,11 @@
 ##' prob_detect_dilution_1_binom_pois(S,lambda, V0, V1)
 ##' @usage  prob_detect_dilution_1_binom_pois(S,lambda, V0, V1)
 ##' @export
-prob_detect_dilution_1_binom_pois <- function(S,lambda, V0, V1) {
+prob_detect_dilution_1_binom_pois <- function(S, lambda, V0, V1) {
   pd <- matrix(NA, nrow = 1, ncol = length(S))
   for (j in 1:length(S)) {
     # pd[, j] <- prob_detect_dilution_1_binom(S[j], lambda, V0, V1)
-    N[j] <-  round(mean(rpois(50000,S[j]*lambda) ))
+    N[j] <- round(mean(rpois(50000, S[j] * lambda)))
     pd[, j] <- 1 - stats::dbinom(0, N[j], V1 / V0)
   }
   return(pd)

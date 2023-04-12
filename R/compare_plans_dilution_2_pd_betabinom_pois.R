@@ -20,14 +20,14 @@
 ##' V3 <- 1
 ##' n_sim <- 20000
 ##' lambda_lower <- 0
-##' lambda_upper <- 1000
+##' lambda_upper <- 50
 ##' alpha <- 1
 ##' beta <- 5
 ##' compare_plans_dilution_2_pd_betabinom_pois(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper, alpha, beta)
 ##' @usage  compare_plans_dilution_2_pd_betabinom_pois(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper, alpha, beta)
 ##' @export
 compare_plans_dilution_2_pd_betabinom_pois <- function(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper, alpha, beta) {
-  message("\033[1;31m","This function takes a few hours to produce the output! Thanks for your patience.")
+  message("\033[1;31m", "This function takes a few hours to produce the output! Thanks for your patience.")
   dilution_scheme <- NULL # Initalizing
   p_d <- NULL
   C <- NULL
@@ -35,17 +35,17 @@ compare_plans_dilution_2_pd_betabinom_pois <- function(S, V0, V1, V2, V3, n_sim,
   f_spr <- function(S) {
     sprintf("sample weight (%.0f gram)", S)
   }
-  prob_detect_dilution_2_multi_betabinom_pois <- function(S,lambda, V0, V1, V2, V3, n_sim, alpha, beta) {
+  prob_detect_dilution_2_multi_betabinom_pois <- function(S, lambda, V0, V1, V2, V3, n_sim, alpha, beta) {
     pd <- matrix(NA, nrow = 1, ncol = length(lambda))
     for (j in 1:length(lambda)) {
-      pd[1, j] <- prob_detect_dilution_2_betabinom_pois(S,lambda[j], V0, V1, V2, V3, n_sim, alpha, beta)
+      pd[1, j] <- prob_detect_dilution_2_betabinom_pois(S, lambda[j], V0, V1, V2, V3, n_sim, alpha, beta)
     }
     result <- as.numeric(pd)
     return(result)
   }
   Pd <- matrix(NA, nrow = length(lambda), ncol = length(S))
   for (j in 1:length(S)) {
-    Pd[, j] <- prob_detect_dilution_2_multi_betabinom_pois(S[j], lambda,V0, V1, V2, V3, n_sim, alpha, beta)
+    Pd[, j] <- prob_detect_dilution_2_multi_betabinom_pois(S[j], lambda, V0, V1, V2, V3, n_sim, alpha, beta)
   }
   Prob <- data.frame(lambda, Pd)
   colnames(Prob) <- c("lambda", f_spr(S))
@@ -54,10 +54,9 @@ compare_plans_dilution_2_pd_betabinom_pois <- function(S, V0, V1, V2, V3, n_sim,
     ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
     # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = dilution_scheme, colour = dilution_scheme),se = FALSE, na.rm = TRUE)+
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(lambda ("cell count per gram"))) +
+    ggplot2::xlab(expression(lambda ~ ("cell count per gram"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
-
 }

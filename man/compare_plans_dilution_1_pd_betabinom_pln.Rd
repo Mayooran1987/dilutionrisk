@@ -34,10 +34,11 @@ Comparison based on probability of detection curves for different dilution schem
 }
 \examples{
 S <- c(25,125,250)
+sd <- 0.8
 V0 <- 100
 V1 <- 1
-mu_lower <- -4
-mu_upper <- -1
+mu_lower <- -8
+mu_upper <- 8
 alpha <- 1
 beta <- 5
 compare_plans_dilution_1_pd_betabinom_pln(S, sd, V0, V1, mu_lower, mu_upper, alpha, beta)

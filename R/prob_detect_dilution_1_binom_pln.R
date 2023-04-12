@@ -16,25 +16,31 @@
 ##' prob_detect_dilution_1_binom_pln(S,mu,sd, V0, V1)
 ##' @usage  prob_detect_dilution_1_binom_pln(S,mu,sd, V0, V1)
 ##' @export
-prob_detect_dilution_1_binom_pln <- function(S,mu,sd, V0, V1) {
-  rpoislog <- function(T, mu, sig, nu = 1, condS = FALSE, keep0 = FALSE){
+prob_detect_dilution_1_binom_pln <- function(S, mu, sd, V0, V1) {
+  rpoislog <- function(T, mu, sig, nu = 1, condS = FALSE, keep0 = FALSE) {
     sim <- function(nr) {
       lamx <- rnorm(nr)
       x <- rpois(nr, exp(sig * lamx + mu + log(nu)))
-      if (!keep0)
+      if (!keep0) {
         x <- x[x > 0]
+      }
       return(x)
     }
-    if (T < 1)
+    if (T < 1) {
       stop("S is not positive")
-    if (!is.finite(T))
+    }
+    if (!is.finite(T)) {
       stop("T is not finite")
-    if ((T/trunc(T)) != 1)
+    }
+    if ((T / trunc(T)) != 1) {
       stop("T is not an integer")
-    if (sig < 0)
+    }
+    if (sig < 0) {
       stop("sig is not positive")
-    if (nu < 0)
+    }
+    if (nu < 0) {
       stop("nu is not positive")
+    }
     if (condS) {
       simVec <- vector("numeric", 0)
       fac <- 2
@@ -42,20 +48,21 @@ prob_detect_dilution_1_binom_pln <- function(S,mu,sd, V0, V1) {
       while (length(simVec) < T) {
         simvals <- sim(nr * fac)
         simVec <- c(simVec, simvals)
-        fac <- (1/(length(simvals)/(nr * fac))) * 2
+        fac <- (1 / (length(simvals) / (nr * fac))) * 2
         fac <- ifelse(is.finite(fac), fac, 1000)
         nr <- T - length(simvals)
       }
       simVec <- simVec[1:T]
+    } else {
+      simVec <- sim(T)
     }
-    else simVec <- sim(T)
     return(simVec)
   }
   pd <- matrix(NA, nrow = 1, ncol = length(S))
   for (j in 1:length(S)) {
     # pd[, j] <- prob_detect_dilution_1_binom(S[j], lambda, V0, V1)
-    lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
-    N[j] <-  round(mean(rpoislog(50000, S[j]*lambda, sd, keep0 = TRUE)))
+    lambda <- 10^(mu + (sd^2 / 2) * log(10, exp(1)))
+    N[j] <- round(mean(rpoislog(50000, S[j] * lambda, sd, keep0 = TRUE)))
     pd[, j] <- 1 - stats::dbinom(0, N[j], V1 / V0)
   }
   return(pd)

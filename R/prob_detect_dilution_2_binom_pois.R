@@ -20,16 +20,16 @@
 ##' prob_detect_dilution_2_binom_pois(S,lambda, V0, V1, V2, V3, n_sim)
 ##' @usage  prob_detect_dilution_2_binom_pois(S,lambda, V0, V1, V2, V3, n_sim)
 ##' @export
-prob_detect_dilution_2_binom_pois <- function(S,lambda, V0, V1, V2, V3, n_sim) {
+prob_detect_dilution_2_binom_pois <- function(S, lambda, V0, V1, V2, V3, n_sim) {
   # N <- (C_cfu / V1) * ((S + V0) / S)
-  N <- round(mean(rpois(5000,S*lambda)))
+  N <- round(mean(rpois(5000, S * lambda)))
   # N <- rpois(1,S*lambda)
   # number of successes must be at least one.
   rcond.binomial <- function(n_sim, N, p) {
     probs <- stats::dbinom(1:N, N, p) / (1 - p)
     sample(1:N, n_sim, replace = TRUE, prob = probs)
   }
-  n1 <- matrix(V0*rcond.binomial(n_sim, N, V1 / V0), nrow = n_sim, ncol = 1)
+  n1 <- matrix(V0 * rcond.binomial(n_sim, N, V1 / V0), nrow = n_sim, ncol = 1)
   pd <- matrix(NA, nrow = n_sim, ncol = 1)
   for (j in 1:n_sim) {
     pd[j, ] <- 1 - dbinom(0, n1[j, ], V3 / V2)

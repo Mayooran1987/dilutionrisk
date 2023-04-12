@@ -22,25 +22,31 @@
 ##' prob_detect_dilution_2_binom_pln (S,mu,sd, V0, V1, V2, V3, n_sim)
 ##' @usage  prob_detect_dilution_2_binom_pln (S,mu,sd, V0, V1, V2, V3, n_sim)
 ##' @export
-prob_detect_dilution_2_binom_pln <- function(S,mu,sd, V0, V1, V2, V3, n_sim) {
-  rpoislog <- function(T, mu, sig, nu = 1, condS = FALSE, keep0 = FALSE){
+prob_detect_dilution_2_binom_pln <- function(S, mu, sd, V0, V1, V2, V3, n_sim) {
+  rpoislog <- function(T, mu, sig, nu = 1, condS = FALSE, keep0 = FALSE) {
     sim <- function(nr) {
       lamx <- rnorm(nr)
       x <- rpois(nr, exp(sig * lamx + mu + log(nu)))
-      if (!keep0)
+      if (!keep0) {
         x <- x[x > 0]
+      }
       return(x)
     }
-    if (T < 1)
+    if (T < 1) {
       stop("S is not positive")
-    if (!is.finite(T))
+    }
+    if (!is.finite(T)) {
       stop("T is not finite")
-    if ((T/trunc(T)) != 1)
+    }
+    if ((T / trunc(T)) != 1) {
       stop("T is not an integer")
-    if (sig < 0)
+    }
+    if (sig < 0) {
       stop("sig is not positive")
-    if (nu < 0)
+    }
+    if (nu < 0) {
       stop("nu is not positive")
+    }
     if (condS) {
       simVec <- vector("numeric", 0)
       fac <- 2
@@ -48,25 +54,27 @@ prob_detect_dilution_2_binom_pln <- function(S,mu,sd, V0, V1, V2, V3, n_sim) {
       while (length(simVec) < T) {
         simvals <- sim(nr * fac)
         simVec <- c(simVec, simvals)
-        fac <- (1/(length(simvals)/(nr * fac))) * 2
+        fac <- (1 / (length(simvals) / (nr * fac))) * 2
         fac <- ifelse(is.finite(fac), fac, 1000)
         nr <- T - length(simvals)
       }
       simVec <- simVec[1:T]
+    } else {
+      simVec <- sim(T)
     }
-    else simVec <- sim(T)
     return(simVec)
   }
   # N <- (C_cfu / V1) * ((S + V0) / S)
-  lambda <- 10^(mu + (sd^2/2) * log(10, exp(1)))
-  N <- round(mean(rpoislog(50000, S*lambda, sd, keep0 = TRUE)))
+  lambda <- 10^(mu + (sd^2 / 2) * log(10, exp(1)))
+  # N <- round(mean(rpoislog(50000, S*lambda, sd, keep0 = TRUE)))
+  N <- round(mean(poilog::rpoilog(50000, log((S), 10) + log((lambda), 10) - ((sd^2 / 2) * log(10, exp(1))), sd, condS = FALSE, keep0 = FALSE)))
   # N <- rpois(1,S*lambda)
   # number of successes must be at least one.
   rcond.binomial <- function(n_sim, N, p) {
     probs <- stats::dbinom(1:N, N, p) / (1 - p)
     sample(1:N, n_sim, replace = TRUE, prob = probs)
   }
-  n1 <- matrix(100*rcond.binomial(n_sim, N, V1 / V0), nrow = n_sim, ncol = 1)
+  n1 <- matrix(V0 * rcond.binomial(n_sim, N, V1 / V0), nrow = n_sim, ncol = 1)
   pd <- matrix(NA, nrow = n_sim, ncol = 1)
   for (j in 1:n_sim) {
     pd[j, ] <- 1 - dbinom(0, n1[j, ], V3 / V2)

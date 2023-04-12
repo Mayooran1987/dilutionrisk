@@ -35,7 +35,7 @@ S <- c(25,125,250)
 V0 <- 100
 V1 <- 1
 lambda_lower <- 0
-lambda_upper <- 50
+lambda_upper <- 40
 alpha <- 1
 beta <- 5
 compare_plans_dilution_1_pd_betabinom_pois(S, V0, V1, lambda_lower, lambda_upper, alpha, beta)

@@ -18,7 +18,7 @@
 ##' V3 <- 1
 ##' n_sim <- 20000
 ##' lambda_lower <- 1
-##' lambda_upper <- 100
+##' lambda_upper <- 30
 ##' compare_plans_dilution_2_pd_binom_pois(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper)
 ##' @usage  compare_plans_dilution_2_pd_binom_pois(S, V0, V1, V2, V3, n_sim, lambda_lower, lambda_upper)
 ##' @export
@@ -30,17 +30,17 @@ compare_plans_dilution_2_pd_binom_pois <- function(S, V0, V1, V2, V3, n_sim, lam
   f_spr <- function(S) {
     sprintf("sample weight (%.0f gram)", S)
   }
-  prob_detect_dilution_2_multi_binom_pois <- function(S,lambda, V0, V1, V2, V3, n_sim) {
+  prob_detect_dilution_2_multi_binom_pois <- function(S, lambda, V0, V1, V2, V3, n_sim) {
     pd <- matrix(NA, nrow = 1, ncol = length(lambda))
     for (j in 1:length(lambda)) {
-      pd[1, j] <- prob_detect_dilution_2_binom_pois(S,lambda[j], V0, V1, V2, V3, n_sim)
+      pd[1, j] <- prob_detect_dilution_2_binom_pois(S, lambda[j], V0, V1, V2, V3, n_sim)
     }
     result <- as.numeric(pd)
     return(result)
   }
   Pd <- matrix(NA, nrow = length(lambda), ncol = length(S))
   for (j in 1:length(S)) {
-    Pd[, j] <- prob_detect_dilution_2_multi_binom_pois(S[j], lambda,V0, V1, V2, V3, n_sim)
+    Pd[, j] <- prob_detect_dilution_2_multi_binom_pois(S[j], lambda, V0, V1, V2, V3, n_sim)
   }
   Prob <- data.frame(lambda, Pd)
   colnames(Prob) <- c("lambda", f_spr(S))
@@ -48,9 +48,9 @@ compare_plans_dilution_2_pd_binom_pois <- function(S, V0, V1, V2, V3, n_sim, lam
   plot_sam <- ggplot2::ggplot(melten.Prob) +
     ggplot2::geom_line(ggplot2::aes(x = lambda, y = p_d, group = Sampling_scheme, colour = Sampling_scheme)) +
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(lambda ("cell count per gram"))) +
+    ggplot2::xlab(expression(lambda ~ ("cell count per gram"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
 }

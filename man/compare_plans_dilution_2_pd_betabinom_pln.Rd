@@ -45,7 +45,7 @@ V1 <- 1
 V2 <- 10
 V3 <- 1
 n_sim <- 20000
-mu_lower <- -4
+mu_lower <- -3
 mu_upper <- -1
 alpha <- 1
 beta <- 5

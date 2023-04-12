@@ -13,7 +13,7 @@
 ##' sd <- 0.8
 ##' V0 <- 100
 ##' V1 <- 1
-##' mu_lower <- -3
+##' mu_lower <- -4
 ##' mu_upper <- -1
 ##' compare_plans_dilution_1_pd_binom_pln(S, sd, V0, V1, mu_lower, mu_upper)
 ##' @usage  compare_plans_dilution_1_pd_binom_pln(S, sd, V0, V1, mu_lower, mu_upper)
@@ -28,7 +28,7 @@ compare_plans_dilution_1_pd_binom_pln <- function(S, sd, V0, V1, mu_lower, mu_up
   }
   pd <- matrix(NA, nrow = length(mu), ncol = length(S))
   for (i in 1:length(mu)) {
-    pd[i,] <- prob_detect_dilution_1_binom_pln(S,mu[i], sd,V0, V1)
+    pd[i, ] <- prob_detect_dilution_1_binom_pln(S, mu[i], sd, V0, V1)
   }
   Prob <- data.frame(mu, pd)
   colnames(Prob) <- c("mu", f_spr(S))
@@ -37,9 +37,9 @@ compare_plans_dilution_1_pd_binom_pln <- function(S, sd, V0, V1, mu_lower, mu_up
     ggplot2::geom_line(ggplot2::aes(x = mu, y = p_d, group = dilution_scheme, colour = dilution_scheme)) +
     # ggplot2::stat_smooth(data = melten.Prob,size = 0.5, method = 'gam', formula = y ~ s(x, bs = "cs") , ggplot2::aes(x = C, y = p_d, group = dilution_scheme, colour = dilution_scheme),se = FALSE, na.rm = TRUE)+
     ggplot2::ylab(expression(P[D])) +
-    ggplot2::xlab(expression(mu ("log mean concentration"))) +
+    ggplot2::xlab(expression(mu ~ ("log mean concentration"))) +
     ggplot2::theme_classic() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.75, 0.25), legend.text = ggplot2::element_text(size=12)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 20), legend.position = c(0.25, 0.75), legend.text = ggplot2::element_text(size = 12)) +
     ggthemes::scale_colour_colorblind()
   return(plot_sam)
 }

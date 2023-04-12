@@ -33,7 +33,7 @@ S <- c(25,125,250)
 sd <- 0.8
 V0 <- 100
 V1 <- 1
-mu_lower <- -3
+mu_lower <- -4
 mu_upper <- -1
 compare_plans_dilution_1_pd_binom_pln(S, sd, V0, V1, mu_lower, mu_upper)
 }

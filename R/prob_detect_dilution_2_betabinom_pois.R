@@ -25,8 +25,8 @@
 ##' @usage  prob_detect_dilution_2_betabinom_pois(S, lambda, V0, V1, V2, V3, n_sim, alpha, beta)
 ##' @export
 prob_detect_dilution_2_betabinom_pois <- function(S, lambda, V0, V1, V2, V3, n_sim, alpha, beta) {
-  N <- round(mean(rpois(50000,S*lambda) ))
-  n1 <- matrix( V0*extraDistr::rbbinom(n_sim, N, alpha, beta), nrow = n_sim, ncol = 1)
+  N <- round(mean(rpois(50000, S * lambda)))
+  n1 <- matrix(V0 * extraDistr::rbbinom(n_sim, N, alpha, beta), nrow = n_sim, ncol = 1)
   pd <- matrix(NA, nrow = n_sim, ncol = 1)
   for (j in 1:n_sim) {
     pd[j, ] <- 1 - (beta(alpha, beta + n1[j, ])) / (beta(alpha, beta))

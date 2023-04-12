@@ -36,12 +36,13 @@ Comparison based on probability of detection curves for different dilution schem
 }
 \examples{
 S <- c(25,125,250)
+sd <- 0.8
 V0 <- 100
 V1 <- 1
 V2 <- 10
 V3 <- 1
 n_sim <- 20000
 mu_lower <- -3
-mu_upper <- 1
+mu_upper <- 6
 compare_plans_dilution_2_pd_binom_pln(S, sd,V0, V1, V2, V3, n_sim, mu_lower, mu_upper)
 }

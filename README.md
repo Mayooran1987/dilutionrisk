@@ -7,7 +7,9 @@
 
 # ‘dilutionrisk’
 
-The 'dilutionrisk' package aims to develop for getting probability estimations and graphical displays in the study associated with modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. Also, a description of this package's functions is available at <https://mayooran1987.github.io/dilutionrisk/reference/index.html>.
+The ‘dilutionrisk’ package aims to develop Monte-Carlo estimates of probabilities and graphical displays in the study associated with modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. Also, a description of this package’s functions is available at <https://mayooran1987.github.io/dilutionrisk/reference/index.html>.
+
+<!--The 'dilutionrisk' package aims to develop for getting probability estimations and graphical displays in the study associated with modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. Also, a description of this package's functions is available at <https://mayooran1987.github.io/dilutionrisk/reference/index.html>. -->
 
 <!-- (Note that the web page contains an older version of the package. The most recent version of the page, which is associated with the current version of the package, will be updated soon). -->
 

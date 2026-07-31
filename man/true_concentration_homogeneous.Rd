@@ -4,7 +4,7 @@
 \alias{true_concentration_homogeneous}
 \alias{true_concentration_homogeneous_multiple}
 \alias{true_concentration_curves_homogeneous}
-\title{True concentration level estimation when diluted sample collected from a homogeneous batch.}
+\title{True Concentration Estimation for Homogeneous Batches}
 \usage{
 true_concentration_homogeneous(lambda, a, b, f, u, USL, n_sim)
 
@@ -22,48 +22,55 @@ true_concentration_curves_homogeneous(
 )
 }
 \arguments{
-\item{lambda}{the expected microbial count (\eqn{\lambda}).}
+\item{lambda}{Expected microbial count (\eqn{\lambda}). Must be positive.}
 
-\item{a}{lower domain of the number of microbial count.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of microbial count.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Final dilution factor. Must be between 0 and 1.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Amount placed on the plate. Must be positive.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
+\item{n_sim}{Number of simulations. Larger values provide more precise
+estimates. Recommended minimum: 10,000.}
 
-\item{lambda_low}{the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{Lower bound of expected microbial count for x-axis.}
 
-\item{lambda_high}{the upper value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{Upper bound of expected microbial count for x-axis.}
 }
 \value{
-true concentration level when the diluted sample collected from a homogeneous batch.
+Numeric value representing the estimated true concentration.
 }
 \description{
-These functions provides true concentration level in the original sample  when diluted samples collected from a homogeneous batch.
+Estimates the true microbial concentration in the original sample when
+diluted samples are collected from a homogeneous batch.
 }
 \details{
-Let Y be the count of microorganisms and C be the true concentration level (in counts per ml).
-When diluted sample collected from homogeneous batch, Y can be modelled by Poisson distribution
-with parameter \eqn{\lambda}. Let X be the count of microorganisms on a plate,
-and it can be modelled by truncated Poisson distribution with parameters \eqn{\lambda_d, a, b}.
-Also, \eqn{\lambda_d} can be written in terms of \eqn{\lambda},f and u. It is given by
-\deqn{\lambda_d = \lambda * f *u}
-And the true concentration level  is given  by
-\deqn{C = \frac{X}{f*u}}
+The true concentration is estimated as:
+\deqn{C = \frac{X}{f \times u}}
+where X is the count of microorganisms on a plate following a truncated
+Poisson distribution, f is the final dilution factor, and u is the amount
+placed on the plate.
 }
 \examples{
-lambda_low <- 1
-lambda_high <- 5000
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n_sim <- 50000
-true_concentration_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+\dontrun{
+# Basic usage
+true_concentration_homogeneous(lambda = 2000, a = 0, b = 300,
+                               f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+
+# Multiple dilution schemes
+true_concentration_homogeneous_multiple(lambda = 2000, a = 0, b = 300,
+                                        f = c(0.01, 0.1), u = c(0.1, 0.1),
+                                        USL = 1000, n_sim = 50000)
+
+# Plot concentration curves
+true_concentration_curves_homogeneous(lambda_low = 0, lambda_high = 5000,
+                                      a = 0, b = 300, f = c(0.01, 0.1),
+                                      u = c(0.1, 0.1), USL = 1000,
+                                      n_sim = 50000)
+}
+
 }

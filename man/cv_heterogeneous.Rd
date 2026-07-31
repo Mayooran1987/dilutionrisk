@@ -4,7 +4,7 @@
 \alias{cv_heterogeneous}
 \alias{cv_heterogeneous_multiple}
 \alias{cv_curves_heterogeneous}
-\title{coefficient of variation estimation when diluted sample collected from a heterogeneous batch.}
+\title{Coefficient of Variation for Heterogeneous Batches}
 \usage{
 cv_heterogeneous(mu, sd, a, b, f, u, USL, n_sim)
 
@@ -13,44 +13,62 @@ cv_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 cv_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{mu}{the mean microbial count (on the log scale).}
+\item{mu}{Mean microbial count on the log scale. Must satisfy
+\code{log(a) - log(f*u) <= mu <= log(b) - log(f*u)}.}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the normal distribution on the log scale.
+Must be positive.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Final dilution factor. Must be between 0 and 1.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Amount placed on the plate. Must be positive.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
+\item{n_sim}{Number of simulations. Larger values provide more precise
+estimates. Recommended minimum: 10,000.}
 
-\item{mu_low}{the lower value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_low}{Lower bound of mean microbial count (\eqn{\mu}) for x-axis
+in graphical displays (log scale).}
 
-\item{mu_high}{the upper value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_high}{Upper bound of mean microbial count (\eqn{\mu}) for x-axis
+in graphical displays (log scale).}
 }
 \value{
-coefficient of variation  when sample collected from a heterogeneous batch.
+Numeric value representing the coefficient of variation for the
+heterogeneous batch.
 }
 \description{
-These functions provides coefficient of variation in the original sample when diluted samples collected from a heterogeneous batch.
-}
-\details{
-These functions provides coefficient of variation in the original sample when diluted samples collected from a heterogeneous batch.
+Estimates the coefficient of variation (CV) in the original sample when
+diluted samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \examples{
-mu_low <- -5
-mu_high <- 10
-sd <- 0.2
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n_sim <- 500
-cv_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
+\dontrun{
+# Basic usage
+cv_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                 f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+
+# Multiple dilution schemes
+cv_heterogeneous_multiple(mu = 2, sd = 0.2, a = 0, b = 300,
+                          f = c(0.01, 0.1), u = c(0.1, 0.1),
+                          USL = 1000, n_sim = 50000)
+
+# Plot CV curves
+cv_curves_heterogeneous(mu_low = -5, mu_high = 10, sd = 0.2,
+                        a = 0, b = 300, f = c(0.01, 0.1),
+                        u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
+}
+
+}
+\references{
+\itemize{
+\item Gonzales-Barron, U.A., Pilão Cadavez, V.A., Butler, F., 2013.
+Statistical approaches for the design of sampling plans for
+microbiological monitoring of foods. In: Mathematical and Statistical
+Methods in Food Science and Technology. Wiley, pp. 363–384.
+}
 }

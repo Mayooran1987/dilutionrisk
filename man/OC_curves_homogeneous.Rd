@@ -2,51 +2,62 @@
 % Please edit documentation in R/OC_curves_homogeneous.R
 \name{OC_curves_homogeneous}
 \alias{OC_curves_homogeneous}
-\title{Comparison based on OC curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
+\title{Operating Characteristic (OC) Curves for Homogeneous Batches}
 \usage{
-OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n, type, n_sim)
+OC_curves_homogeneous(
+  c,
+  lambda_low,
+  lambda_high,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  n,
+  type = "theory",
+  n_sim = NA
+)
 }
 \arguments{
-\item{c}{acceptance number}
+\item{c}{Acceptance number (maximum number of defective units allowed).}
 
-\item{lambda_low}{the lower value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{Lower bound of expected microbial count for x-axis.}
 
-\item{lambda_high}{the upper value of the expected microbial count(\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{Upper bound of expected microbial count for x-axis.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Vector of final dilution factors.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Vector of amounts placed on the plate.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n}{number of samples which are used for inspection.}
+\item{n}{Number of samples inspected. Must be positive integer.}
 
-\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+\item{type}{Type of calculation: "theory" (default) or "simulation".}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
+\item{n_sim}{Number of simulations. Required when \code{type = "simulation"}.}
 }
 \value{
-OC curves when diluted samples collected from a homogeneous batch.
+A ggplot object showing OC curves for different dilution schemes.
 }
 \description{
-\code{\link{OC_curves_homogeneous}} provides the operating characteristic(OC) curves when diluted sample has homogeneous contaminants.
+Generates operating characteristic curves comparing different dilution
+schemes when samples are collected from a homogeneous batch.
 }
 \details{
-\code{\link{OC_curves_homogeneous}} provides OC curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
+Operating characteristic curves show the probability of acceptance as a
+function of the true microbial concentration. They are useful for comparing
+the performance of different dilution schemes and sampling plans.
 }
 \examples{
-c <- 2
-lambda_low <- 1
-lambda_high <- 5000
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n <- 5
-OC_curves_homogeneous(c, lambda_low, lambda_high, a, b, f, u, USL, n)
+\dontrun{
+OC_curves_homogeneous(c = 2, lambda_low = 0, lambda_high = 5000,
+                      a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
+                      USL = 1000, n = 5)
+}
+
 }

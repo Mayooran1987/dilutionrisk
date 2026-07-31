@@ -1,0 +1,502 @@
+# pkgdown configuration for dilutionrisk package
+# https://pkgdown.r-lib.org/reference/build_site.html
+
+url: https://Mayooran1987.github.io/dilutionrisk/
+
+# Template settings
+template:
+  bootstrap: 5
+  theme: flatly
+  light-switch: true
+  params:
+    bootswatch: flatly
+    ganalytics: UA-XXXXX-X  # Replace with your Google Analytics tracking ID
+
+  # Custom CSS for professional appearance
+  includes:
+    in_header: |
+      <style>
+        /* Custom styling for dilutionrisk package documentation */
+
+        /* Navbar styling */
+        .navbar {
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background-color: #2c3e50 !important;
+        }
+        .navbar-brand {
+          font-weight: 700;
+          font-size: 1.3em;
+          color: #ffffff !important;
+        }
+        .navbar-brand:hover {
+          color: #ecf0f1 !important;
+        }
+        .navbar .nav-link {
+          color: #ecf0f1 !important;
+        }
+        .navbar .nav-link:hover {
+          color: #ffffff !important;
+        }
+        .navbar .nav-link.active {
+          font-weight: 600;
+          border-bottom: 2px solid #18bc9c;
+        }
+
+        /* Home page styling */
+        .page-header {
+          border-bottom: 3px solid #2c3e50;
+          padding-bottom: 15px;
+          margin-bottom: 30px;
+        }
+        .page-header h1 {
+          color: #2c3e50;
+          font-weight: 700;
+        }
+
+        /* Reference index grid */
+        .reference-index .ref-index {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 20px;
+          margin-top: 20px;
+        }
+        .ref-index .ref-item {
+          border: 1px solid #e9ecef;
+          padding: 20px;
+          border-radius: 8px;
+          background: white;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .ref-index .ref-item:hover {
+          box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+          transform: translateY(-2px);
+        }
+        .ref-index .ref-title {
+          font-size: 1.15em;
+          font-weight: 600;
+          color: #2c3e50;
+        }
+        .ref-index .ref-title a {
+          color: #2c3e50;
+          text-decoration: none;
+        }
+        .ref-index .ref-title a:hover {
+          color: #18bc9c;
+        }
+        .ref-index .ref-description {
+          font-size: 0.95em;
+          color: #6c757d;
+          margin-top: 8px;
+          line-height: 1.5;
+        }
+        .ref-index .ref-aliases {
+          font-size: 0.85em;
+          color: #6c757d;
+          margin-top: 5px;
+        }
+        .ref-index .ref-aliases code {
+          background-color: #f8f9fa;
+          padding: 2px 6px;
+          border-radius: 3px;
+        }
+
+        /* Code blocks */
+        pre {
+          background-color: #f8f9fa;
+          border-radius: 6px;
+          padding: 15px;
+          border: 1px solid #e9ecef;
+          overflow-x: auto;
+          font-size: 0.9em;
+        }
+        code {
+          color: #2c3e50;
+          background-color: #f8f9fa;
+          padding: 2px 6px;
+          border-radius: 3px;
+          font-size: 0.9em;
+        }
+        pre code {
+          background-color: transparent;
+          padding: 0;
+          color: #2c3e50;
+        }
+
+        /* Arguments section */
+        .arguments {
+          background-color: #f8f9fa;
+          padding: 15px 20px;
+          border-radius: 6px;
+          margin: 10px 0;
+        }
+        .arguments dt {
+          font-weight: 600;
+          color: #2c3e50;
+        }
+        .arguments dd {
+          margin-left: 20px;
+          margin-bottom: 10px;
+          color: #495057;
+        }
+
+        /* Value section */
+        .value {
+          background-color: #e8f4fd;
+          padding: 15px 20px;
+          border-radius: 6px;
+          border-left: 4px solid #3498db;
+          margin: 10px 0;
+        }
+
+        /* Details section */
+        .details {
+          background-color: #fff3cd;
+          padding: 15px 20px;
+          border-radius: 6px;
+          border-left: 4px solid #ffc107;
+          margin: 10px 0;
+        }
+
+        /* References section */
+        .references {
+          background-color: #f8f9fa;
+          padding: 15px 20px;
+          border-radius: 6px;
+          margin: 10px 0;
+          border-left: 4px solid #6c757d;
+        }
+        .references ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+        .references li {
+          padding: 5px 0;
+          border-bottom: 1px solid #e9ecef;
+        }
+        .references li:last-child {
+          border-bottom: none;
+        }
+
+        /* Examples section */
+        .example-container {
+          background-color: #f8f9fa;
+          border-radius: 8px;
+          padding: 20px;
+          margin: 15px 0;
+          border-left: 4px solid #28a745;
+        }
+        .example-container .example-run-button {
+          background-color: #28a745;
+          color: white;
+          border: none;
+          padding: 6px 15px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 0.9em;
+          transition: background-color 0.3s ease;
+          margin-bottom: 10px;
+        }
+        .example-container .example-run-button:hover {
+          background-color: #218838;
+        }
+
+        /* Tables */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 15px 0;
+          font-size: 0.95em;
+        }
+        table th {
+          background-color: #2c3e50;
+          color: white;
+          padding: 10px 15px;
+          text-align: left;
+        }
+        table td {
+          padding: 10px 15px;
+          border-bottom: 1px solid #e9ecef;
+        }
+        table tr:hover {
+          background-color: #f8f9fa;
+        }
+        table tr:nth-child(even) {
+          background-color: #f8f9fa;
+        }
+
+        /* Section headings */
+        .section.level1 h1 {
+          color: #2c3e50;
+          border-bottom: 2px solid #2c3e50;
+          padding-bottom: 10px;
+          margin-top: 0;
+        }
+        .section.level2 h2 {
+          color: #34495e;
+          margin-top: 30px;
+          border-bottom: 1px solid #e9ecef;
+          padding-bottom: 8px;
+        }
+        .section.level3 h3 {
+          color: #495057;
+          margin-top: 25px;
+        }
+
+        /* TOC styling */
+        .article-toc .nav-link {
+          padding: 0.2rem 0.5rem;
+          color: #495057;
+        }
+        .article-toc .nav-link.active {
+          border-left: 2px solid #2c3e50;
+          padding-left: 1rem;
+          color: #2c3e50;
+          font-weight: 600;
+        }
+        .article-toc .nav-link:hover {
+          color: #18bc9c;
+        }
+
+        /* Footer */
+        .pkgdown-footer {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 20px 0;
+          margin-top: 40px;
+        }
+        .pkgdown-footer a {
+          color: #18bc9c;
+        }
+        .pkgdown-footer a:hover {
+          color: #ffffff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .ref-index .ref-item {
+            padding: 15px;
+          }
+          .navbar-brand {
+            font-size: 1em;
+          }
+          .reference-index .ref-index {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Print styles */
+        @media print {
+          .navbar {
+            display: none !important;
+          }
+          .pkgdown-footer {
+            display: none !important;
+          }
+          .article-toc {
+            display: none !important;
+          }
+          body {
+            font-size: 12pt;
+          }
+        }
+      </style>
+
+# Navigation bar configuration
+navbar:
+  type: default
+  left:
+    - text: "Home"
+      icon: "fa-home"
+      href: "index.html"
+
+    - text: "Reference"
+      icon: "fa-file-alt"
+      href: "reference/index.html"
+
+    - text: "Articles"
+      icon: "fa-book"
+      menu:
+        - text: "Introduction to dilutionrisk"
+          href: "articles/introduction.html"
+        - text: "-"
+        - text: "Homogeneous Batch Models"
+          href: "articles/homogeneous_models.html"
+        - text: "Heterogeneous Batch Models"
+          href: "articles/heterogeneous_models.html"
+        - text: "Validation and Simulation"
+          href: "articles/validation.html"
+        - text: "-"
+        - text: "Case Studies"
+          href: "articles/case_studies.html"
+        - text: "FAQ"
+          href: "articles/faq.html"
+
+    - text: "News"
+      icon: "fa-newspaper"
+      href: "news/index.html"
+
+  right:
+    - text: "GitHub"
+      icon: "fa-github"
+      href: "https://github.com/Mayooran1987/dilutionrisk"
+
+# Reference index structure
+reference:
+  - title: "Probability Detection Functions"
+    desc: "Calculate probability of detection for homogeneous and heterogeneous batches"
+    contents:
+      - prob_detection_homogeneous
+      - prob_detection_homogeneous_multiple
+      - prob_detection_heterogeneous
+      - prob_detection_heterogeneous_multiple
+
+  - title: "Probability Acceptance Functions"
+    desc: "Calculate probability of acceptance for sampling plans"
+    contents:
+      - prob_acceptance_homogeneous
+      - prob_acceptance_homogeneous_multiple
+      - prob_acceptance_heterogeneous
+      - prob_acceptance_heterogeneous_multiple
+
+  - title: "Operating Characteristic (OC) Curves"
+    desc: "Generate OC curves for comparing dilution schemes"
+    contents:
+      - OC_curves_homogeneous
+      - OC_curves_heterogeneous
+
+  - title: "Probability of Detection (PD) Curves"
+    desc: "Generate PD curves for comparing dilution schemes"
+    contents:
+      - pd_curves_homogeneous
+      - pd_curves_heterogeneous
+
+  - title: "Coefficient of Variation (CV)"
+    desc: "Estimate CV for different dilution schemes"
+    contents:
+      - cv_homogeneous
+      - cv_homogeneous_multiple
+      - cv_heterogeneous
+      - cv_heterogeneous_multiple
+      - cv_curves_homogeneous
+      - cv_curves_heterogeneous
+
+  - title: "True Concentration Estimation"
+    desc: "Estimate true microbial concentration in original samples"
+    contents:
+      - true_concentration_homogeneous
+      - true_concentration_homogeneous_multiple
+      - true_concentration_heterogeneous
+      - true_concentration_heterogeneous_multiple
+      - true_concentration_curves_homogeneous
+      - true_concentration_curves_heterogeneous
+
+  - title: "Validation Functions"
+    desc: "Validate theoretical results with simulations"
+    contents:
+      - pd_validation_homogeneous
+      - pd_validation_heterogeneous
+
+  - title: "Distribution Functions"
+    desc: "Random number generation from truncated distributions"
+    contents:
+      - rtrunpoilog
+
+# Articles (vignettes) configuration
+articles:
+  - title: "Getting Started"
+    navbar: "Getting Started"
+    contents:
+      - introduction
+
+  - title: "Modeling Approaches"
+    navbar: "Modeling Approaches"
+    contents:
+      - homogeneous_models
+      - heterogeneous_models
+
+  - title: "Advanced Topics"
+    navbar: "Advanced Topics"
+    contents:
+      - validation
+      - case_studies
+      - faq
+
+# Home page configuration
+home:
+  title: "dilutionrisk"
+  description: "Risk Assessment for Dilution Testing in Microbiology"
+  sidebar:
+    structure: [links, license, community, citation, authors, issues]
+    components:
+      links:
+        title: "Useful Links"
+        text: |
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/Mayooran1987/dilutionrisk" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a></li>
+            <li><a href="https://CRAN.R-project.org/package=dilutionrisk" target="_blank"><i class="fas fa-download"></i> CRAN</a></li>
+            <li><a href="https://github.com/Mayooran1987/dilutionrisk/issues" target="_blank"><i class="fas fa-bug"></i> Report Bug</a></li>
+          </ul>
+      citation:
+        title: "Citation"
+        text: |
+          <p>To cite this package in publications use:</p>
+          <pre><code>Thevaraja, M., &amp; Bebbington, M. (2026).
+          dilutionrisk: Risk Assessment for Dilution Testing in Microbiology.
+          R package version 0.1.0.</code></pre>
+
+# Search configuration
+search:
+  type: lunr
+  preview: 5
+  search-threshold: 0.1
+  search-boost:
+    title: 5
+    heading: 3
+    text: 1
+    content: 1
+
+# Development version indicator
+development:
+  mode: auto
+  version_label: danger
+  version_tooltip: "Development version - use with caution"
+
+# News configuration
+news:
+  cran_dates: false
+  one_page: false
+
+# Authors configuration
+authors:
+  Mayooran Thevaraja:
+    href: https://github.com/Mayooran1987
+  Mark Bebbington:
+    href: https://github.com/mbebbington
+
+# Footer configuration
+footer:
+  left:
+    text: "Developed by Mayooran Thevaraja and Mark Bebbington"
+  right:
+    text: "Built with <a href='https://pkgdown.r-lib.org/'>pkgdown</a>"
+    href: https://pkgdown.r-lib.org/
+
+# GitHub configuration for deployment
+github:
+  url: https://github.com/Mayooran1987/dilutionrisk
+  branch: main
+
+# Twitter card for social sharing
+twitter:
+  card: summary_large_image
+  site: "@Mayooran"
+  title: "dilutionrisk"
+  description: "Risk Assessment for Dilution Testing in Microbiology"
+  image: logo.png
+
+# Open Graph for social sharing
+opengraph:
+  title: "dilutionrisk"
+  description: "Risk Assessment for Dilution Testing in Microbiology"
+  image: logo.png

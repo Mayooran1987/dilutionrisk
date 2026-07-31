@@ -2,45 +2,51 @@
 % Please edit documentation in R/pd_curves_homogeneous.R
 \name{pd_curves_homogeneous}
 \alias{pd_curves_homogeneous}
-\title{Comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a homogeneous batch.}
+\title{Probability of Detection Curves for Homogeneous Batches}
 \usage{
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, type, n_sim)
+pd_curves_homogeneous(
+  lambda_low,
+  lambda_high,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  type = "theory",
+  n_sim = NA
+)
 }
 \arguments{
-\item{lambda_low}{the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{Lower bound of expected microbial count for x-axis.}
 
-\item{lambda_high}{the upper value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{Upper bound of expected microbial count for x-axis.}
 
-\item{a}{lower domain of the number of microbial count.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of microbial count.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Vector of final dilution factors.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Vector of amounts placed on the plate.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+\item{type}{Type of calculation: "theory" (default) or "simulation".}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
+\item{n_sim}{Number of simulations. Required when \code{type = "simulation"}.}
 }
 \value{
-Probability of detection curves when diluted samples collected from a homogeneous batch.
+A ggplot object showing PD curves for different dilution schemes.
 }
 \description{
-\code{\link{pd_curves_homogeneous}} provides the probability of detection curves when samples collected from a homogeneous batch.
-}
-\details{
-\code{\link{pd_curves_homogeneous}} provides probability of detection curves for different dilution schemes when samples collected from a homogeneous batch (this section will be updated later on).
+Generates probability of detection curves comparing different dilution
+schemes when samples are collected from a homogeneous batch.
 }
 \examples{
-lambda_low <- 0
-lambda_high <- 5000
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-pd_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL)
+\dontrun{
+pd_curves_homogeneous(lambda_low = 0, lambda_high = 5000,
+                      a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
+                      USL = 1000)
+}
+
 }

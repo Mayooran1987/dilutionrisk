@@ -4,7 +4,7 @@
 \alias{cv_homogeneous}
 \alias{cv_homogeneous_multiple}
 \alias{cv_curves_homogeneous}
-\title{coefficient of variation estimation when diluted sample collected from a homogeneous batch.}
+\title{Coefficient of Variation for Homogeneous Batches}
 \usage{
 cv_homogeneous(lambda, a, b, f, u, USL, n_sim)
 
@@ -13,41 +13,50 @@ cv_homogeneous_multiple(lambda, a, b, f, u, USL, n_sim)
 cv_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 }
 \arguments{
-\item{lambda}{the expected microbial count (\eqn{\lambda}).}
+\item{lambda}{Expected microbial count (\eqn{\lambda}). Must be positive.}
 
-\item{a}{lower domain of the number of microbial count.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of microbial count.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Final dilution factor. Must be between 0 and 1.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Amount placed on the plate. Must be positive.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
+\item{n_sim}{Number of simulations. Larger values provide more precise
+estimates. Recommended minimum: 10,000.}
 
-\item{lambda_low}{the lower value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_low}{Lower bound of expected microbial count for x-axis in
+graphical displays.}
 
-\item{lambda_high}{the upper value of the expected microbial count (\eqn{\lambda}) for use in the graphical display's x-axis.}
+\item{lambda_high}{Upper bound of expected microbial count for x-axis in
+graphical displays.}
 }
 \value{
-coefficient of variation when the diluted sample collected from a homogeneous batch.
+Numeric value representing the coefficient of variation for the
+homogeneous batch.
 }
 \description{
-These functions provides coefficient of variation in the original sample  when diluted samples collected from a homogeneous batch.
-}
-\details{
-These functions provides coefficient of variation in the original sample  when diluted samples collected from a homogeneous batch.
+Estimates the coefficient of variation (CV) in the original sample when
+diluted samples are collected from a homogeneous batch.
 }
 \examples{
-lambda_low <- 1000
-lambda_high <- 8000
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n_sim <- 500
-cv_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
+\dontrun{
+# Basic usage
+cv_homogeneous(lambda = 2000, a = 0, b = 300,
+               f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+
+# Multiple dilution schemes
+cv_homogeneous_multiple(lambda = 2000, a = 0, b = 300,
+                        f = c(0.01, 0.1), u = c(0.1, 0.1),
+                        USL = 1000, n_sim = 50000)
+
+# Plot CV curves
+cv_curves_homogeneous(lambda_low = 1000, lambda_high = 8000,
+                      a = 0, b = 300, f = c(0.01, 0.1),
+                      u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
+}
+
 }

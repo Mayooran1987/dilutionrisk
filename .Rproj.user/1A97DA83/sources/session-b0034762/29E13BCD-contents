@@ -1,0 +1,236 @@
+devtools::install_github("r-lib/roxygen2")
+library(roxygen2)
+#####################################################################
+roxygen2::roxygenize(".", roclets = "rd")
+
+roxygen2::update_collate(".")
+
+devtools::build_manual(path = getwd())
+
+devtools::build(manual = TRUE)
+
+pkgdown::build_site()
+
+devtools::document()
+
+devtools::run_examples()
+
+devtools::spell_check()
+
+devtools::check(".")
+
+devtools::build_rmd(pkg = ".")
+
+devtools::check(".", args = "--no-examples")
+
+pkgbuild::build(manual = TRUE)
+usethis::use_r(name = NULL, open = rlang::is_interactive())
+
+usethis::use_test(name = NULL, open = rlang::is_interactive())
+
+
+usethis::use_testthat()
+
+usethis::use_test()
+
+rstudioapi::getSourceEditorContext()
+
+usethis::use_github_action_check_standard()
+
+usethis::use_news_md()
+
+usethis::se_coverage(pkg = ".", type = c("codecov"))
+
+
+tinytex::tlmgr_install("makeindex")
+
+roxygen2::update_collate(".")
+
+Rcpp::compileAttributes()
+
+##################################################
+library(badger)
+badger::badge_github_actions(ref = NULL, action = "R-CMD-check")
+
+remotes::install_github()
+
+usethis::gh_token_help()
+
+
+install.packages("githubinstall")
+githubinstall::githubinstall("uneqmixr")
+
+githubinstall::gh_suggest_username("Mayooran1987")
+
+usethis::create_github_token()
+
+gh::gh_whoami()
+
+usethis::use_github()
+
+usethis::use_github(auth_token = "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")
+
+usethis::use_github_action("check-standard")
+usethis::use_github_action_check_standard(
+  save_as = "R-CMD-check.yaml",
+  ref = NULL,
+  ignore = TRUE,
+  open = FALSE
+)
+
+usethis::use_coverage("codecov")
+
+gitcreds::gitcreds_set()
+
+#####################################################################
+
+
+#####################################################################
+roxygen2::namespace_roclet()
+
+sessionInfo()
+
+document(pkg = ".", roclets = NULL, quiet = FALSE)
+
+# library(devtools)
+# library(usethis)
+# library(rlang)
+# usethis::use_github_action_check_standard()
+devtools::check_man(pkg = ".")
+devtools::run_examples(pkg = ".")
+devtools::build_rmd(path = getwd())
+
+preview_site(path = getwd())
+
+
+library(rhub)
+validate_email("mayooran@eng.jfn.ac.lk")
+
+devtools::check_rhub(pkg = ".")
+
+submit_cran(pkg = ".")
+
+install.packages("devtools")
+library(devtools)
+devtools::install_github("Mayooran1987/mixingsimulation")
+
+
+
+
+install.packages("formatR")
+formatR::tidy_dir("R")
+
+install.packages("lintr")
+lintr::lint_package()
+
+
+foghorn::cran_incoming(pkg = "mixingsimulation")
+
+
+
+cran_incoming(pkg = "auditor")
+
+cran_incoming()
+
+devtools::install_github("Mayooran1987/mixingsimulation")
+
+install.packages("githubinstall")
+githubinstall::githubinstall("mixingsimulation")
+
+githubinstall::gh_suggest_username("Mayooran")
+
+
+## install if needed (do this exactly once):
+## install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "Mayooran1987", user.email = "mayooran@eng.jfn.ac.lk")
+
+
+
+source_gist("https://github.com/Mayooran1987/mixingsimulation")
+
+
+library(available)
+
+available::available("mixingsimulation")
+
+use_git()
+use_github
+use_github_release()
+use_github()
+use_spell_check()
+
+
+tools::texi2dvi("mixingsimulation.tex", quiet = TRUE)
+
+
+memory.limit()
+
+memory.limit(10000)
+saber::teamStats
+
+
+install.packages("rlang", dependencies = c("Depends", "Imports", "LinkingTo", "Suggests"))
+
+############################Memory matters#########################################
+if(.Platform$OS.type == "windows") withAutoprint({
+  memory.size()
+  memory.size(TRUE)
+  memory.limit()
+})
+memory.limit(size=56000)
+
+
+file.edit(file.path("~", ".Rprofile"))
+
+# invisible(utils::memory.limit(size = 100000))
+
+#############################Check error pdf manual##################################
+library(tidyverse)
+
+check_man <- function(){
+  man_files <- list.files("man", full.names = T)
+  dir.create("man_backup", showWarnings = F)
+  file.copy(man_files, "man_backup")
+  unlink(man_files)
+  n_man_file <- list.files("man_backup", full.names = T)
+  tp <- tempdir()
+
+  for_a_man <- function(mn){
+    cat("Checking: ", basename(mn))
+    file.copy(mn, "man")
+    devtools::build_manual(path = tp)
+    chk <- length(list.files(tp, ".pdf$")) > 0
+    d0 <- tibble(man_file = basename(mn), test = chk)
+    unlink(list.files(tp, ".pdf$", full.names = T))
+    unlink(list.files("man", full.names = T))
+    cat(" ... Done!", ifelse(chk, "ok","issues"),"\n")
+    d0
+  }
+
+  all_checks <- n_man_file %>% map_df(for_a_man)
+
+  file.copy(n_man_file, "man")
+  unlink(tp, recursive = T)
+  unlink("man_backup", recursive = T)
+  all_checks
+}
+
+check_man()
+
+tryCatch({
+  stop('')
+},error=function(err){
+  traceback()
+})
+
+library(lattice)
+
+plot1 <- pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL)
+plot12 <- ggplot2::ggsave("logo12.jpg", plot1)
+
+
+hexSticker::sticker(plot12, package="mRatool", p_size=25, s_x=1.0, s_y=.75, s_width=0.5, s_height=0.8,
+                    h_fill="#0ca4eb", h_color="#0c2aeb", filename="inst/figures/mRatool.png")
+

@@ -2,35 +2,46 @@
 % Please edit documentation in R/rtrunpoilog.R
 \name{rtrunpoilog}
 \alias{rtrunpoilog}
-\title{Generates random deviates from truncated Poisson lognormal distribution.}
+\title{Truncated Poisson-Lognormal Random Number Generation}
 \usage{
 rtrunpoilog(n, mu, sd, a, b)
 }
 \arguments{
-\item{n}{number of observations. If length(n) > 1 then the length is taken to be the number required.}
+\item{n}{Number of observations. If \code{length(n) > 1}, the length is
+taken to be the number required.}
 
-\item{mu}{the mean microbial count (on the log scale).}
+\item{mu}{Mean of the lognormal distribution on the log scale.}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the lognormal distribution on the log scale.}
 
-\item{a}{lower truncation points (lower domain of the number of microbial count).}
+\item{a}{Lower truncation point (lower bound of cell count).}
 
-\item{b}{upper truncation points (upper domain of the number of microbial count).}
+\item{b}{Upper truncation point (upper bound of cell count).}
 }
 \value{
-\code{\link{rtrunpoilog}} generates random numbers from truncated Poisson lognormal distribution.
+A vector of random numbers from the truncated Poisson-lognormal
+distribution.
 }
 \description{
-\code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters.
+Generates random deviates from a truncated Poisson-lognormal distribution.
 }
 \details{
-\code{\link{rtrunpoilog}} provides generated random numbers from truncated Poisson lognormal distribution with given parameters. (this section will be updated later on).
+The Poisson-lognormal distribution is a mixture distribution where:
+\itemize{
+\item \eqn{\Lambda \sim \text{Lognormal}(\mu, \sigma^2)}
+\item \eqn{X | \Lambda = \lambda \sim \text{Poisson}(\lambda)}
+}
+
+The truncation limits the support to \eqn{a \le X \le b}.
 }
 \examples{
-n <- 100
-mu <-  0
-sd <-  1
-a <- 0
-b <- 300
-rtrunpoilog(n, mu, sd, a, b)
+\dontrun{
+# Generate 100 random values
+set.seed(123)
+rtrunpoilog(n = 100, mu = 0, sd = 1, a = 0, b = 300)
+
+# Generate a single value
+rtrunpoilog(n = 1, mu = 0.5, sd = 0.8, a = 10, b = 200)
+}
+
 }

@@ -1,0 +1,114 @@
+Package: dilutionrisk
+Type: Package
+Title: Risk Assessment and Probability Estimation for Dilution Testing in Microbiology
+Version: 0.1.0
+Date: 2026-08-01
+
+Authors@R: c(
+    person("Mayooran", "Thevaraja", 
+           email = "mayooran@eng.jfn.ac.lk", 
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4786-7248",
+                      affiliation = "University of Jaffna")),
+    person("Mark", "Bebbington", 
+           email = "m.bebbington@massey.ac.nz", 
+           role = "aut",
+           comment = c(ORCID = "0000-0003-3504-7418",
+                      affiliation = "Massey University"))
+  )
+
+Description: Provides comprehensive probability estimations and graphical 
+    displays for modelling and assessment of risk based on aerobic plate 
+    count (APC) on diluted testing. The package implements bounded 
+    distributions including truncated Poisson and truncated Poisson 
+    lognormal distributions for homogeneous and heterogeneous scenarios 
+    respectively. It includes functions for:
+    \itemize{
+      \item Probability of Detection (PD): Calculate detection probability
+        for microbial contamination exceeding specification limits
+      \item Probability of Acceptance (PA): Assess sampling plan performance
+        with binomial acceptance probabilities
+      \item Operating Characteristic (OC) Curves: Visual comparison of
+        different dilution schemes
+      \item Coefficient of Variation (CV): Variability estimation for
+        dilution schemes
+      \item True Concentration Estimation: Estimate true microbial
+        concentration from diluted samples
+      \item Validation Tools: Compare theoretical and simulation results
+    }
+    The package supports both theoretical calculations and simulation-based
+    validation approaches for robust risk assessment in food safety
+    microbiology. It is particularly useful for designing and evaluating
+    sampling plans for microbiological monitoring of foods.
+
+License: GPL (>= 2)
+URL: https://github.com/Mayooran1987/dilutionrisk
+BugReports: https://github.com/Mayooran1987/dilutionrisk/issues
+
+Depends:
+    R (>= 4.0.0)
+
+Imports:
+    ggplot2 (>= 3.3.0),
+    ggthemes (>= 4.2.0),
+    reshape2 (>= 1.4.4),
+    Rcpp (>= 1.0.0),
+    stats (>= 4.0.0),
+    methods (>= 4.0.0),
+    utils (>= 4.0.0)
+
+LinkingTo:
+    Rcpp
+
+Suggests:
+    testthat (>= 3.0.0),
+    covr (>= 3.5.0),
+    knitr (>= 1.30),
+    rmarkdown (>= 2.7),
+    pkgdown (>= 2.0.0),
+    roxygen2 (>= 7.3.0),
+    spelling (>= 2.2),
+    devtools (>= 2.4.0)
+
+VignetteBuilder:
+    knitr
+
+Encoding: UTF-8
+LazyData: true
+LazyDataCompression: xz
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3.9000
+
+Language: en-US
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/start-first: setup
+Config/Needs/website: pkgdown
+
+SystemRequirements: C++11 (for Rcpp integration)
+
+Biarch: true
+NeedsCompilation: yes
+Publishing: yes
+
+Author: 
+    Mayooran Thevaraja [aut, cre] 
+      (University of Jaffna, <https://orcid.org/0000-0002-4786-7248>),
+    Mark Bebbington [aut] 
+      (Massey University, <https://orcid.org/0000-0003-3504-7418>)
+
+Maintainer: Mayooran Thevaraja <mayooran@eng.jfn.ac.lk>
+
+Copyright: (c) 2026 Mayooran Thevaraja and Mark Bebbington
+
+Acknowledgments: 
+    The authors acknowledge the support of their respective institutions
+    and the open-source R community for their contributions to the
+    development of this package. 
+
+Repository: https://github.com/Mayooran1987/dilutionrisk
+RemoteUsername: Mayooran1987
+RemoteRepo: dilutionrisk
+RemoteHost: api.github.com
+RemoteRef: HEAD
+RemoteSha: 

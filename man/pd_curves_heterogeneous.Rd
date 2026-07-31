@@ -2,48 +2,54 @@
 % Please edit documentation in R/pd_curves_heterogeneous.R
 \name{pd_curves_heterogeneous}
 \alias{pd_curves_heterogeneous}
-\title{Comparison based on probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
+\title{Probability of Detection Curves for Heterogeneous Batches}
 \usage{
-pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, type, n_sim)
+pd_curves_heterogeneous(
+  mu_low,
+  mu_high,
+  sd,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  type = "theory",
+  n_sim = NA
+)
 }
 \arguments{
-\item{mu_low}{the lower value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_low}{Lower bound of mean microbial count for x-axis (log scale).}
 
-\item{mu_high}{the upper value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_high}{Upper bound of mean microbial count for x-axis (log scale).}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the normal distribution on the log scale.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Vector of final dilution factors.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Vector of amounts placed on the plate.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+\item{type}{Type of calculation: "theory" (default) or "simulation".}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
+\item{n_sim}{Number of simulations. Required when \code{type = "simulation"}.}
 }
 \value{
-Probability of detection curves when samples collected from a heterogeneous batch.
+A ggplot object showing PD curves for different dilution schemes.
 }
 \description{
-\code{\link{pd_curves_heterogeneous}} provides the probability of detection curves when samples collected from a heterogeneous batch.
-}
-\details{
-\code{\link{pd_curves_heterogeneous}} provides probability of detection curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
+Generates probability of detection curves comparing different dilution
+schemes when samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \examples{
-mu_low <- 0
-mu_high <- 10
-sd <- 0.2
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-pd_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL)
+\dontrun{
+pd_curves_heterogeneous(mu_low = 0, mu_high = 10, sd = 0.2,
+                        a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
+                        USL = 1000)
+}
+
 }

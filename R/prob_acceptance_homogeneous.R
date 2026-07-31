@@ -1,31 +1,96 @@
-##' \code{\link{prob_acceptance_homogeneous}} provides a probability of acceptance in the original sample when samples collected from a homogeneous batch.
-##' @title Probability of acceptance estimation when diluted sample collected from a homogeneous batch.
-##' @param c acceptance number
-##' @param lambda the expected cell count (\eqn{\lambda}).
-##' @param a lower domain of the number of cell counts.
-##' @param b upper domain of the number of cell counts.
-##' @param f final dilution factor.
-##' @param u amount put on the plate.
-##' @param USL upper specification limit.
-##' @param n number of samples which are used for inspection.
-##' @param type what type of the results you would like to consider such as "theory" or "simulation" (default "theory").
-##' @param n_sim number of simulations (large simulations provide a more precise estimation).
-##' @details \code{\link{prob_detection_homogeneous}} provides a probability of acceptance when samples collected from a homogeneous batch (this section will be updated later on).
-##' @return Probability of acceptance when the diluted sample collected from a homogeneous batch.
-##' @examples
-##' c <- 2
-##' lambda <- 2000
-##' a <- 0
-##' b <- 300
-##' f <- 0.01
-##' u <- 0.1
-##' USL <- 1000
-##' n <- 5
-##' prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n)
-##' @usage  prob_acceptance_homogeneous(c, lambda, a, b, f, u, USL, n, type, n_sim)
-##' @export
-prob_acceptance_homogeneous <- function(c, lambda, a, b, f, u, USL, n, type = "theory", n_sim = NA) {
+#' Probability of Acceptance for Homogeneous Batches
+#'
+#' Calculates the probability of acceptance (PA) in the original sample when
+#' diluted samples are collected from a homogeneous batch.
+#'
+#' @param c Acceptance number (maximum number of defective units allowed).
+#' @param lambda Expected microbial count (\eqn{\lambda}). Must be positive.
+#' @param a Lower bound of cell count domain. Must be non-negative.
+#' @param b Upper bound of cell count domain. Must be greater than \code{a}.
+#' @param f Final dilution factor. Must be between 0 and 1.
+#' @param u Amount placed on the plate. Must be positive.
+#' @param USL Upper specification limit for microbial count.
+#' @param n Number of samples inspected. Must be positive integer.
+#' @param type Type of calculation: "theory" (default) or "simulation".
+#' @param n_sim Number of simulations. Required when \code{type = "simulation"}.
+#'
+#' @return Numeric value representing the probability of acceptance.
+#'
+#' @details
+#' The probability of acceptance is calculated using the binomial distribution:
+#' \deqn{P_a = P(X \le c) = \sum_{k=0}^{c} \binom{n}{k} p_d^k (1-p_d)^{n-k}}
+#' where \eqn{p_d} is the probability of detection and \eqn{n} is the number
+#' of samples inspected.
+#'
+#' @examples
+#' \dontrun{
+#' # Basic usage
+#' prob_acceptance_homogeneous(c = 2, lambda = 2000, a = 0, b = 300,
+#'                             f = 0.01, u = 0.1, USL = 1000, n = 5)
+#'
+#' # Multiple dilution schemes
+#' prob_acceptance_homogeneous_multiple(c = 2, lambda = 2000, a = 0, b = 300,
+#'                                      f = c(0.01, 0.1), u = c(0.1, 0.1),
+#'                                      USL = 1000, n = 5)
+#' }
+#'
+#' @name prob_acceptance_homogeneous
+#' @aliases prob_acceptance_homogeneous prob_acceptance_homogeneous_multiple
+#' @rdname prob_acceptance_homogeneous
+#' @export
+prob_acceptance_homogeneous <- function(c, lambda, a, b, f, u, USL, n,
+                                        type = "theory", n_sim = NA) {
+  # Input validation
+  if (!is.numeric(c) || length(c) != 1 || c < 0 || c != round(c)) {
+    stop("'c' must be a non-negative integer", call. = FALSE)
+  }
+  if (!is.numeric(n) || length(n) != 1 || n < 1 || n != round(n)) {
+    stop("'n' must be a positive integer", call. = FALSE)
+  }
+  if (!is.numeric(lambda) || length(lambda) != 1 || lambda <= 0) {
+    stop("'lambda' must be a positive numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(a) || length(a) != 1 || a < 0) {
+    stop("'a' must be a non-negative numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(b) || length(b) != 1 || b <= a) {
+    stop("'b' must be a numeric scalar greater than 'a'", call. = FALSE)
+  }
+  if (!is.numeric(f) || length(f) != 1 || f <= 0 || f >= 1) {
+    stop("'f' must be a numeric scalar between 0 and 1", call. = FALSE)
+  }
+  if (!is.numeric(u) || length(u) != 1 || u <= 0) {
+    stop("'u' must be a positive numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(USL) || length(USL) != 1 || USL <= 0) {
+    stop("'USL' must be a positive numeric scalar", call. = FALSE)
+  }
+
+  # Calculate probability of detection
   pd <- prob_detection_homogeneous(lambda, a, b, f, u, USL, type, n_sim)
+
+  # Calculate probability of acceptance using binomial distribution
   pa <- stats::pbinom(c, n, pd)
+
   return(pa)
+}
+
+#' @rdname prob_acceptance_homogeneous
+#' @export
+prob_acceptance_homogeneous_multiple <- function(c, lambda, a, b, f, u, USL, n,
+                                                 type = "theory", n_sim = NA) {
+  # Input validation
+  if (length(f) != length(u)) {
+    stop("'f' and 'u' must have equal length", call. = FALSE)
+  }
+  if (length(f) == 0) {
+    stop("'f' must have at least one element", call. = FALSE)
+  }
+
+  results <- vapply(seq_along(f), function(i) {
+    prob_acceptance_homogeneous(c, lambda, a, b, f[i], u[i], USL, n,
+                                type, n_sim)
+  }, numeric(1))
+
+  return(matrix(results, nrow = 1))
 }

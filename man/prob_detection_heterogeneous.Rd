@@ -2,46 +2,89 @@
 % Please edit documentation in R/prob_detection_heterogeneous.R
 \name{prob_detection_heterogeneous}
 \alias{prob_detection_heterogeneous}
-\title{Probability of detection estimation when diluted sample collected from a heterogeneous batch.}
+\alias{prob_detection_heterogeneous_multiple}
+\title{Probability of Detection for Heterogeneous Batches}
 \usage{
-prob_detection_heterogeneous(mu, sd, a, b, f, u, USL, type, n_sim)
+prob_detection_heterogeneous(
+  mu,
+  sd,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  type = "theory",
+  n_sim = NA
+)
+
+prob_detection_heterogeneous_multiple(
+  mu,
+  sd,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  type = "theory",
+  n_sim = NA
+)
 }
 \arguments{
-\item{mu}{the mean microbial count (on the log scale).}
+\item{mu}{Mean microbial count on the log scale. Must satisfy
+\code{log(a) - log(f*u) <= mu <= log(b) - log(f*u)}.}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the normal distribution on the log scale.
+Must be positive.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Final dilution factor. Must be between 0 and 1.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Amount placed on the plate. Must be positive.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+\item{type}{Type of calculation: "theory" (default) or "simulation".}
 
-\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
+\item{n_sim}{Number of simulations. Required when \code{type = "simulation"}.}
 }
 \value{
-Probability of detection when sample collected from a heterogeneous batch.
+Numeric value representing the probability of detection.
 }
 \description{
-\code{\link{prob_detection_heterogeneous}} provides a probability of detection in the original sample when samples collected from a heterogeneous batch.
+Calculates the probability of detection (PD) in the original sample when
+diluted samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \details{
-\code{\link{prob_detection_heterogeneous}} provides a probability of detection when the diluted sample has heterogeneous contaminants. We define the random variable \eqn{X_{i}} is the number of colonies on the \eqn{i^{th}} plate.
-In practice, the acceptance for countable numbers of colonies on a plate must be between 30 and 300. Therefore, we can utilise bounded distributions to model the number of colonies on a plate. In the heterogeneous case, we employed truncated Poisson lognormal distribution to model (this section will be updated later on).
+The probability of detection is defined as the probability that the estimated
+microbial count exceeds the upper specification limit (USL). For heterogeneous
+batches, the count follows a truncated Poisson-lognormal distribution.
+
+The theoretical probability is calculated by integrating over the lognormal
+mixing distribution:
+\deqn{P_d = 1 - \sum_{i=1}^{USL \times f \times u} \frac{1}{i!\sqrt{2\pi}\sigma}
+      \int_0^\infty \frac{t^{i-1} \exp(-0.5((\log(t)-\mu_d)/\sigma)^2)}{e^t - 1} dt}
 }
 \examples{
-mu <- 2
-sd <- 0.2
-a <- 0
-b <- 300
-f <- 0.01
-u <- 0.1
-USL <- 1000
-prob_detection_heterogeneous(mu, sd, a, b, f, u, USL)
+\dontrun{
+# Theoretical calculation
+prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                             f = 0.01, u = 0.1, USL = 1000)
+
+# Simulation-based calculation
+prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                             f = 0.01, u = 0.1, USL = 1000,
+                             type = "simulation", n_sim = 50000)
+}
+
+}
+\references{
+\itemize{
+\item Gonzales-Barron, U.A., Pilão Cadavez, V.A., Butler, F., 2013.
+Statistical approaches for the design of sampling plans for
+microbiological monitoring of foods. In: Mathematical and Statistical
+Methods in Food Science and Technology. Wiley, pp. 363–384.
+}
 }

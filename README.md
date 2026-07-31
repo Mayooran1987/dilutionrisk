@@ -1,43 +1,99 @@
+<!-- README.md - dilutionrisk package -->
+<!-- Comprehensive documentation for risk assessment in dilution testing -->
+
+# dilutionrisk
+
+<!-- badges: start -->
 [![R](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml)
-[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml) [![pages-build-deployment](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pages/pages-build-deployment)<!-- <style> --> 
+[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml)
+[![pkgdown](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml)
+[![CRAN status](https://www.r-pkg.org/badges/version/dilutionrisk)](https://CRAN.R-project.org/package=dilutionrisk)
+[![Downloads](https://cranlogs.r-pkg.org/badges/dilutionrisk)](https://CRAN.R-project.org/package=dilutionrisk)
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/dilutionrisk)](https://CRAN.R-project.org/package=dilutionrisk)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+[![codecov](https://codecov.io/gh/Mayooran1987/dilutionrisk/branch/main/graph/badge.svg)](https://codecov.io/gh/Mayooran1987/dilutionrisk)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+<!-- badges: end -->
 
-<!-- body {text-align: justify} -->
+---
 
-<!-- </style> -->
+## Table of Contents
 
-# ‘dilutionrisk’
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Detailed Usage](#detailed-usage)
+  - [Homogeneous Batch Models](#homogeneous-batch-models)
+  - [Heterogeneous Batch Models](#heterogeneous-batch-models)
+  - [Operating Characteristic Curves](#operating-characteristic-curves)
+  - [Probability of Detection Curves](#probability-of-detection-curves)
+  - [Coefficient of Variation](#coefficient-of-variation)
+  - [True Concentration Estimation](#true-concentration-estimation)
+  - [Validation and Simulation](#validation-and-simulation)
+- [Visualization Examples](#visualization-examples)
+- [Theoretical Background](#theoretical-background)
+- [Applications](#applications)
+- [Documentation](#documentation)
+- [Citation](#citation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Authors and Maintainers](#authors-and-maintainers)
+- [Acknowledgments](#acknowledgments)
+- [References](#references)
 
-The ‘dilutionrisk’ package aims to develop Monte-Carlo estimates of probabilities and graphical displays in the study associated with modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. Also, a description of this package’s functions is available at <https://mayooran1987.github.io/dilutionrisk/reference/index.html>.
+---
 
-<!--The 'dilutionrisk' package aims to develop for getting probability estimations and graphical displays in the study associated with modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. Also, a description of this package's functions is available at <https://mayooran1987.github.io/dilutionrisk/reference/index.html>. -->
+## Overview
 
-<!-- (Note that the web page contains an older version of the package. The most recent version of the page, which is associated with the current version of the package, will be updated soon). -->
+The **dilutionrisk** package provides comprehensive probability estimations and graphical displays for modelling and assessment of risk based on aerobic plate count (APC) on diluted testing. It implements bounded distributions including truncated Poisson and truncated Poisson lognormal distributions for homogeneous and heterogeneous scenarios respectively.
 
-### Installation
+### Background
 
-Any R user can install the development version of dilutionrisk package from [GitHub](https://github.com/) with just two lines of code:
+In food safety microbiology, accurate risk assessment is crucial for ensuring public health. Microbiological testing often involves dilution procedures to quantify microbial contamination. The **dilutionrisk** package addresses the statistical challenges in:
 
-``` r
+1. **Estimating true microbial concentration** from diluted samples
+2. **Assessing detection probabilities** at different contamination levels
+3. **Designing optimal sampling plans** for quality control
+4. **Comparing dilution schemes** for cost-effective testing
+5. **Validating theoretical models** with simulation studies
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Probability of Detection (PD)** | Calculate detection probability for microbial contamination exceeding specification limits |
+| **Probability of Acceptance (PA)** | Assess sampling plan performance with binomial acceptance probabilities |
+| **Operating Characteristic (OC) Curves** | Visual comparison of different dilution schemes |
+| **Coefficient of Variation (CV)** | Variability estimation for dilution schemes |
+| **True Concentration Estimation** | Estimate true microbial concentration from diluted samples |
+| **Validation Tools** | Compare theoretical and simulation results |
+| **Random Number Generation** | Generate from truncated Poisson-lognormal distributions |
+| **Multiple Dilution Schemes** | Compare up to 10 dilution schemes simultaneously |
+
+### Applications
+
+This package is particularly useful for:
+
+- **Food Safety Microbiology**: Assessment of microbial contamination in food products
+- **Quality Control**: Design and evaluation of sampling plans in food industry
+- **Regulatory Compliance**: Meeting microbiological criteria and standards
+- **Academic Research**: Statistical modelling in microbiology and epidemiology
+- **Risk Assessment**: Quantifying risks associated with foodborne pathogens
+- **Process Optimization**: Optimizing dilution procedures for cost-effectiveness
+
+---
+
+## Installation
+
+### From GitHub (Development Version)
+
+```r
+# Install the development version from GitHub
 # install.packages("devtools")
 devtools::install_github("Mayooran1987/dilutionrisk")
-```
 
-### User manual
-
-This package’s user manual can be seen at <https://github.com/Mayooran1987/dilutionrisk/blob/main/dilutionrisk_0.0.1.pdf>
-
-<!-- ### An analytical sample preparation process for microorganisms  -->
-
-<!-- <center> -->
-
-<!-- ![](C:/Users/mthevara/OneDrive - Massey University/Desktop/mixingsimulation/New folder/analytical_sample.png){width=80%} -->
-
-<!-- </center> -->
-
-<!-- The homogenisation occurs stage-by-stage in the powder-mixing process, which is illustrated in the following Figure. -->
-
-<!-- ```{r, fig.cap="\\label{Figure 1} Explanation of the analytical sample preparation process for microorganisms testing"} -->
-
-<!-- knitr::include_graphics("analytical_sample.pdf") -->
-
-<!-- ``` -->
+# Alternatively, using remotes
+# install.packages("remotes")
+remotes::install_github("Mayooran1987/dilutionrisk")

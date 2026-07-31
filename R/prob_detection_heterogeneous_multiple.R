@@ -18,17 +18,18 @@
 ##' sd <- 0.2
 ##' a <- 0
 ##' b <- 300
-##' f <- c(0.01,0.1)
-##' u <- c(0.1,0.1)
+##' f <- c(0.01,0.1,1)
+##' u <- c(0.1,0.1,0.1)
 ##' USL <- 1000
-##' prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL)
+##' n_sim <- 50000
+##' prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, n_sim)
 ##' @usage  prob_detection_heterogeneous_multiple(mu, sd, a, b, f, u, USL, type , n_sim)
 ##' @export
-prob_detection_heterogeneous_multiple <- function(mu, sd, a, b, f, u, USL, type = "theory", n_sim = NA) {
+prob_detection_heterogeneous_multiple <- function(mu, sd, a, b, f, u, USL, type = "theory", n_sim = NA){
   if (length(f) != length(u)) stop("please use equal length of f and u", call. = FALSE)
-  sim1 <- matrix(NA, nrow = 1, ncol = length(f))
+  sim1 <- matrix(NA, nrow =  1, ncol = length(f))
   for (i in 1:length(f)) {
-    sim1[, i] <- prob_detection_heterogeneous(mu, sd, a, b, f[i], u[i], USL, type, n_sim)
+    sim1[,i] <-   prob_detection_heterogeneous(mu, sd, a, b, f[i], u[i], USL, type, n_sim)
   }
   results <- as.matrix.data.frame(sim1)
   return(results)

@@ -1,0 +1,265 @@
+[
+    {
+        "file": "H:/Package_4_dilutionrisk/dilutionrisk/inst/include/dilutionrisk.h",
+        "file_last_write": 1659660455.0,
+        "definitions": [],
+        "hidden": true
+    },
+    {
+        "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared.cpp",
+        "file_last_write": 1657794832.0,
+        "definitions": [
+            {
+                "usr": "c:@F@isInteger#d#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "isInteger(double, bool)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared.cpp",
+                "line": 4,
+                "column": 6,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@finite_max_int#&1$@N@Rcpp@S@Vector>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "finite_max_int(const Rcpp::NumericVector &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared.cpp",
+                "line": 18,
+                "column": 8,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@rng_unif#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "rng_unif",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared.cpp",
+                "line": 38,
+                "column": 8,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared.h",
+        "file_last_write": 1657794832.0,
+        "definitions": [],
+        "hidden": false
+    },
+    {
+        "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+        "file_last_write": 1657794832.0,
+        "definitions": [
+            {
+                "usr": "c:@F@tol_equal#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "tol_equal(double, double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 9,
+                "column": 13,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@phi#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "phi(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 13,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@lphi#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "lphi(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 17,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@Phi#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "Phi(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 21,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@InvPhi#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "InvPhi(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 25,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@factorial#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "factorial(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 29,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@lfactorial#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "lfactorial(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 33,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@rng_sign#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "rng_sign",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 37,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@is_large_int#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "is_large_int(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 42,
+                "column": 13,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@to_dbl#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "to_dbl(int)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 48,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@to_pos_int#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "to_pos_int(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 52,
+                "column": 12,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@trunc_p#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "trunc_p(double)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/shared_inline.h",
+                "line": 60,
+                "column": 15,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+        "file_last_write": 1659845375.0,
+        "definitions": [
+            {
+                "usr": "c:@F@logpdf_tpois#d#d#d#d#&b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "logpdf_tpois(double, double, double, double, bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 19,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@cdf_tpois#d#d#d#d#&b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cdf_tpois(double, double, double, double, bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 43,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@invcdf_tpois#d#d#d#d#&b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "invcdf_tpois(double, double, double, double, bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 69,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@rng_tpois#d#d#d#&b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "rng_tpois(double, double, double, bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 92,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@cpp_dtpois#&1$@N@Rcpp@S@Vector>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#S0_#S0_#S0_#&1b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_dtpois(const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 109,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@cpp_ptpois#&1$@N@Rcpp@S@Vector>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#S0_#S0_#S0_#&1b#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_ptpois(const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const bool &, const bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 146,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@cpp_qtpois#&1$@N@Rcpp@S@Vector>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#S0_#S0_#S0_#&1b#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_qtpois(const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const bool &, const bool &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 188,
+                "column": 15,
+                "hidden": false
+            },
+            {
+                "usr": "c:@F@cpp_rtpois#&1I#&1$@N@Rcpp@S@Vector>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#S1_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_rtpois(const int &, const Rcpp::NumericVector &, const Rcpp::NumericVector &, const Rcpp::NumericVector &)",
+                "file": "H:/Package_4_dilutionrisk/dilutionrisk/src/truncated-poisson-distribution.cpp",
+                "line": 231,
+                "column": 15,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    }
+]

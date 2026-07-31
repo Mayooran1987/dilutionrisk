@@ -2,54 +2,60 @@
 % Please edit documentation in R/OC_curves_heterogeneous.R
 \name{OC_curves_heterogeneous}
 \alias{OC_curves_heterogeneous}
-\title{Comparison based on OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch.}
+\title{Operating Characteristic (OC) Curves for Heterogeneous Batches}
 \usage{
-OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n, type, n_sim)
+OC_curves_heterogeneous(
+  c,
+  mu_low,
+  mu_high,
+  sd,
+  a,
+  b,
+  f,
+  u,
+  USL,
+  n,
+  type = "theory",
+  n_sim = NA
+)
 }
 \arguments{
-\item{c}{acceptance number}
+\item{c}{Acceptance number (maximum number of defective units allowed).}
 
-\item{mu_low}{the lower value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_low}{Lower bound of mean microbial count for x-axis (log scale).}
 
-\item{mu_high}{the upper value of the mean microbial count(\eqn{\mu}) for use in the graphical display's x-axis.}
+\item{mu_high}{Upper bound of mean microbial count for x-axis (log scale).}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the normal distribution on the log scale.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Vector of final dilution factors.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Vector of amounts placed on the plate.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n}{number of samples which are used for inspection.}
+\item{n}{Number of samples inspected. Must be positive integer.}
 
-\item{type}{what type of the results you would like to consider such as "theory" or "simulation" (default "theory").}
+\item{type}{Type of calculation: "theory" (default) or "simulation".}
 
-\item{n_sim}{number of simulations (large simulations provide more precise estimations).}
+\item{n_sim}{Number of simulations. Required when \code{type = "simulation"}.}
 }
 \value{
-OC curves when samples collected from a heterogeneous batch.
+A ggplot object showing OC curves for different dilution schemes.
 }
 \description{
-\code{\link{OC_curves_heterogeneous}} provides the operating characteristic(OC) curves when samples collected from a heterogeneous batch.
-}
-\details{
-\code{\link{OC_curves_heterogeneous}} provides OC curves for different dilution schemes when the diluted samples collected from a heterogeneous batch (this section will be updated later on).
+Generates operating characteristic curves comparing different dilution
+schemes when samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \examples{
-c <- 2
-mu_low <- 4
-mu_high <- 9
-sd <- 0.2
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n <- 5
-OC_curves_heterogeneous(c, mu_low, mu_high, sd, a, b, f, u, USL, n)
+\dontrun{
+OC_curves_heterogeneous(c = 2, mu_low = 4, mu_high = 9, sd = 0.2,
+                        a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
+                        USL = 1000, n = 5)
+}
+
 }

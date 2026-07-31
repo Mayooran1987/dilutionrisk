@@ -4,7 +4,7 @@
 \alias{true_concentration_heterogeneous}
 \alias{true_concentration_heterogeneous_multiple}
 \alias{true_concentration_curves_heterogeneous}
-\title{True concentration level estimation when diluted sample collected from a heterogeneous batch.}
+\title{True Concentration Estimation for Heterogeneous Batches}
 \usage{
 true_concentration_heterogeneous(mu, sd, a, b, f, u, USL, n_sim)
 
@@ -23,59 +23,66 @@ true_concentration_curves_heterogeneous(
 )
 }
 \arguments{
-\item{mu}{the mean microbial count (on the log scale).}
+\item{mu}{Mean microbial count on the log scale. Must satisfy
+\code{log(a) - log(f*u) <= mu <= log(b) - log(f*u)}.}
 
-\item{sd}{the standard deviation of the normal distribution (on the log scale).}
+\item{sd}{Standard deviation of the normal distribution on the log scale.}
 
-\item{a}{lower domain of the number of cell counts.}
+\item{a}{Lower bound of cell count domain. Must be non-negative.}
 
-\item{b}{upper domain of the number of cell counts.}
+\item{b}{Upper bound of cell count domain. Must be greater than \code{a}.}
 
-\item{f}{final dilution factor.}
+\item{f}{Final dilution factor. Must be between 0 and 1.}
 
-\item{u}{amount put on the plate.}
+\item{u}{Amount placed on the plate. Must be positive.}
 
-\item{USL}{upper specification limit.}
+\item{USL}{Upper specification limit for microbial count.}
 
-\item{n_sim}{number of simulations (large simulations provide a more precise estimation).}
+\item{n_sim}{Number of simulations. Larger values provide more precise
+estimates. Recommended minimum: 10,000.}
 
-\item{mu_low}{the lower value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_low}{Lower bound of mean microbial count for x-axis (log scale).}
 
-\item{mu_high}{the upper value of the mean microbial count (\eqn{\mu}) for use in the graphical display's x-axis (on the log scale).}
+\item{mu_high}{Upper bound of mean microbial count for x-axis (log scale).}
 }
 \value{
-true concentration level  when sample collected from a heterogeneous batch.
+Numeric value representing the estimated true concentration.
 }
 \description{
-These functions provides true concentration level in the original sample when diluted samples collected from a heterogeneous batch.
+Estimates the true microbial concentration in the original sample when
+diluted samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \details{
-Let Y be the count of microorganisms and C be the true concentration level (in counts per ml).
-When diluted sample collected from heterogeneous (non-homogeneous) batch, Y can be modelled by Poisson lognormal distribution
-with parameter \eqn{\mu, \sigma}. Let X be the count of microorganisms on a plate,
-and it can be modelled by truncated Poisson lognormal distribution with parameters \eqn{\mu_d,\sigma, a, b}.
-Also, \eqn{\lambda_d} can be written in terms of \eqn{\mu},f and u. It is given by
-\deqn{\mu_d = \mu + \log(f)+ \log(u)}
-And the true concentration level  is given  by
-\deqn{C = \frac{X}{f*u}}
-where \eqn{f} is final dilution factor and \eqn{u} is amount of diluted sample on plate. Based on the literatures, we used \eqn{\sigma = 0.2} in these dilution process; see Gonzales-Barron et al. (2013, p. 370) and Schothorst et al. (2009).
+The true concentration is estimated as:
+\deqn{C = \frac{X}{f \times u}}
+where X is the count of microorganisms on a plate following a truncated
+Poisson-lognormal distribution, f is the final dilution factor, and u is
+the amount placed on the plate.
 }
 \examples{
-mu_low <- 0
-mu_high <- 10
-sd <- 0.2
-a <- 0
-b <- 300
-f <- c(0.01,0.1)
-u <- c(0.1,0.1)
-USL <- 1000
-n_sim <- 5000
-true_concentration_curves_heterogeneous(mu_low, mu_high, sd, a, b, f, u, USL, n_sim)
+\dontrun{
+# Basic usage
+true_concentration_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                                 f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+
+# Multiple dilution schemes
+true_concentration_heterogeneous_multiple(mu = 2, sd = 0.2, a = 0, b = 300,
+                                          f = c(0.01, 0.1), u = c(0.1, 0.1),
+                                          USL = 1000, n_sim = 50000)
+
+# Plot concentration curves
+true_concentration_curves_heterogeneous(mu_low = 0, mu_high = 10, sd = 0.2,
+                                        a = 0, b = 300, f = c(0.01, 0.1),
+                                        u = c(0.1, 0.1), USL = 1000,
+                                        n_sim = 50000)
+}
+
 }
 \references{
 \itemize{
-\item Gonzales-Barron, U.A., Pilão Cadavez, V.A., Butler, F., 2013. Statistical approaches for the design of sampling plans for microbiological monitoring of foods, in:
-Mathematical and Statistical Methods in Food Science and Technology. Wiley, Chichester, UK, pp.363–384.
-\item Schothorst, M. van, Zwietering, M.H., Ross, T., Buchanan, R.L., Cole, M.B., 2009. Relating microbiological criteria to food safety objectives and performance objectives. Food Control 20, \href{https://doi.org/10.1016/j.foodcont.2008.11.005}{967–979}.
+\item Gonzales-Barron, U.A., Pilão Cadavez, V.A., Butler, F., 2013.
+Statistical approaches for the design of sampling plans for
+microbiological monitoring of foods. In: Mathematical and Statistical
+Methods in Food Science and Technology. Wiley, pp. 363–384.
 }
 }

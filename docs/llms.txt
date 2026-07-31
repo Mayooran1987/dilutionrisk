@@ -1,0 +1,213 @@
+# dilutionrisk
+
+------------------------------------------------------------------------
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Detailed Usage](#detailed-usage)
+  - [Homogeneous Batch Models](#homogeneous-batch-models)
+  - [Heterogeneous Batch Models](#heterogeneous-batch-models)
+  - [Operating Characteristic Curves](#operating-characteristic-curves)
+  - [Probability of Detection Curves](#probability-of-detection-curves)
+  - [Coefficient of Variation](#coefficient-of-variation)
+  - [True Concentration Estimation](#true-concentration-estimation)
+  - [Validation and Simulation](#validation-and-simulation)
+- [Visualization Examples](#visualization-examples)
+- [Theoretical Background](#theoretical-background)
+- [Applications](#applications)
+- [Documentation](#documentation)
+- [Citation](#citation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Authors and Maintainers](#authors-and-maintainers)
+- [Acknowledgments](#acknowledgments)
+- [References](#references)
+
+------------------------------------------------------------------------
+
+## Overview
+
+The **dilutionrisk** package provides comprehensive probability
+estimations and graphical displays for modelling and assessment of risk
+based on aerobic plate count (APC) on diluted testing. It implements
+bounded distributions including truncated Poisson and truncated Poisson
+lognormal distributions for homogeneous and heterogeneous scenarios
+respectively.
+
+### Background
+
+In food safety microbiology, accurate risk assessment is crucial for
+ensuring public health. Microbiological testing often involves dilution
+procedures to quantify microbial contamination. The **dilutionrisk**
+package addresses the statistical challenges in:
+
+1.  **Estimating true microbial concentration** from diluted samples
+2.  **Assessing detection probabilities** at different contamination
+    levels
+3.  **Designing optimal sampling plans** for quality control
+4.  **Comparing dilution schemes** for cost-effective testing
+5.  **Validating theoretical models** with simulation studies
+
+### Key Features
+
+| Feature | Description |
+|----|----|
+| **Probability of Detection (PD)** | Calculate detection probability for microbial contamination exceeding specification limits |
+| **Probability of Acceptance (PA)** | Assess sampling plan performance with binomial acceptance probabilities |
+| **Operating Characteristic (OC) Curves** | Visual comparison of different dilution schemes |
+| **Coefficient of Variation (CV)** | Variability estimation for dilution schemes |
+| **True Concentration Estimation** | Estimate true microbial concentration from diluted samples |
+| **Validation Tools** | Compare theoretical and simulation results |
+| **Random Number Generation** | Generate from truncated Poisson-lognormal distributions |
+| **Multiple Dilution Schemes** | Compare up to 10 dilution schemes simultaneously |
+
+### Applications
+
+This package is particularly useful for:
+
+- **Food Safety Microbiology**: Assessment of microbial contamination in
+  food products
+- **Quality Control**: Design and evaluation of sampling plans in food
+  industry
+- **Regulatory Compliance**: Meeting microbiological criteria and
+  standards
+- **Academic Research**: Statistical modelling in microbiology and
+  epidemiology
+- **Risk Assessment**: Quantifying risks associated with foodborne
+  pathogens
+- **Process Optimization**: Optimizing dilution procedures for
+  cost-effectiveness
+
+------------------------------------------------------------------------
+
+## Installation
+
+### From GitHub (Development Version)
+
+\`\`\`r \# Install the development version from GitHub \#
+install.packages(“devtools”)
+devtools::install_github(“Mayooran1987/dilutionrisk”)
+
+# Alternatively, using remotes
+
+# install.packages(“remotes”)
+
+remotes::install_github(“Mayooran1987/dilutionrisk”)
+
+# Package index
+
+## Probability Detection Functions
+
+Calculate probability of detection for homogeneous and heterogeneous
+batches
+
+- [`prob_detection_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md)
+  [`prob_detection_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md)
+  : Probability of Detection for Homogeneous Batches
+- [`prob_detection_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous_multiple.md)
+  : Probability of detection estimation for multiple dilution schemes
+  when diluted samples are collected from a homogeneous batch.
+- [`prob_detection_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md)
+  [`prob_detection_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md)
+  : Probability of Detection for Heterogeneous Batches
+- [`prob_detection_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous_multiple.md)
+  : Probability of detection estimation for multiple dilution schemes
+  when diluted samples are collected from a heterogeneous batch.
+
+## Probability Acceptance Functions
+
+Calculate probability of acceptance for sampling plans
+
+- [`prob_acceptance_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md)
+  [`prob_acceptance_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md)
+  : Probability of Acceptance for Homogeneous Batches
+- [`prob_acceptance_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous_multiple.md)
+  : Probability of acceptance estimation for multiple dilution schemes
+  when diluted samples are collected from a homogeneous batch.
+- [`prob_acceptance_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md)
+  [`prob_acceptance_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md)
+  : Probability of Acceptance for Heterogeneous Batches
+- [`prob_acceptance_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous_multiple.md)
+  : Probability of acceptance estimation when diluted samples are
+  collected from a heterogeneous batch.
+
+## Operating Characteristic (OC) Curves
+
+Generate OC curves for comparing dilution schemes
+
+- [`OC_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_homogeneous.md)
+  : Operating Characteristic (OC) Curves for Homogeneous Batches
+- [`OC_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_heterogeneous.md)
+  : Operating Characteristic (OC) Curves for Heterogeneous Batches
+
+## Probability of Detection (PD) Curves
+
+Generate PD curves for comparing dilution schemes
+
+- [`pd_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md)
+  : Probability of Detection Curves for Homogeneous Batches
+- [`pd_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md)
+  : Probability of Detection Curves for Heterogeneous Batches
+
+## Coefficient of Variation (CV)
+
+Estimate CV for different dilution schemes
+
+- [`cv_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md)
+  [`cv_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md)
+  [`cv_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md)
+  : Coefficient of Variation for Homogeneous Batches
+- [`cv_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md)
+  [`cv_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md)
+  [`cv_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md)
+  : Coefficient of Variation for Heterogeneous Batches
+
+## True Concentration Estimation
+
+Estimate true microbial concentration in original samples
+
+- [`true_concentration_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md)
+  [`true_concentration_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md)
+  [`true_concentration_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md)
+  : True Concentration Estimation for Homogeneous Batches
+- [`true_concentration_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md)
+  [`true_concentration_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md)
+  [`true_concentration_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md)
+  : True Concentration Estimation for Heterogeneous Batches
+
+## Validation Functions
+
+Validate theoretical results with simulations
+
+- [`pd_validation_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_validation_homogeneous.md)
+  : Comparison based on probability of detection curves for different
+  dilution schemes when diluted samples collected from a homogeneous
+  batch.
+- [`pd_validation_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_validation_heterogeneous.md)
+  : Comparison based on probability of detection curves for different
+  dilution schemes when diluted samples collected from a heterogeneous
+  batch.
+
+## Distribution Functions
+
+Random number generation from truncated distributions
+
+- [`rtrunpoilog()`](https://Mayooran1987.github.io/dilutionrisk/reference/rtrunpoilog.md)
+  : Truncated Poisson-Lognormal Random Number Generation
+
+# Articles
+
+### All vignettes
+
+- [UNKNOWN
+  TITLE](https://Mayooran1987.github.io/dilutionrisk/articles/heterogeneous_models.md):
+- [UNKNOWN
+  TITLE](https://Mayooran1987.github.io/dilutionrisk/articles/homogeneous_models.md):
+- [UNKNOWN
+  TITLE](https://Mayooran1987.github.io/dilutionrisk/articles/introduction.md):
+- [UNKNOWN
+  TITLE](https://Mayooran1987.github.io/dilutionrisk/articles/validation.md):

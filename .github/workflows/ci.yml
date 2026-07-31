@@ -1,0 +1,81 @@
+# Complete CI workflow
+# Runs all checks in sequence
+
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Mondays
+
+jobs:
+  check:
+    name: Check Package
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::devtools
+            any::rcmdcheck
+            any::roxygen2
+            any::Rcpp
+            any::ggplot2
+            any::reshape2
+            any::ggthemes
+          needs: check
+
+      - name: Document
+        run: Rscript -e 'devtools::document()'
+
+      - name: Check
+        run: Rscript -e 'devtools::check()'
+
+      - name: Build site
+        run: |
+          Rscript -e 'install.packages("pkgdown")'
+          Rscript -e 'pkgdown::build_site(install = FALSE)'
+
+      - name: Upload docs
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs
+          path: docs
+
+  coverage:
+    name: Test Coverage
+    runs-on: ubuntu-latest
+    needs: check
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::covr
+            any::testthat
+            any::Rcpp
+
+      - name: Test coverage
+        run: |
+          Rscript -e 'covr::codecov()'

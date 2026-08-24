@@ -18,7 +18,7 @@
 ##' f <- c(0.01,0.1,1)
 ##' u <- c(0.1,0.1,0.1)
 ##' USL <- 1000
-##' n_sim <- 50000
+##' n_sim <- 5000
 ##' prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL)
 ##' @usage  prob_detection_homogeneous_multiple(lambda, a, b, f, u, USL, type, n_sim)
 ##' @export

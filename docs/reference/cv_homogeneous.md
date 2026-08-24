@@ -17,7 +17,7 @@ cv_curves_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim)
 
 - lambda:
 
-  Expected microbial count (\\\lambda\\). Must be positive.
+  Expected microbial count (\\\lambda\\). Must be non-negative.
 
 - a:
 
@@ -62,19 +62,8 @@ homogeneous batch.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 # Basic usage
 cv_homogeneous(lambda = 2000, a = 0, b = 300,
-               f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
-
-# Multiple dilution schemes
-cv_homogeneous_multiple(lambda = 2000, a = 0, b = 300,
-                        f = c(0.01, 0.1), u = c(0.1, 0.1),
-                        USL = 1000, n_sim = 50000)
-
-# Plot CV curves
-cv_curves_homogeneous(lambda_low = 1000, lambda_high = 8000,
-                      a = 0, b = 300, f = c(0.01, 0.1),
-                      u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
-} # }
+               f = 0.01, u = 0.1, USL = 1000, n_sim = 5000)
+#> [1] 0.01022323
 ```

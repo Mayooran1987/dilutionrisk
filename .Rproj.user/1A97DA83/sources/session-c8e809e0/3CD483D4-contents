@@ -1,0 +1,31 @@
+# Clean everything
+devtools::clean_dll()
+
+# Remove any remaining compiled files
+unlink("src", recursive = TRUE, force = TRUE)
+unlink("R/RcppExports.R", force = TRUE)
+unlink("inst/libs", recursive = TRUE, force = TRUE)
+unlink("libs", recursive = TRUE, force = TRUE)
+unlink("*.o", force = TRUE)
+unlink("*.dll", force = TRUE)
+unlink("*.so", force = TRUE)
+
+# Remove the package from library if installed
+remove.packages("dilutionrisk")
+
+# Document and install
+devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
+devtools::install()
+# Load the package
+library(dilutionrisk)
+
+# Test basic functions
+rtpois(5, lambda = 10, a = 0, b = 300)
+rtrunpoilog(5, mu = 2, sd = 0.2, a = 0, b = 300)
+
+# Test CV functions
+cv_homogeneous(lambda = 2000, a = 0, b = 300,
+               f = 0.01, u = 0.1, USL = 1000, n_sim = 100)
+
+cv_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                 f = 0.01, u = 0.1, USL = 1000, n_sim = 100)

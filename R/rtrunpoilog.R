@@ -22,14 +22,12 @@
 #' The truncation limits the support to \eqn{a \le X \le b}.
 #'
 #' @examples
-#' \dontrun{
 #' # Generate 100 random values
 #' set.seed(123)
 #' rtrunpoilog(n = 100, mu = 0, sd = 1, a = 0, b = 300)
 #'
 #' # Generate a single value
 #' rtrunpoilog(n = 1, mu = 0.5, sd = 0.8, a = 10, b = 200)
-#' }
 #'
 #' @export
 rtrunpoilog <- function(n, mu, sd, a, b) {

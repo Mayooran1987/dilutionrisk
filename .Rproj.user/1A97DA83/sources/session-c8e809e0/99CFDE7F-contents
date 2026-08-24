@@ -1,0 +1,85 @@
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+NumericVector cpp_rtpois(int n, double lambda, double lower, double upper) {
+  NumericVector result(n);
+
+  // Check if lambda is within bounds
+  if (lambda < lower || lambda > upper) {
+    // Generate from truncated distribution using rejection sampling
+    int count = 0;
+    int max_iter = 1000000;
+    int iter = 0;
+
+    while (count < n && iter < max_iter) {
+      iter++;
+      double x = R::rpois(lambda);
+      if (x >= lower && x <= upper) {
+        result[count] = x;
+        count++;
+      }
+    }
+
+    if (iter >= max_iter) {
+      Rcpp::warning("Rejection sampling reached maximum iterations");
+    }
+  } else {
+    // Direct generation (lambda is already within bounds)
+    for (int i = 0; i < n; i++) {
+      double x = R::rpois(lambda);
+      // Still need to ensure truncation
+      while ((x < lower || x > upper) && i < n) {
+        x = R::rpois(lambda);
+      }
+      result[i] = x;
+    }
+  }
+
+  return result;
+}
+
+// [[Rcpp::export]]
+NumericVector cpp_rtrunpoilog(int n, double mu, double sd, double lower, double upper) {
+  NumericVector result(n);
+
+  for (int i = 0; i < n; i++) {
+    // Generate from lognormal
+    double lambda = R::rlnorm(mu, sd);
+
+    // Generate truncated Poisson from lambda
+    double x = R::rpois(lambda);
+    int iter = 0;
+    while ((x < lower || x > upper) && iter < 1000000) {
+      iter++;
+      lambda = R::rlnorm(mu, sd);
+      x = R::rpois(lambda);
+    }
+
+    if (iter >= 1000000) {
+      Rcpp::warning("Rejection sampling reached maximum iterations");
+      result[i] = NA_REAL;
+    } else {
+      result[i] = x;
+    }
+  }
+
+  return result;
+}
+
+// [[Rcpp::export]]
+double cpp_rtpois_scalar(double lambda, double lower, double upper) {
+  double x = R::rpois(lambda);
+  int iter = 0;
+  while ((x < lower || x > upper) && iter < 1000000) {
+    iter++;
+    x = R::rpois(lambda);
+  }
+
+  if (iter >= 1000000) {
+    Rcpp::warning("Rejection sampling reached maximum iterations");
+    return NA_REAL;
+  }
+
+  return x;
+}

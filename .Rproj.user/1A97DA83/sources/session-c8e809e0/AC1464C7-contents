@@ -1,0 +1,145 @@
+#' Truncated Poisson Random Number Generation
+#'
+#' Generates random deviates from a truncated Poisson distribution.
+#'
+#' @param n Number of observations.
+#' @param lambda Expected count parameter. Must be non-negative.
+#' @param a Lower truncation point.
+#' @param b Upper truncation point.
+#'
+#' @return A vector of random numbers from the truncated Poisson distribution.
+#' @export
+rtpois <- function(n, lambda, a, b) {
+  # Input validation
+  if (!is.numeric(n) || length(n) == 0) {
+    stop("'n' must be a positive integer", call. = FALSE)
+  }
+
+  if (length(n) > 1) {
+    n <- length(n)
+  } else {
+    if (n < 1 || n != round(n)) {
+      stop("'n' must be a positive integer", call. = FALSE)
+    }
+  }
+
+  # Allow lambda to be 0
+  if (!is.numeric(lambda) || length(lambda) != 1 || lambda < 0) {
+    stop("'lambda' must be a non-negative numeric scalar", call. = FALSE)
+  }
+
+  if (!is.numeric(a) || length(a) != 1 || a < 0) {
+    stop("'a' must be a non-negative numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(b) || length(b) != 1 || b <= a) {
+    stop("'b' must be a numeric scalar greater than 'a'", call. = FALSE)
+  }
+
+  # Handle lambda = 0 case
+  if (lambda == 0) {
+    # If lambda is 0, all values will be 0 (within bounds if a <= 0)
+    if (a <= 0 && b >= 0) {
+      return(rep(0, n))
+    } else {
+      # If lambda is 0 but 0 is not within bounds, return NA
+      warning("lambda = 0 but 0 is not within bounds [", a, ", ", b, "]", call. = FALSE)
+      return(rep(NA_real_, n))
+    }
+  }
+
+  # Generate truncated Poisson using rejection sampling
+  result <- numeric(n)
+  for (i in seq_len(n)) {
+    x <- stats::rpois(1, lambda)
+    iter <- 0
+    while ((x < a || x > b) && iter < 1000000) {
+      iter <- iter + 1
+      x <- stats::rpois(1, lambda)
+    }
+    if (iter >= 1000000) {
+      warning("Rejection sampling reached maximum iterations for lambda = ", lambda,
+              ", bounds = [", a, ", ", b, "]", call. = FALSE)
+      result[i] <- NA
+    } else {
+      result[i] <- x
+    }
+  }
+  return(result)
+}
+
+#' Truncated Poisson-Lognormal Random Number Generation
+#'
+#' Generates random deviates from a truncated Poisson-lognormal distribution.
+#'
+#' @param n Number of observations.
+#' @param mu Mean of the lognormal distribution on the log scale.
+#' @param sd Standard deviation of the lognormal distribution on the log scale.
+#' @param a Lower truncation point (lower bound of cell count).
+#' @param b Upper truncation point (upper bound of cell count).
+#'
+#' @return A vector of random numbers from the truncated Poisson-lognormal
+#'   distribution.
+#' @export
+rtrunpoilog <- function(n, mu, sd, a, b) {
+  # Input validation
+  if (!is.numeric(n) || length(n) == 0) {
+    stop("'n' must be a positive integer", call. = FALSE)
+  }
+
+  if (length(n) > 1) {
+    n <- length(n)
+  } else {
+    if (n < 1 || n != round(n)) {
+      stop("'n' must be a positive integer", call. = FALSE)
+    }
+  }
+
+  if (!is.numeric(mu) || length(mu) != 1) {
+    stop("'mu' must be a numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(sd) || length(sd) != 1 || sd <= 0) {
+    stop("'sd' must be a positive numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(a) || length(a) != 1 || a < 0) {
+    stop("'a' must be a non-negative numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(b) || length(b) != 1 || b <= a) {
+    stop("'b' must be a numeric scalar greater than 'a'", call. = FALSE)
+  }
+
+  # Check if mean is within bounds (only if a > 0)
+  if (a > 0) {
+    if (mu > log(b, exp(1)) || mu < log(a, exp(1))) {
+      stop("The truncated Poisson lognormal (TPLN) random variable must be bounded by a and b,\n",
+           "which means that mu must be between log(a) and log(b).\n",
+           sprintf("Current mu = %.4f, bounds: [%.4f, %.4f]",
+                   mu, log(a, exp(1)), log(b, exp(1))),
+           call. = FALSE)
+    }
+  }
+
+  # Generate truncated Poisson-lognormal using rejection sampling
+  result <- numeric(n)
+  for (i in seq_len(n)) {
+    # Generate from lognormal
+    lambda <- stats::rlnorm(1, meanlog = mu, sdlog = sd)
+
+    # Generate truncated Poisson from lambda
+    x <- stats::rpois(1, lambda)
+    iter <- 0
+    while ((x < a || x > b) && iter < 1000000) {
+      iter <- iter + 1
+      # Regenerate lambda
+      lambda <- stats::rlnorm(1, meanlog = mu, sdlog = sd)
+      x <- stats::rpois(1, lambda)
+    }
+    if (iter >= 1000000) {
+      warning("Rejection sampling reached maximum iterations for mu = ", mu,
+              ", sd = ", sd, ", bounds = [", a, ", ", b, "]", call. = FALSE)
+      result[i] <- NA
+    } else {
+      result[i] <- x
+    }
+  }
+  return(result)
+}

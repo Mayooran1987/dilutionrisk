@@ -19,11 +19,10 @@
 #' @return A ggplot object showing OC curves for different dilution schemes.
 #'
 #' @examples
-#' \dontrun{
 #' OC_curves_heterogeneous(c = 2, mu_low = 4, mu_high = 9, sd = 0.2,
 #'                         a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
 #'                         USL = 1000, n = 5)
-#' }
+#'
 #'
 #' @export
 OC_curves_heterogeneous <- function(c, mu_low, mu_high, sd, a, b, f, u,

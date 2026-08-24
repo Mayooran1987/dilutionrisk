@@ -9,90 +9,90 @@
 ##### Homogeneous Batch Models
 
 - Added
-  [`prob_detection_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md) -
+  [`prob_detection_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md) -
   Calculate probability of detection for homogeneous batches
 - Added `prob_detection_homogeneous_multiple()` - Calculate PD for
   multiple dilution schemes
 - Added
-  [`prob_acceptance_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md) -
+  [`prob_acceptance_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md) -
   Calculate probability of acceptance for sampling plans
 - Added `prob_acceptance_homogeneous_multiple()` - Calculate PA for
   multiple dilution schemes
 - Added
-  [`cv_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
+  [`cv_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
   Estimate coefficient of variation for homogeneous batches
 - Added
-  [`cv_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
+  [`cv_homogeneous_multiple()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
   Estimate CV for multiple dilution schemes
 - Added
-  [`cv_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
+  [`cv_curves_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md) -
   Generate CV curves for homogeneous batches
 - Added
-  [`OC_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_homogeneous.md) -
+  [`OC_curves_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/OC_curves_homogeneous.md) -
   Generate operating characteristic curves
 - Added
-  [`pd_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md) -
+  [`pd_curves_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md) -
   Generate probability of detection curves
 - Added
-  [`true_concentration_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
+  [`true_concentration_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
   Estimate true concentration
 - Added
-  [`true_concentration_homogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
+  [`true_concentration_homogeneous_multiple()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
   Estimate concentration for multiple schemes
 - Added
-  [`true_concentration_curves_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
+  [`true_concentration_curves_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md) -
   Generate concentration curves
 
 ##### Heterogeneous Batch Models
 
 - Added
-  [`prob_detection_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md) -
+  [`prob_detection_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md) -
   Calculate probability of detection for heterogeneous batches
 - Added `prob_detection_heterogeneous_multiple()` - Calculate PD for
   multiple dilution schemes
 - Added
-  [`prob_acceptance_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md) -
+  [`prob_acceptance_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md) -
   Calculate probability of acceptance for sampling plans
 - Added `prob_acceptance_heterogeneous_multiple()` - Calculate PA for
   multiple dilution schemes
 - Added
-  [`cv_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
+  [`cv_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
   Estimate coefficient of variation for heterogeneous batches
 - Added
-  [`cv_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
+  [`cv_heterogeneous_multiple()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
   Estimate CV for multiple dilution schemes
 - Added
-  [`cv_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
+  [`cv_curves_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md) -
   Generate CV curves for heterogeneous batches
 - Added
-  [`OC_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_heterogeneous.md) -
+  [`OC_curves_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/OC_curves_heterogeneous.md) -
   Generate operating characteristic curves
 - Added
-  [`pd_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md) -
+  [`pd_curves_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md) -
   Generate probability of detection curves
 - Added
-  [`true_concentration_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
+  [`true_concentration_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
   Estimate true concentration
 - Added
-  [`true_concentration_heterogeneous_multiple()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
+  [`true_concentration_heterogeneous_multiple()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
   Estimate concentration for multiple schemes
 - Added
-  [`true_concentration_curves_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
+  [`true_concentration_curves_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md) -
   Generate concentration curves
 
 ##### Distribution Functions
 
 - Added
-  [`rtrunpoilog()`](https://Mayooran1987.github.io/dilutionrisk/reference/rtrunpoilog.md) -
+  [`rtrunpoilog()`](https://mayooran1987.github.io/dilutionrisk/reference/rtrunpoilog.md) -
   Generate random numbers from truncated Poisson-lognormal distribution
 
 ##### Validation Functions
 
 - Added
-  [`pd_validation_homogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_validation_homogeneous.md) -
+  [`pd_validation_homogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/pd_validation_homogeneous.md) -
   Validate homogeneous model with simulations
 - Added
-  [`pd_validation_heterogeneous()`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_validation_heterogeneous.md) -
+  [`pd_validation_heterogeneous()`](https://mayooran1987.github.io/dilutionrisk/reference/pd_validation_heterogeneous.md) -
   Validate heterogeneous model with simulations
 
 #### Performance Improvements

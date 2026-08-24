@@ -98,14 +98,14 @@ lognormal mixing distribution: \$\$P_d = 1 - \sum\_{i=1}^{USL \times f
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 # Theoretical calculation
 prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
                              f = 0.01, u = 0.1, USL = 1000)
+#> [1] 0.003764234
 
 # Simulation-based calculation
 prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
                              f = 0.01, u = 0.1, USL = 1000,
-                             type = "simulation", n_sim = 50000)
-} # }
+                             type = "simulation", n_sim = 5000)
+#> [1] 0
 ```

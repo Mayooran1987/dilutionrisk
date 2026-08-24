@@ -1,0 +1,114 @@
+# _config.yml - GitHub Pages configuration for dilutionrisk package website
+# This file configures how GitHub Pages builds your pkgdown site
+
+# Site settings
+title: dilutionrisk
+description: Risk Assessment for Dilution Testing in Microbiology
+url: https://Mayooran1987.github.io/dilutionrisk
+baseurl: /dilutionrisk
+repository: Mayooran1987/dilutionrisk
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+# Theme settings
+# If you want to use a Jekyll theme (optional)
+# theme: jekyll-theme-cayman
+# Or use remote theme:
+# remote_theme: pages-themes/cayman@v0.2.0
+
+# Include these files/directories in the build
+include:
+  - .nojekyll
+  - .gitignore
+  - CNAME
+  - README.md
+  - LICENSE
+  - NEWS.md
+
+# Exclude these files/directories from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+  - .github/
+  - R/
+  - man/
+  - tests/
+  - vignettes/
+  - inst/
+  - src/
+  - _pkgdown.yml
+  - build_site.R
+  - DESCRIPTION
+  - NAMESPACE
+  - *.Rproj
+  - .Rproj.user/
+  - .Rhistory
+  - .Rdata
+  - .Renviron
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-github-metadata
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "reference"
+      type: "pages"
+    values:
+      layout: "reference"
+  - scope:
+      path: "articles"
+      type: "pages"
+    values:
+      layout: "article"
+
+# Social media
+social:
+  name: dilutionrisk
+  links:
+    - https://github.com/Mayooran1987/dilutionrisk
+
+# SEO settings
+twitter:
+  username: Mayooran
+  card: summary_large_image
+  site: "@Mayooran"
+
+# Google Analytics (replace with your tracking ID)
+# google_analytics: UA-XXXXX-X
+
+# GitHub Pages settings
+github:
+  is_project_page: true
+  repository_url: https://github.com/Mayooran1987/dilutionrisk
+  owner_url: https://github.com/Mayooran1987
+  owner_name: Mayooran Thevaraja
+
+# Permalink structure
+permalink: /:categories/:year/:month/:day/:title/

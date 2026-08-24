@@ -3,7 +3,7 @@
 #' Estimates the coefficient of variation (CV) in the original sample when
 #' diluted samples are collected from a homogeneous batch.
 #'
-#' @param lambda Expected microbial count (\eqn{\lambda}). Must be positive.
+#' @param lambda Expected microbial count (\eqn{\lambda}). Must be non-negative.
 #' @param lambda_low Lower bound of expected microbial count for x-axis in
 #'   graphical displays.
 #' @param lambda_high Upper bound of expected microbial count for x-axis in
@@ -20,30 +20,14 @@
 #'   homogeneous batch.
 #'
 #' @examples
-#' \dontrun{
 #' # Basic usage
 #' cv_homogeneous(lambda = 2000, a = 0, b = 300,
-#'                f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
-#'
-#' # Multiple dilution schemes
-#' cv_homogeneous_multiple(lambda = 2000, a = 0, b = 300,
-#'                         f = c(0.01, 0.1), u = c(0.1, 0.1),
-#'                         USL = 1000, n_sim = 50000)
-#'
-#' # Plot CV curves
-#' cv_curves_homogeneous(lambda_low = 1000, lambda_high = 8000,
-#'                       a = 0, b = 300, f = c(0.01, 0.1),
-#'                       u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
-#' }
-#'
-#' @name cv_homogeneous
-#' @aliases cv_homogeneous cv_homogeneous_multiple cv_curves_homogeneous
-#' @rdname cv_homogeneous
+#'                f = 0.01, u = 0.1, USL = 1000, n_sim = 5000)
 #' @export
 cv_homogeneous <- function(lambda, a, b, f, u, USL, n_sim) {
-  # Input validation
-  if (!is.numeric(lambda) || length(lambda) != 1 || lambda <= 0) {
-    stop("'lambda' must be a positive numeric scalar", call. = FALSE)
+  # Input validation - allow lambda to be 0
+  if (!is.numeric(lambda) || length(lambda) != 1 || lambda < 0) {
+    stop("'lambda' must be a non-negative numeric scalar", call. = FALSE)
   }
   if (!is.numeric(a) || length(a) != 1 || a < 0) {
     stop("'a' must be a non-negative numeric scalar", call. = FALSE)
@@ -64,12 +48,16 @@ cv_homogeneous <- function(lambda, a, b, f, u, USL, n_sim) {
     warning("'n_sim' should be at least 100 for reliable results", call. = FALSE)
   }
 
+  # Handle lambda = 0 case
+  if (lambda == 0) {
+    return(0)  # CV is 0 when all counts are 0
+  }
+
   # Check if lambda * f * u is within bounds
   lambda_d <- lambda * f * u
   if (lambda_d < a || lambda_d > b) {
     warning(sprintf(
-      "lambda * f * u = %.2f is outside the bounds [%.0f, %.0f].
-      Consider adjusting parameters.",
+      "lambda * f * u = %.2f is outside the bounds [%.0f, %.0f].\nConsider adjusting parameters.",
       lambda_d, a, b
     ), call. = FALSE)
   }
@@ -80,15 +68,23 @@ cv_homogeneous <- function(lambda, a, b, f, u, USL, n_sim) {
     warning("1/(f*u) is less than 1, using 1 as minimum", call. = FALSE)
     n_rep <- 1
   }
+  n_rep <- round(n_rep)
 
   sim1 <- matrix(NA, nrow = n_sim, ncol = n_rep)
 
   for (j in seq_len(n_sim)) {
+    # Use rtpois function (pure R)
     sim1[j, ] <- rtpois(n_rep, lambda * f * u, a, b) * (1 / (f * u))
   }
 
-  sim2 <- apply(sim1, 2, mean)
-  cv <- sqrt(var(sim2)) / mean(sim2)
+  sim2 <- apply(sim1, 2, mean, na.rm = TRUE)
+
+  # Handle case where mean is 0
+  if (mean(sim2, na.rm = TRUE) == 0) {
+    return(0)
+  }
+
+  cv <- sqrt(var(sim2, na.rm = TRUE)) / mean(sim2, na.rm = TRUE)
 
   return(cv)
 }

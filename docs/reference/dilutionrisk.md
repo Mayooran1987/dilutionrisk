@@ -41,33 +41,33 @@ the dilution process in microbiological testing.
 
 - Probability Detection:
 
-  [`prob_detection_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md),
-  [`prob_detection_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md)
+  [`prob_detection_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/prob_detection_homogeneous.md),
+  [`prob_detection_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/prob_detection_heterogeneous.md)
 
 - Probability Acceptance:
 
-  [`prob_acceptance_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md),
-  [`prob_acceptance_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md)
+  [`prob_acceptance_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_homogeneous.md),
+  [`prob_acceptance_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/prob_acceptance_heterogeneous.md)
 
 - OC Curves:
 
-  [`OC_curves_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_homogeneous.md),
-  [`OC_curves_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/OC_curves_heterogeneous.md)
+  [`OC_curves_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/OC_curves_homogeneous.md),
+  [`OC_curves_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/OC_curves_heterogeneous.md)
 
 - PD Curves:
 
-  [`pd_curves_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md),
-  [`pd_curves_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md)
+  [`pd_curves_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md),
+  [`pd_curves_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md)
 
 - CV Estimation:
 
-  [`cv_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md),
-  [`cv_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md)
+  [`cv_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/cv_homogeneous.md),
+  [`cv_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/cv_heterogeneous.md)
 
 - True Concentration:
 
-  [`true_concentration_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md),
-  [`true_concentration_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md)
+  [`true_concentration_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_homogeneous.md),
+  [`true_concentration_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/true_concentration_heterogeneous.md)
 
 ## References
 

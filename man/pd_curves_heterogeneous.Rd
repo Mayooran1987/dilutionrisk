@@ -46,10 +46,8 @@ Generates probability of detection curves comparing different dilution
 schemes when samples are collected from a heterogeneous (non-homogeneous) batch.
 }
 \examples{
-\dontrun{
 pd_curves_heterogeneous(mu_low = 0, mu_high = 10, sd = 0.2,
                         a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
                         USL = 1000)
-}
 
 }

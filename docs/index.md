@@ -88,12 +88,4 @@ This package is particularly useful for:
 
 ### From GitHub (Development Version)
 
-\`\`\`r \# Install the development version from GitHub \#
-install.packages(“devtools”)
-devtools::install_github(“Mayooran1987/dilutionrisk”)
-
-# Alternatively, using remotes
-
-# install.packages(“remotes”)
-
-remotes::install_github(“Mayooran1987/dilutionrisk”)
+`# Install the development version from GitHub`` ``# install.packages("devtools")`` ``devtools``::`[`install_github`](https://remotes.r-lib.org/reference/install_github.html)`(``"Mayooran1987/dilutionrisk"``)`` `` ``# Alternatively, using remotes`` ``# install.packages("remotes")`` ``remotes``::`[`install_github`](https://remotes.r-lib.org/reference/install_github.html)`(``"Mayooran1987/dilutionrisk"``)`

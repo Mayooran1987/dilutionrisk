@@ -54,7 +54,7 @@ homogeneous batch.
 
 ## Details
 
-[`pd_curves_homogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md)
+[`pd_curves_homogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_homogeneous.md)
 provides probability of detection curves for different dilution schemes
 when samples collected from a homogeneous batch (this section will be
 updated later on).
@@ -69,9 +69,9 @@ b <- 300
 f <- 0.01
 u <- 0.1
 USL <- 1000
-n_sim <- 50000
+n_sim <- 5000
 pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 500)
 #> Error: 'lambda' must be a positive numeric scalar
-pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 50000)
+pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 5000)
 #> Error: 'lambda' must be a positive numeric scalar
 ```

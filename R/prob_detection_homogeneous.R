@@ -30,7 +30,6 @@
 #' }
 #'
 #' @examples
-#' \dontrun{
 #' # Theoretical calculation
 #' prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
 #'                            f = 0.01, u = 0.1, USL = 1000)
@@ -39,7 +38,6 @@
 #' prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
 #'                            f = 0.01, u = 0.1, USL = 1000,
 #'                            type = "simulation", n_sim = 50000)
-#' }
 #'
 #' @name prob_detection_homogeneous
 #' @aliases prob_detection_homogeneous prob_detection_homogeneous_multiple

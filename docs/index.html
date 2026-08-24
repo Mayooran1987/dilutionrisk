@@ -5,24 +5,24 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>dilutionrisk • dilutionrisk</title>
+<title>Risk Assessment and Probability Estimation for Dilution Testing in Microbiology • dilutionrisk</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="dilutionrisk">
-<meta name="description" content="Risk Assessment for Dilution Testing in Microbiology">
-<meta property="og:description" content="Risk Assessment for Dilution Testing in Microbiology">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Risk Assessment and Probability Estimation for Dilution Testing in Microbiology">
+<meta name="description" content="Comprehensive risk assessment toolkit for microbiological dilution testing in food safety. Implements probability estimation and visualization methods using bounded distributions (truncated Poisson and truncated Poisson-lognormal) for both homogeneous and heterogeneous contamination scenarios. Core functionality includes: \describe{ \item{Probability of Detection (PD)}{Estimate the likelihood of detecting microbial contamination exceeding specification limits under different dilution schemes} \item{Probability of Acceptance (PA)}{Evaluate sampling plan effectiveness using binomial acceptance probabilities} \item{Operating Characteristic (OC) Curves}{Visually compare dilution scheme performance across contamination levels} \item{Coefficient of Variation (CV)}{Quantify variability in microbial concentration estimates} \item{True Concentration Estimation}{Back-calculate true microbial concentration from observed plate counts} \item{Validation Framework}{Compare theoretical and simulation-based results to validate risk assessments} } Designed for food safety professionals, microbiologists, and researchers involved in designing and implementing microbiological monitoring programs and sampling plans compliant with food safety standards.">
+<meta property="og:description" content="Comprehensive risk assessment toolkit for microbiological dilution testing in food safety. Implements probability estimation and visualization methods using bounded distributions (truncated Poisson and truncated Poisson-lognormal) for both homogeneous and heterogeneous contamination scenarios. Core functionality includes: \describe{ \item{Probability of Detection (PD)}{Estimate the likelihood of detecting microbial contamination exceeding specification limits under different dilution schemes} \item{Probability of Acceptance (PA)}{Evaluate sampling plan effectiveness using binomial acceptance probabilities} \item{Operating Characteristic (OC) Curves}{Visually compare dilution scheme performance across contamination levels} \item{Coefficient of Variation (CV)}{Quantify variability in microbial concentration estimates} \item{True Concentration Estimation}{Back-calculate true microbial concentration from observed plate counts} \item{Validation Framework}{Compare theoretical and simulation-based results to validate risk assessments} } Designed for food safety professionals, microbiologists, and researchers involved in designing and implementing microbiological monitoring programs and sampling plans compliant with food safety standards.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="default" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">dilutionrisk</a>
 
-    <small class="nav-text text-warning me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,21 +31,23 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home"></span> Home</a></li>
-<li class="nav-item"><a class="nav-link" href="reference/index.html"><span class="fa fa-file-alt"></span> Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-book"></span> Articles</button>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/introduction.html">Introduction</a></li>
-    <li><a class="dropdown-item" href="articles/homogeneous_models.html">Homogeneous Batch Models</a></li>
-    <li><a class="dropdown-item" href="articles/heterogeneous_models.html">Heterogeneous Batch Models</a></li>
-    <li><a class="dropdown-item" href="articles/validation.html">Validation and Simulation</a></li>
+<li><a class="dropdown-item" href="articles/heterogeneous_models.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="articles/homogeneous_models.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="articles/introduction.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="articles/validation.html">UNKNOWN TITLE</a></li>
   </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="news/index.html"><span class="fa fa-newspaper"></span> News</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Mayooran1987/dilutionrisk"><span class="fa fa-github"></span> GitHub</a></li>
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Mayooran1987/dilutionrisk/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -188,20 +190,17 @@
 <div class="section level3">
 <h3 id="from-github-development-version">From GitHub (Development Version)<a class="anchor" aria-label="anchor" href="#from-github-development-version"></a>
 </h3>
-<p>```r # Install the development version from GitHub # install.packages(“devtools”) devtools::install_github(“Mayooran1987/dilutionrisk”)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install the development version from GitHub</span></span>
+<span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Mayooran1987/dilutionrisk"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Alternatively, using remotes</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Mayooran1987/dilutionrisk"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="alternatively-using-remotes">Alternatively, using remotes<a class="anchor" aria-label="anchor" href="#alternatively-using-remotes"></a>
-</h1>
-</div>
-<div class="section level1">
-<h1 id="installpackagesremotes">install.packages(“remotes”)<a class="anchor" aria-label="anchor" href="#installpackagesremotes"></a>
-</h1>
-<p>remotes::install_github(“Mayooran1987/dilutionrisk”)</p>
-</div>
-
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -234,7 +233,21 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml" class="external-link"><img src="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg" alt="R"></a></li>
+<li><a href="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml" class="external-link"><img src="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://CRAN.R-project.org/package=dilutionrisk" class="external-link"><img src="https://www.r-pkg.org/badges/version/dilutionrisk" alt="CRAN status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=dilutionrisk" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/dilutionrisk" alt="Downloads"></a></li>
+<li><a href="https://CRAN.R-project.org/package=dilutionrisk" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/dilutionrisk" alt="Total Downloads"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" class="external-link"><img src="https://img.shields.io/badge/License-GPL_v2-blue.svg" alt="License: GPL v2"></a></li>
+<li><a href="https://codecov.io/gh/Mayooran1987/dilutionrisk" class="external-link"><img src="https://codecov.io/gh/Mayooran1987/dilutionrisk/branch/main/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.XXXXXXX" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg" alt="DOI"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>

@@ -58,7 +58,7 @@ heterogeneous batch.
 
 ## Details
 
-[`pd_curves_heterogeneous`](https://Mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md)
+[`pd_curves_heterogeneous`](https://mayooran1987.github.io/dilutionrisk/reference/pd_curves_heterogeneous.md)
 provides probability of detection curves for different dilution schemes
 when samples collected from a heterogeneous batch (this section will be
 updated later on).
@@ -74,7 +74,7 @@ b <- 300
 f <- 0.01
 u <- 0.1
 USL <- 1000
-n_sim <- 50000
+n_sim <- 5000
 pd_validation_heterogeneous(mu_low,  mu_high, sd, a, b, f, u, USL, n_sim)
 #> Error in match.arg(type, c("theory", "simulation")): 'arg' must be NULL or a character vector
 ```

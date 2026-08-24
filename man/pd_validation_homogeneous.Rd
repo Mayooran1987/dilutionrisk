@@ -40,7 +40,7 @@ b <- 300
 f <- 0.01
 u <- 0.1
 USL <- 1000
-n_sim <- 50000
+n_sim <- 5000
 pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 500)
-pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 50000)
+pd_validation_homogeneous(lambda_low, lambda_high, a, b, f, u, USL, n_sim = 5000)
 }

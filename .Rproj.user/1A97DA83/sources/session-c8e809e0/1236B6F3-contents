@@ -1,0 +1,80 @@
+#' Truncated Poisson-Lognormal Random Number Generation
+#'
+#' Generates random deviates from a truncated Poisson-lognormal distribution.
+#'
+#' @param n Number of observations. If \code{length(n) > 1}, the length is
+#'   taken to be the number required.
+#' @param mu Mean of the lognormal distribution on the log scale.
+#' @param sd Standard deviation of the lognormal distribution on the log scale.
+#' @param a Lower truncation point (lower bound of cell count).
+#' @param b Upper truncation point (upper bound of cell count).
+#'
+#' @return A vector of random numbers from the truncated Poisson-lognormal
+#'   distribution.
+#'
+#' @details
+#' The Poisson-lognormal distribution is a mixture distribution where:
+#' \itemize{
+#'   \item \eqn{\Lambda \sim \text{Lognormal}(\mu, \sigma^2)}
+#'   \item \eqn{X | \Lambda = \lambda \sim \text{Poisson}(\lambda)}
+#' }
+#'
+#' The truncation limits the support to \eqn{a \le X \le b}.
+#'
+#' @examples
+#' \dontrun{
+#' # Generate 100 random values
+#' set.seed(123)
+#' rtrunpoilog(n = 100, mu = 0, sd = 1, a = 0, b = 300)
+#'
+#' # Generate a single value
+#' rtrunpoilog(n = 1, mu = 0.5, sd = 0.8, a = 10, b = 200)
+#' }
+#'
+#' @export
+rtrunpoilog <- function(n, mu, sd, a, b) {
+  # Input validation
+  if (!is.numeric(n) || length(n) == 0) {
+    stop("'n' must be a positive integer", call. = FALSE)
+  }
+
+  if (length(n) > 1) {
+    n <- length(n)
+  } else {
+    if (n < 1 || n != round(n)) {
+      stop("'n' must be a positive integer", call. = FALSE)
+    }
+  }
+
+  if (!is.numeric(mu) || length(mu) != 1) {
+    stop("'mu' must be a numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(sd) || length(sd) != 1 || sd <= 0) {
+    stop("'sd' must be a positive numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(a) || length(a) != 1 || a < 0) {
+    stop("'a' must be a non-negative numeric scalar", call. = FALSE)
+  }
+  if (!is.numeric(b) || length(b) != 1 || b <= a) {
+    stop("'b' must be a numeric scalar greater than 'a'", call. = FALSE)
+  }
+
+  # Check if mean is within bounds
+  if (mu > log(b, exp(1)) || mu < log(a, exp(1))) {
+    stop("The truncated Poisson lognormal (TPLN) random variable must be bounded by a and b,\n",
+         "which means that mu must be between log(a) and log(b).\n",
+         sprintf("Current mu = %.4f, bounds: [%.4f, %.4f]",
+                 mu, log(a, exp(1)), log(b, exp(1))),
+         call. = FALSE)
+  }
+
+  # Generate lognormal random variables
+  lambda <- stats::rlnorm(n = n, meanlog = mu, sdlog = sd)
+
+  # Generate truncated Poisson random variables
+  result <- vapply(seq_along(lambda), function(i) {
+    rtpois(1, lambda[i], a, b)
+  }, numeric(1))
+
+  return(result)
+}

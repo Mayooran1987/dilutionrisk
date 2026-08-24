@@ -1,0 +1,17 @@
+# Basic usage
+dilutionrisk::cv_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                 f = 0.01, u = 0.1, USL = 1000, n_sim = 5000)
+
+# Multiple dilution schemes
+cv_heterogeneous_multiple(mu = 2, sd = 0.2, a = 0, b = 300,
+                          f = c(0.01, 0.1), u = c(0.1, 0.1),
+                          USL = 1000, n_sim = 50000)
+
+# Plot CV curves
+cv_curves_heterogeneous(mu_low = -5, mu_high = 10, sd = 0.2,
+                        a = 0, b = 300, f = c(0.01, 0.1),
+                        u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
+
+OC_curves_heterogeneous(c = 2, mu_low = 4, mu_high = 9, sd = 0.2,
+                        a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
+                        USL = 1000, n = 5)

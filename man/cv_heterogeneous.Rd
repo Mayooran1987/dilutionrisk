@@ -31,12 +31,6 @@ Must be positive.}
 
 \item{n_sim}{Number of simulations. Larger values provide more precise
 estimates. Recommended minimum: 10,000.}
-
-\item{mu_low}{Lower bound of mean microbial count (\eqn{\mu}) for x-axis
-in graphical displays (log scale).}
-
-\item{mu_high}{Upper bound of mean microbial count (\eqn{\mu}) for x-axis
-in graphical displays (log scale).}
 }
 \value{
 Numeric value representing the coefficient of variation for the
@@ -45,23 +39,38 @@ heterogeneous batch.
 \description{
 Estimates the coefficient of variation (CV) in the original sample when
 diluted samples are collected from a heterogeneous (non-homogeneous) batch.
+The CV measures the relative variability of the estimated microbial concentration.
+}
+\details{
+The coefficient of variation is defined as:
+\deqn{CV = \frac{\sigma}{\mu}}
+where \eqn{\sigma} is the standard deviation and \eqn{\mu} is the mean
+of the estimated microbial concentration.
+
+For heterogeneous batches, the microbial count follows a truncated
+Poisson-lognormal distribution, accounting for variability in contamination
+levels across the batch.
 }
 \examples{
 \dontrun{
-# Basic usage
+# Basic usage - estimate CV for a single dilution scheme
 cv_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
-                 f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+                 f = 0.01, u = 0.1, USL = 1000, n_sim = 10000)
 
-# Multiple dilution schemes
+# Compare multiple dilution schemes
 cv_heterogeneous_multiple(mu = 2, sd = 0.2, a = 0, b = 300,
                           f = c(0.01, 0.1), u = c(0.1, 0.1),
-                          USL = 1000, n_sim = 50000)
+                          USL = 1000, n_sim = 10000)
 
-# Plot CV curves
+# Generate CV curves across a range of mean microbial counts
 cv_curves_heterogeneous(mu_low = -5, mu_high = 10, sd = 0.2,
                         a = 0, b = 300, f = c(0.01, 0.1),
-                        u = c(0.1, 0.1), USL = 1000, n_sim = 50000)
+                        u = c(0.1, 0.1), USL = 1000, n_sim = 10000)
 }
+
+# Quick example with small simulation size for testing
+cv_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
+                 f = 0.01, u = 0.1, USL = 1000, n_sim = 500)
 
 }
 \references{
@@ -70,5 +79,8 @@ cv_curves_heterogeneous(mu_low = -5, mu_high = 10, sd = 0.2,
 Statistical approaches for the design of sampling plans for
 microbiological monitoring of foods. In: Mathematical and Statistical
 Methods in Food Science and Technology. Wiley, pp. 363–384.
+\item Schothorst, M. van, Zwietering, M.H., Ross, T., Buchanan, R.L.,
+Cole, M.B., 2009. Relating microbiological criteria to food safety
+objectives and performance objectives. Food Control 20, 967–979.
 }
 }

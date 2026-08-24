@@ -1,0 +1,76 @@
+Package: dilutionrisk
+Type: Package
+Title: Risk Assessment and Probability Estimation for Dilution Testing in Microbiology
+Version: 0.1.0
+Date: 2026-08-01
+Authors@R: c(
+    person("Mayooran", "Thevaraja", 
+           email = "mayooran@eng.jfn.ac.lk", 
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4786-7248",
+                      affiliation = "University of Jaffna")),
+    person("Mark", "Bebbington", 
+           email = "m.bebbington@massey.ac.nz", 
+           role = "aut",
+           comment = c(ORCID = "0000-0003-3504-7418",
+                      affiliation = "Massey University"))
+  )
+Description: Comprehensive risk assessment toolkit for microbiological 
+    dilution testing in food safety. Implements probability estimation and 
+    visualization methods using bounded distributions (truncated Poisson and 
+    truncated Poisson-lognormal) for both homogeneous and heterogeneous 
+    contamination scenarios. Core functionality includes:
+    \describe{
+      \item{Probability of Detection (PD)}{Estimate the likelihood
+        of detecting microbial contamination exceeding specification limits
+        under different dilution schemes}
+      \item{Probability of Acceptance (PA)}{Evaluate sampling plan
+        effectiveness using binomial acceptance probabilities}
+      \item{Operating Characteristic (OC) Curves}{Visually compare
+        dilution scheme performance across contamination levels}
+      \item{Coefficient of Variation (CV)}{Quantify variability in
+        microbial concentration estimates}
+      \item{True Concentration Estimation}{Back-calculate true
+        microbial concentration from observed plate counts}
+      \item{Validation Framework}{Compare theoretical and
+        simulation-based results to validate risk assessments}
+    }
+    Designed for food safety professionals, microbiologists, and researchers 
+    involved in designing and implementing microbiological monitoring programs 
+    and sampling plans compliant with food safety standards.
+License: GPL (>= 2)
+URL: https://github.com/Mayooran1987/dilutionrisk
+BugReports: https://github.com/Mayooran1987/dilutionrisk/issues
+Depends:
+    R (>= 4.0.0)
+Imports:
+    ggplot2 (>= 3.3.0),
+    ggthemes (>= 4.2.0),
+    reshape2 (>= 1.4.4),
+    stats,
+    utils,
+    methods
+Suggests:
+    testthat (>= 3.0.0),
+    covr (>= 3.5.0),
+    knitr (>= 1.30),
+    rmarkdown (>= 2.7),
+    pkgdown (>= 2.0.0),
+    roxygen2 (>= 7.3.0),
+    spelling (>= 2.2),
+    devtools (>= 2.4.0)
+VignetteBuilder:
+    knitr
+Encoding: UTF-8
+LazyData: true
+LazyDataCompression: xz
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3.9000
+Language: en-US
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/start-first: setup
+Config/Needs/website: pkgdown
+Biarch: false
+NeedsCompilation: no
+Copyright: (c) 2026 Mayooran Thevaraja and Mark Bebbington

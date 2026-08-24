@@ -54,10 +54,9 @@ function of the true microbial concentration. They are useful for comparing
 the performance of different dilution schemes and sampling plans.
 }
 \examples{
-\dontrun{
 OC_curves_homogeneous(c = 2, lambda_low = 0, lambda_high = 5000,
                       a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
                       USL = 1000, n = 5)
-}
+
 
 }

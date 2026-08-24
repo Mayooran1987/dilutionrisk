@@ -66,7 +66,6 @@
 #' @keywords internal
 "_PACKAGE"
 #' @useDynLib dilutionrisk, .registration = TRUE
-#' @importFrom Rcpp sourceCpp
 #' @importFrom stats pbinom rlnorm
 #' @importFrom methods setLoadAction
 #' @importFrom ggplot2 ggplot aes geom_line geom_vline annotate theme_classic

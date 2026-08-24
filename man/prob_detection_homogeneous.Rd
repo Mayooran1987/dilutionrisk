@@ -60,7 +60,6 @@ The theoretical probability is calculated as:
 \deqn{P_d = 1 - \sum_{i=1}^{USL \times f \times u} \frac{(\lambda f u)^i}{i!(e^{\lambda f u} - 1)}}
 }
 \examples{
-\dontrun{
 # Theoretical calculation
 prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
                            f = 0.01, u = 0.1, USL = 1000)
@@ -69,7 +68,6 @@ prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
 prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
                            f = 0.01, u = 0.1, USL = 1000,
                            type = "simulation", n_sim = 50000)
-}
 
 }
 \references{

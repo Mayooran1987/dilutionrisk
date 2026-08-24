@@ -60,22 +60,21 @@ Poisson-lognormal distribution, f is the final dilution factor, and u is
 the amount placed on the plate.
 }
 \examples{
-\dontrun{
 # Basic usage
 true_concentration_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
-                                 f = 0.01, u = 0.1, USL = 1000, n_sim = 50000)
+                                 f = 0.01, u = 0.1, USL = 1000, n_sim = 5000)
 
 # Multiple dilution schemes
 true_concentration_heterogeneous_multiple(mu = 2, sd = 0.2, a = 0, b = 300,
                                           f = c(0.01, 0.1), u = c(0.1, 0.1),
-                                          USL = 1000, n_sim = 50000)
+                                          USL = 1000, n_sim = 5000)
 
 # Plot concentration curves
 true_concentration_curves_heterogeneous(mu_low = 0, mu_high = 10, sd = 0.2,
                                         a = 0, b = 300, f = c(0.01, 0.1),
                                         u = c(0.1, 0.1), USL = 1000,
-                                        n_sim = 50000)
-}
+                                        n_sim = 5000)
+
 
 }
 \references{

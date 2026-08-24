@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 [![R](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/r.yml)
-[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/R-CMD-check.yml)
+[![R-CMD-check](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/rcmd.yml)
 [![pkgdown](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/Mayooran1987/dilutionrisk/actions/workflows/pkgdown.yaml)
 [![CRAN status](https://www.r-pkg.org/badges/version/dilutionrisk)](https://CRAN.R-project.org/package=dilutionrisk)
 [![Downloads](https://cranlogs.r-pkg.org/badges/dilutionrisk)](https://CRAN.R-project.org/package=dilutionrisk)
@@ -89,6 +89,7 @@ This package is particularly useful for:
 
 ### From GitHub (Development Version)
 
+
 ```r
 # Install the development version from GitHub
 # install.packages("devtools")
@@ -97,3 +98,6 @@ devtools::install_github("Mayooran1987/dilutionrisk")
 # Alternatively, using remotes
 # install.packages("remotes")
 remotes::install_github("Mayooran1987/dilutionrisk")
+
+```
+

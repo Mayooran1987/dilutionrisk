@@ -17,11 +17,9 @@
 #' @return A ggplot object showing PD curves for different dilution schemes.
 #'
 #' @examples
-#' \dontrun{
 #' pd_curves_heterogeneous(mu_low = 0, mu_high = 10, sd = 0.2,
 #'                         a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
 #'                         USL = 1000)
-#' }
 #'
 #' @export
 pd_curves_heterogeneous <- function(mu_low, mu_high, sd, a, b, f, u, USL,

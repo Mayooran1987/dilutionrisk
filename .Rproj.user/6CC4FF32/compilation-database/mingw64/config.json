@@ -1,0 +1,16 @@
+{
+    "args": [
+        "-std=gnu++11",
+        "-IC:/PROGRA~1/R/R-45~1.0/include",
+        "-DNDEBUG",
+        "-IC:/Users/IDS-2024-2/AppData/Local/R/win-library/4.5/Rcpp/include",
+        "-DEIGEN_DONT_VECTORIZE",
+        "-nostdinc"
+    ],
+    "pch": "Rcpp",
+    "is_cpp": true,
+    "hash": "1785527815",
+    "compiler": "14695981039346656037",
+    "rversion": "4.5.0",
+    "dbversion": 4
+}

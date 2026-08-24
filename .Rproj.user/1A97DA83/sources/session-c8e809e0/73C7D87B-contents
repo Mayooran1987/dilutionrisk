@@ -1,0 +1,8 @@
+cv_sensitivity <- compare_cv_heterogeneous(
+  mu_seq = seq(0, 5, by = 0.5),
+  sd_values = c(0.1, 0.3, 0.5),
+  a = 0, b = 300,
+  f = 0.01, u = 0.1,
+  USL = 1000, n_sim = 100
+)
+print(cv_sensitivity)

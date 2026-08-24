@@ -43,10 +43,8 @@ Generates probability of detection curves comparing different dilution
 schemes when samples are collected from a homogeneous batch.
 }
 \examples{
-\dontrun{
 pd_curves_homogeneous(lambda_low = 0, lambda_high = 5000,
                       a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
                       USL = 1000)
-}
 
 }

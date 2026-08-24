@@ -1,130 +1,72 @@
-# _pkgdown.yml - Updated to match existing vignettes
-url: https://Mayooran1987.github.io/dilutionrisk/
+# _pkgdown.yml
+url: https://mayooran1987.github.io/dilutionrisk/
 
 template:
   bootstrap: 5
 
-navbar:
-  type: default
-  left:
-    - text: "Home"
-      icon: "fa-home"
-      href: "index.html"
-    - text: "Reference"
-      icon: "fa-file-alt"
-      href: "reference/index.html"
-    - text: "Articles"
-      icon: "fa-book"
-      menu:
-        - text: "Introduction"
-          href: "articles/introduction.html"
-        - text: "Homogeneous Batch Models"
-          href: "articles/homogeneous_models.html"
-        - text: "Heterogeneous Batch Models"
-          href: "articles/heterogeneous_models.html"
-        - text: "Validation and Simulation"
-          href: "articles/validation.html"
-    - text: "News"
-      icon: "fa-newspaper"
-      href: "news/index.html"
-  right:
-    - text: "GitHub"
-      icon: "fa-github"
-      href: "https://github.com/Mayooran1987/dilutionrisk"
-
 reference:
-  - title: "Probability Detection Functions"
-    desc: "Calculate probability of detection for homogeneous and heterogeneous batches"
-    contents:
-      - prob_detection_homogeneous
-      - prob_detection_homogeneous_multiple
-      - prob_detection_heterogeneous
-      - prob_detection_heterogeneous_multiple
+- title: "Random Number Generation"
+  desc: "Functions for generating random numbers from truncated distributions"
+  contents:
+  - rtpois
+  - rtrunpoilog
 
-  - title: "Probability Acceptance Functions"
-    desc: "Calculate probability of acceptance for sampling plans"
-    contents:
-      - prob_acceptance_homogeneous
-      - prob_acceptance_homogeneous_multiple
-      - prob_acceptance_heterogeneous
-      - prob_acceptance_heterogeneous_multiple
+- title: "Coefficient of Variation"
+  desc: "Estimate coefficient of variation for homogeneous and heterogeneous batches"
+  contents:
+  - cv_homogeneous
+  - cv_homogeneous_multiple
+  - cv_curves_homogeneous
+  - cv_heterogeneous
+  - cv_heterogeneous_multiple
+  - cv_curves_heterogeneous
 
-  - title: "Operating Characteristic (OC) Curves"
-    desc: "Generate OC curves for comparing dilution schemes"
-    contents:
-      - OC_curves_homogeneous
-      - OC_curves_heterogeneous
+- title: "Probability of Detection"
+  desc: "Calculate probability of detection for microbial contamination"
+  contents:
+  - prob_detection_homogeneous
+  - prob_detection_homogeneous_multiple
+  - prob_detection_heterogeneous
+  - prob_detection_heterogeneous_multiple
 
-  - title: "Probability of Detection (PD) Curves"
-    desc: "Generate PD curves for comparing dilution schemes"
-    contents:
-      - pd_curves_homogeneous
-      - pd_curves_heterogeneous
+- title: "Probability of Acceptance"
+  desc: "Calculate probability of acceptance for sampling plans"
+  contents:
+  - prob_acceptance_homogeneous
+  - prob_acceptance_homogeneous_multiple
+  - prob_acceptance_heterogeneous
+  - prob_acceptance_heterogeneous_multiple
 
-  - title: "Coefficient of Variation (CV)"
-    desc: "Estimate CV for different dilution schemes"
-    contents:
-      - cv_homogeneous
-      - cv_homogeneous_multiple
-      - cv_heterogeneous
-      - cv_heterogeneous_multiple
-      - cv_curves_homogeneous
-      - cv_curves_heterogeneous
+- title: "Operating Characteristic Curves"
+  desc: "Generate operating characteristic curves for dilution schemes"
+  contents:
+  - OC_curves_homogeneous
+  - OC_curves_heterogeneous
 
-  - title: "True Concentration Estimation"
-    desc: "Estimate true microbial concentration in original samples"
-    contents:
-      - true_concentration_homogeneous
-      - true_concentration_homogeneous_multiple
-      - true_concentration_heterogeneous
-      - true_concentration_heterogeneous_multiple
-      - true_concentration_curves_homogeneous
-      - true_concentration_curves_heterogeneous
+- title: "Probability of Detection Curves"
+  desc: "Generate probability of detection curves for dilution schemes"
+  contents:
+  - pd_curves_homogeneous
+  - pd_curves_heterogeneous
 
-  - title: "Validation Functions"
-    desc: "Validate theoretical results with simulations"
-    contents:
-      - pd_validation_homogeneous
-      - pd_validation_heterogeneous
+- title: "True Concentration Estimation"
+  desc: "Estimate true microbial concentration from diluted samples"
+  contents:
+  - true_concentration_homogeneous
+  - true_concentration_homogeneous_multiple
+  - true_concentration_curves_homogeneous
+  - true_concentration_heterogeneous
+  - true_concentration_heterogeneous_multiple
+  - true_concentration_curves_heterogeneous
 
-  - title: "Distribution Functions"
-    desc: "Random number generation from truncated distributions"
-    contents:
-      - rtrunpoilog
+- title: "Validation Tools"
+  desc: "Compare theoretical and simulation-based results"
+  contents:
+  - pd_validation_homogeneous
+  - pd_validation_heterogeneous
 
-# Temporarily comment out articles until vignettes are created
-# articles:
-#   - title: "Getting Started"
-#     navbar: "Getting Started"
-#     contents:
-#       - introduction
-#
-#   - title: "Modeling Approaches"
-#     navbar: "Modeling Approaches"
-#     contents:
-#       - homogeneous_models
-#       - heterogeneous_models
-#
-#   - title: "Advanced Topics"
-#     navbar: "Advanced Topics"
-#     contents:
-#       - validation
-
-home:
-  title: "dilutionrisk"
-  description: "Risk Assessment for Dilution Testing in Microbiology"
-
-search:
-  type: lunr
-  preview: 5
-
-development:
-  mode: auto
-  version_label: warning
-
-footer:
-  left:
-    text: "Developed by Mayooran Thevaraja"
-  right:
-    text: "Built with pkgdown"
-    href: https://pkgdown.r-lib.org/
+- title: "Helper Functions"
+  desc: "Utility functions for sensitivity analysis and comparison"
+  contents:
+  - compare_cv_heterogeneous
+  - plot_cv_comparison

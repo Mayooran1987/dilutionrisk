@@ -72,7 +72,6 @@ where \eqn{p_d} is the probability of detection and \eqn{n} is the number
 of samples inspected.
 }
 \examples{
-\dontrun{
 # Basic usage
 prob_acceptance_heterogeneous(c = 2, mu = 7, sd = 0.2, a = 0, b = 300,
                               f = 0.01, u = 0.1, USL = 1000, n = 5)
@@ -82,6 +81,5 @@ prob_acceptance_heterogeneous_multiple(c = 2, mu = 7, sd = 0.2,
                                        a = 0, b = 300,
                                        f = c(0.01, 0.1), u = c(0.1, 0.1),
                                        USL = 1000, n = 5)
-}
 
 }

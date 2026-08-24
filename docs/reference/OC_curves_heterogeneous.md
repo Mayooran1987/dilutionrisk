@@ -80,9 +80,14 @@ A ggplot object showing OC curves for different dilution schemes.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 OC_curves_heterogeneous(c = 2, mu_low = 4, mu_high = 9, sd = 0.2,
                         a = 0, b = 300, f = c(0.01, 0.1), u = c(0.1, 0.1),
                         USL = 1000, n = 5)
-} # }
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> ℹ The deprecated feature was likely used in the dilutionrisk package.
+#>   Please report the issue at
+#>   <https://github.com/Mayooran1987/dilutionrisk/issues>.
+
+
 ```

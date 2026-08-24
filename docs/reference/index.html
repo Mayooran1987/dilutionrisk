@@ -3,11 +3,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="default" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">dilutionrisk</a>
 
-    <small class="nav-text text-warning me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,17 +15,18 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home"></span> Home</a></li>
-<li class="active nav-item"><a class="nav-link" href="../reference/index.html"><span class="fa fa-file-alt"></span> Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-book"></span> Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/introduction.html">Introduction</a></li>
-    <li><a class="dropdown-item" href="../articles/homogeneous_models.html">Homogeneous Batch Models</a></li>
-    <li><a class="dropdown-item" href="../articles/heterogeneous_models.html">Heterogeneous Batch Models</a></li>
-    <li><a class="dropdown-item" href="../articles/validation.html">Validation and Simulation</a></li>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/heterogeneous_models.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="../articles/homogeneous_models.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="../articles/introduction.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="../articles/validation.html">UNKNOWN TITLE</a></li>
   </ul></li>
-<li class="nav-item"><a class="nav-link" href="../news/index.html"><span class="fa fa-newspaper"></span> News</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://github.com/Mayooran1987/dilutionrisk"><span class="fa fa-github"></span> GitHub</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Mayooran1987/dilutionrisk/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -38,9 +39,55 @@
     </div>
 
     <div class="section level2">
-      <h2 id="probability-detection-functions">Probability Detection Functions<a class="anchor" aria-label="anchor" href="#probability-detection-functions"></a></h2>
+      <h2 id="random-number-generation">Random Number Generation<a class="anchor" aria-label="anchor" href="#random-number-generation"></a></h2>
 
-      <div class="section-desc"><p>Calculate probability of detection for homogeneous and heterogeneous batches</p></div>
+      <div class="section-desc"><p>Functions for generating random numbers from truncated distributions</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="rtpois.html">rtpois()</a></code>
+
+        </dt>
+        <dd>Truncated Poisson Random Number Generation</dd>
+
+        <dt>
+
+          <code><a href="rtrunpoilog.html">rtrunpoilog()</a></code>
+
+        </dt>
+        <dd>Truncated Poisson-Lognormal Random Number Generation</dd>
+      </dl></div><div class="section level2">
+      <h2 id="coefficient-of-variation">Coefficient of Variation<a class="anchor" aria-label="anchor" href="#coefficient-of-variation"></a></h2>
+
+      <div class="section-desc"><p>Estimate coefficient of variation for homogeneous and heterogeneous batches</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="cv_homogeneous.html">cv_homogeneous()</a></code> <code><a href="cv_homogeneous.html">cv_homogeneous_multiple()</a></code> <code><a href="cv_homogeneous.html">cv_curves_homogeneous()</a></code>
+
+        </dt>
+        <dd>Coefficient of Variation for Homogeneous Batches</dd>
+
+        <dt>
+
+          <code><a href="cv_heterogeneous.html">cv_heterogeneous()</a></code> <code><a href="cv_heterogeneous.html">cv_heterogeneous_multiple()</a></code> <code><a href="cv_heterogeneous.html">cv_curves_heterogeneous()</a></code>
+
+        </dt>
+        <dd>Coefficient of Variation for Heterogeneous Batches</dd>
+      </dl></div><div class="section level2">
+      <h2 id="probability-of-detection">Probability of Detection<a class="anchor" aria-label="anchor" href="#probability-of-detection"></a></h2>
+
+      <div class="section-desc"><p>Calculate probability of detection for microbial contamination</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -75,7 +122,7 @@
         </dt>
         <dd>Probability of detection estimation for multiple dilution schemes when diluted samples are collected from a heterogeneous batch.</dd>
       </dl></div><div class="section level2">
-      <h2 id="probability-acceptance-functions">Probability Acceptance Functions<a class="anchor" aria-label="anchor" href="#probability-acceptance-functions"></a></h2>
+      <h2 id="probability-of-acceptance">Probability of Acceptance<a class="anchor" aria-label="anchor" href="#probability-of-acceptance"></a></h2>
 
       <div class="section-desc"><p>Calculate probability of acceptance for sampling plans</p></div>
 
@@ -112,9 +159,9 @@
         </dt>
         <dd>Probability of acceptance estimation when diluted samples are collected from a heterogeneous batch.</dd>
       </dl></div><div class="section level2">
-      <h2 id="operating-characteristic-oc-curves">Operating Characteristic (OC) Curves<a class="anchor" aria-label="anchor" href="#operating-characteristic-oc-curves"></a></h2>
+      <h2 id="operating-characteristic-curves">Operating Characteristic Curves<a class="anchor" aria-label="anchor" href="#operating-characteristic-curves"></a></h2>
 
-      <div class="section-desc"><p>Generate OC curves for comparing dilution schemes</p></div>
+      <div class="section-desc"><p>Generate operating characteristic curves for dilution schemes</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -135,9 +182,9 @@
         </dt>
         <dd>Operating Characteristic (OC) Curves for Heterogeneous Batches</dd>
       </dl></div><div class="section level2">
-      <h2 id="probability-of-detection-pd-curves">Probability of Detection (PD) Curves<a class="anchor" aria-label="anchor" href="#probability-of-detection-pd-curves"></a></h2>
+      <h2 id="probability-of-detection-curves">Probability of Detection Curves<a class="anchor" aria-label="anchor" href="#probability-of-detection-curves"></a></h2>
 
-      <div class="section-desc"><p>Generate PD curves for comparing dilution schemes</p></div>
+      <div class="section-desc"><p>Generate probability of detection curves for dilution schemes</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -158,32 +205,9 @@
         </dt>
         <dd>Probability of Detection Curves for Heterogeneous Batches</dd>
       </dl></div><div class="section level2">
-      <h2 id="coefficient-of-variation-cv-">Coefficient of Variation (CV)<a class="anchor" aria-label="anchor" href="#coefficient-of-variation-cv-"></a></h2>
-
-      <div class="section-desc"><p>Estimate CV for different dilution schemes</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="cv_homogeneous.html">cv_homogeneous()</a></code> <code><a href="cv_homogeneous.html">cv_homogeneous_multiple()</a></code> <code><a href="cv_homogeneous.html">cv_curves_homogeneous()</a></code>
-
-        </dt>
-        <dd>Coefficient of Variation for Homogeneous Batches</dd>
-
-        <dt>
-
-          <code><a href="cv_heterogeneous.html">cv_heterogeneous()</a></code> <code><a href="cv_heterogeneous.html">cv_heterogeneous_multiple()</a></code> <code><a href="cv_heterogeneous.html">cv_curves_heterogeneous()</a></code>
-
-        </dt>
-        <dd>Coefficient of Variation for Heterogeneous Batches</dd>
-      </dl></div><div class="section level2">
       <h2 id="true-concentration-estimation">True Concentration Estimation<a class="anchor" aria-label="anchor" href="#true-concentration-estimation"></a></h2>
 
-      <div class="section-desc"><p>Estimate true microbial concentration in original samples</p></div>
+      <div class="section-desc"><p>Estimate true microbial concentration from diluted samples</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -204,9 +228,9 @@
         </dt>
         <dd>True Concentration Estimation for Heterogeneous Batches</dd>
       </dl></div><div class="section level2">
-      <h2 id="validation-functions">Validation Functions<a class="anchor" aria-label="anchor" href="#validation-functions"></a></h2>
+      <h2 id="validation-tools">Validation Tools<a class="anchor" aria-label="anchor" href="#validation-tools"></a></h2>
 
-      <div class="section-desc"><p>Validate theoretical results with simulations</p></div>
+      <div class="section-desc"><p>Compare theoretical and simulation-based results</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -227,9 +251,9 @@
         </dt>
         <dd>Comparison based on probability of detection curves for different dilution schemes when diluted samples collected from a heterogeneous batch.</dd>
       </dl></div><div class="section level2">
-      <h2 id="distribution-functions">Distribution Functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a></h2>
+      <h2 id="helper-functions">Helper Functions<a class="anchor" aria-label="anchor" href="#helper-functions"></a></h2>
 
-      <div class="section-desc"><p>Random number generation from truncated distributions</p></div>
+      <div class="section-desc"><p>Utility functions for sensitivity analysis and comparison</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -238,10 +262,17 @@
 
       <dl><dt>
 
-          <code><a href="rtrunpoilog.html">rtrunpoilog()</a></code>
+          <code><a href="compare_cv_heterogeneous.html">compare_cv_heterogeneous()</a></code>
 
         </dt>
-        <dd>Truncated Poisson-Lognormal Random Number Generation</dd>
+        <dd>Helper function to understand CV behavior</dd>
+
+        <dt>
+
+          <code><a href="plot_cv_comparison.html">plot_cv_comparison()</a></code>
+
+        </dt>
+        <dd>Visualize CV Comparison</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

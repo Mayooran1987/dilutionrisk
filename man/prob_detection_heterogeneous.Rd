@@ -68,7 +68,6 @@ mixing distribution:
       \int_0^\infty \frac{t^{i-1} \exp(-0.5((\log(t)-\mu_d)/\sigma)^2)}{e^t - 1} dt}
 }
 \examples{
-\dontrun{
 # Theoretical calculation
 prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
                              f = 0.01, u = 0.1, USL = 1000)
@@ -76,8 +75,7 @@ prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
 # Simulation-based calculation
 prob_detection_heterogeneous(mu = 2, sd = 0.2, a = 0, b = 300,
                              f = 0.01, u = 0.1, USL = 1000,
-                             type = "simulation", n_sim = 50000)
-}
+                             type = "simulation", n_sim = 5000)
 
 }
 \references{

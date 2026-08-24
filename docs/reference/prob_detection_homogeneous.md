@@ -87,14 +87,14 @@ f u} - 1)}\$\$
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 # Theoretical calculation
 prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
                            f = 0.01, u = 0.1, USL = 1000)
+#> [1] 0.6869647
 
 # Simulation-based calculation
 prob_detection_homogeneous(lambda = 2000, a = 0, b = 300,
                            f = 0.01, u = 0.1, USL = 1000,
                            type = "simulation", n_sim = 50000)
-} # }
+#> [1] 0.5913
 ```
